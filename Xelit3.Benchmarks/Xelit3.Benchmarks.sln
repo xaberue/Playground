@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32825.248
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xelit3.Benchmarks", "Xelit3.Benchmarks\Xelit3.Benchmarks.csproj", "{0EE1E884-37D6-407B-B712-5D744AF62F5A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xelit3.Benchmarks", "Xelit3.Benchmarks\Xelit3.Benchmarks.csproj", "{0EE1E884-37D6-407B-B712-5D744AF62F5A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xelit3.Tests.Model", "..\Shared\Xelit3.Tests.Model\Xelit3.Tests.Model.csproj", "{E3449DB6-AD07-471F-9036-4A631B079606}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{0EE1E884-37D6-407B-B712-5D744AF62F5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0EE1E884-37D6-407B-B712-5D744AF62F5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0EE1E884-37D6-407B-B712-5D744AF62F5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3449DB6-AD07-471F-9036-4A631B079606}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3449DB6-AD07-471F-9036-4A631B079606}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3449DB6-AD07-471F-9036-4A631B079606}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3449DB6-AD07-471F-9036-4A631B079606}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
