@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Xelit3.Benchmarks;
 
@@ -11,9 +12,11 @@ using Xelit3.Benchmarks;
 namespace Xelit3.Benchmarks.Migrations
 {
     [DbContext(typeof(EFTestDataContext))]
-    partial class EFTestDataContextModelSnapshot : ModelSnapshot
+    [Migration("20230131135407_TestModel_Int_Migration")]
+    partial class TestModelIntMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

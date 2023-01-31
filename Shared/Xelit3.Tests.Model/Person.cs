@@ -2,7 +2,7 @@
 
 public class Person<TId> : ModelBase<TId>
 {
-    public Guid OriginId { get; set; }
+    public TId OriginId { get; set; }
     public string Name { get; set; } = string.Empty;
     public string Surname { get; set; } = string.Empty;
     public DateTime BirthDate { get; set; }

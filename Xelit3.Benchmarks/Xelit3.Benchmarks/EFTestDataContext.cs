@@ -24,9 +24,11 @@ public class EFTestDataContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Person<Guid>>(entity => 
+        #region Test Model GUID
+
+        modelBuilder.Entity<Person<Guid>>(entity =>
         {
-            entity.ToTable($"Persons_Guid");            
+            entity.ToTable($"Persons_Guid");
             entity.HasOne(x => x.Origin).WithMany(x => x.Citizens).HasForeignKey("OriginId").OnDelete(DeleteBehavior.NoAction);
         });
 
@@ -54,6 +56,44 @@ public class EFTestDataContext : DbContext
             entity.ToTable($"Posts_Guid");
             entity.HasOne(x => x.Author).WithMany(x => x.Posts).HasForeignKey("AuthorId").OnDelete(DeleteBehavior.NoAction);
         });
+
+        #endregion
+
+        #region Test Model INT
+
+        modelBuilder.Entity<Person<int>>(entity =>
+        {
+            entity.ToTable($"Persons_int");
+            entity.HasOne(x => x.Origin).WithMany(x => x.Citizens).HasForeignKey("OriginId").OnDelete(DeleteBehavior.NoAction);
+        });
+
+        modelBuilder.Entity<Address<int>>(entity =>
+        {
+            entity.ToTable($"Addresses_int");
+            entity.HasOne(x => x.City).WithMany(x => x.Addresses).OnDelete(DeleteBehavior.NoAction);
+            entity.HasOne(x => x.Person).WithMany(x => x.Addresses).OnDelete(DeleteBehavior.NoAction);
+        });
+
+        modelBuilder.Entity<Country<int>>(entity =>
+        {
+            entity.ToTable($"Countries_int");
+            entity.HasMany(x => x.Cities).WithOne(x => x.Country);
+        });
+
+        modelBuilder.Entity<City<int>>(entity =>
+        {
+            entity.ToTable($"Cities_int");
+            entity.HasOne(x => x.Country).WithMany(x => x.Cities).OnDelete(DeleteBehavior.NoAction);
+        });
+
+        modelBuilder.Entity<Post<int>>(entity =>
+        {
+            entity.ToTable($"Posts_int");
+            entity.HasOne(x => x.Author).WithMany(x => x.Posts).HasForeignKey("AuthorId").OnDelete(DeleteBehavior.NoAction);
+        });
+
+        #endregion
+
 
         base.OnModelCreating(modelBuilder);
     }
