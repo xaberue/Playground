@@ -2,7 +2,7 @@
 
 public class City<TId> : ModelBase<TId>
 {
-    public Guid CountryId { get; set; }
+    public TId CountryId { get; set; }
     public string Name { get; set; } = string.Empty;
     public int Population { get; set; }
 
