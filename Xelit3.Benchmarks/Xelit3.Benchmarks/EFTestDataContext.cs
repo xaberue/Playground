@@ -5,9 +5,15 @@ namespace Xelit3.Benchmarks;
 
 public class EFTestDataContext : DbContext
 {
-    
+
     private readonly string _connectionString
         = "Data Source=localhost;Initial Catalog=Test;Integrated Security=True;TrustServerCertificate=True";
+
+
+    public DbSet<Person<Guid>> Persons_Guid { get; set; }
+    public DbSet<Person<int>> Persons_Int { get; set; }
+    public DbSet<Person<long>> Persons_Long { get; set; }
+
 
     public EFTestDataContext() { }
 

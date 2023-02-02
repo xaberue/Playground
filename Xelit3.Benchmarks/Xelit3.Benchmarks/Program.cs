@@ -22,10 +22,13 @@ while (!exit)
 			break;
 
         case "2":
+            var personsCount = GetPersonsSizeCount();
+            SqlServerEfCoreIdFetchBenchmarksHelper.Instance.Initialize(personsCount);
             summary = BenchmarkRunner.Run<SqlServerEfCoreIdFetchBenchmarks>();
+            SqlServerEfCoreIdFetchBenchmarksHelper.Instance.Finish();
             break;
 
-		case "e":
+        case "e":
             Console.WriteLine("Exiting from the application");
 			exit = true;
             break;
@@ -39,3 +42,27 @@ while (!exit)
 
 
 Console.ReadKey();
+
+
+
+static int GetPersonsSizeCount()
+{
+    var ok = false;
+	var inputText = string.Empty;
+    while (!ok)
+    {
+		try
+		{
+            Console.WriteLine($"Please entry how many users to add in the test database:");
+            inputText = Console.ReadLine();
+			ok = true;
+
+            return int.Parse(inputText);
+		}
+		catch (Exception)
+		{
+			Console.WriteLine($"Invalid entry {inputText}. Please type a valid number");
+		}		
+    }
+    return 0;
+}
