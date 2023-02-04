@@ -9,8 +9,10 @@ Job=MediumRun  Toolchain=InProcessNoEmitToolchain  IterationCount=15
 LaunchCount=2  WarmupCount=10  
 
 ```
-|                        Method |     Mean |   Error |   StdDev | Allocated |
-|------------------------------ |---------:|--------:|---------:|----------:|
-| RetrieveSingleElementFromGuid | 340.2 ns | 7.70 ns | 11.04 ns |     192 B |
-|  RetrieveSingleElementFromInt | 328.8 ns | 5.10 ns |  7.15 ns |     184 B |
-| RetrieveSingleElementFromLong | 339.8 ns | 4.46 ns |  6.39 ns |     184 B |
+|                              Method |         Mean |        Error |       StdDev | Allocated |
+|------------------------------------ |-------------:|-------------:|-------------:|----------:|
+|       RetrieveSingleElementFromGuid |     383.3 ns |     20.64 ns |     29.60 ns |     192 B |
+|        RetrieveSingleElementFromInt |     329.4 ns |      3.76 ns |      5.39 ns |     184 B |
+|       RetrieveSingleElementFromLong |     327.4 ns |      2.92 ns |      4.09 ns |     184 B |
+|    RetrieveMultilpeRowsWithTracking | 305,907.2 ns | 12,885.50 ns | 18,480.00 ns |   11289 B |
+| RetrieveMultilpeRowsWithoutTracking | 299,988.1 ns |  4,673.13 ns |  6,849.82 ns |   11857 B |

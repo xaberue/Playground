@@ -35,6 +35,22 @@ public class SqlServerEfCoreIdFetchBenchmarks
         return await Task.FromResult(true);
     }
 
+    [Benchmark]
+    public async Task RetrieveMultilpeRowsWithTracking()
+    {
+        var data = SqlServerEfCoreIdFetchBenchmarksHelper.Instance.DbContext.Persons_Int
+            .Take(SqlServerEfCoreIdFetchBenchmarksHelper.Instance.RowsToRetrieve)
+            .ToList();
+    }
+
+    [Benchmark]
+    public async Task RetrieveMultilpeRowsWithoutTracking()
+    {
+        var data = SqlServerEfCoreIdFetchBenchmarksHelper.Instance.DbContext.Persons_Int
+            .AsNoTracking()
+            .Take(SqlServerEfCoreIdFetchBenchmarksHelper.Instance.RowsToRetrieve)
+            .ToList();
+    }
 }
 
 
@@ -45,6 +61,9 @@ public class SqlServerEfCoreIdFetchBenchmarksHelper
     internal Person<Guid>? RandomPersonGuid { get; private set; }
     internal Person<int>? RandomPersonInt { get; private set; }
     internal Person<long>? RandomPersonLong { get; private set; }
+
+    internal int RowsNumber { get; private set; }
+    internal int RowsToRetrieve => RowsNumber * 20 / 100;
 
 
     Country<Guid> _testCountryGuid = new Country<Guid>() { Id = Guid.NewGuid(), Name = "Kenya" };
