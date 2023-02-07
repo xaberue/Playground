@@ -52,6 +52,18 @@ public class MappingBenchmarks
     }
 
     [Benchmark]
+    public void MultipleElementAutomapperBenchmark_WithIEnumerableMap()
+    {
+        var dtos = _automapper.Map<IEnumerable<PersonDto>>(_persons).ToList();
+    }
+
+    [Benchmark]
+    public void MultipleElementAutomapperBenchmark_WithSelect()
+    {
+        var dtos = _persons.Select(x => _automapper.Map<PersonDto>(x)).ToList();
+    }
+
+    [Benchmark]
     public void SingleElementMapsterBenchmark()
     {
         var dto = _person.Adapt<PersonDto>();
