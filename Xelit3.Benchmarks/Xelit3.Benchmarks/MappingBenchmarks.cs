@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using BenchmarkDotNet.Attributes;
 using Bogus;
+using Mapster;
 using Xelit3.Tests.Model;
 using IAutoMapper = AutoMapper.IMapper;
 
@@ -31,6 +32,7 @@ public class MappingBenchmarks
         _automapper = new Mapper(config);
     }
 
+
     [Benchmark]
     public void SingleElementManualMappingBenchmark()
     {
@@ -40,7 +42,7 @@ public class MappingBenchmarks
     [Benchmark]
     public void MultipleElementsManualMappingBenchmark()
     {
-        var dto = _persons.Map();
+        var dtos = _persons.Map().ToList();
     }
 
     [Benchmark]
@@ -50,9 +52,15 @@ public class MappingBenchmarks
     }
 
     [Benchmark]
-    public void MultipleElementAutomapperBenchmark()
+    public void SingleElementMapsterBenchmark()
     {
-        var dtos = _automapper.Map<IEnumerable<PersonDto>>(_persons);
+        var dto = _person.Adapt<PersonDto>();
+    }
+
+    [Benchmark]
+    public void MultipleElementsMapsterBenchmark()
+    {
+        var dtos = _persons.Adapt<IEnumerable<PersonDto>>().ToList();
     }
 
 }
