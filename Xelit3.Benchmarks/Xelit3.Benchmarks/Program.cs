@@ -8,7 +8,8 @@ while (!exit)
 {
 	Console.WriteLine("(1). Run Async/Await benchmarks ");
 	Console.WriteLine("(2). Run DB benchmarks ");
-	Console.WriteLine("-----------------------------------------");
+	Console.WriteLine("(3). Run mapping benchmarks ");
+    Console.WriteLine("-----------------------------------------");
 	Console.WriteLine("(e). EXIT ");
 	Console.WriteLine("\nPlease write one option:");
 
@@ -26,6 +27,10 @@ while (!exit)
             SqlServerEfCoreIdFetchBenchmarksHelper.Instance.Initialize(personsCount);
             summary = BenchmarkRunner.Run<SqlServerEfCoreIdFetchBenchmarks>();
             SqlServerEfCoreIdFetchBenchmarksHelper.Instance.Finish();
+            break;
+
+        case "3":
+            summary = BenchmarkRunner.Run<MappingBenchmarks>();
             break;
 
         case "e":
