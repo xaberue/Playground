@@ -9,7 +9,7 @@ namespace Xelit3.Benchmarks;
 
 public class MappingBenchmarks
 {
-    
+
     private IAutoMapper _automapper;
     private IEnumerable<Person<Guid>> _persons;
     private Person<Guid> _person;
@@ -30,7 +30,18 @@ public class MappingBenchmarks
 
         _automapper = new Mapper(config);
     }
-        
+
+    [Benchmark]
+    public void SingleElementManualMappingBenchmark()
+    {
+        var dto = _person.Map();
+    }
+
+    [Benchmark]
+    public void MultipleElementsManualMappingBenchmark()
+    {
+        var dto = _persons.Map();
+    }
 
     [Benchmark]
     public void SingleElementAutomapperBenchmark()
@@ -53,4 +64,24 @@ public class PersonDto
     public string Name { get; set; } = string.Empty;
     public string Surname { get; set; } = string.Empty;
     public DateTime BirthDate { get; set; }
+}
+
+
+public static class PersonMapper
+{
+    public static PersonDto Map(this Person<Guid> person)
+    {
+        return new PersonDto
+        {
+            Name = person.Name,
+            Surname = person.Surname,
+            BirthDate = person.BirthDate,
+            OriginId = person.OriginId
+        };
+    }
+
+    public static IEnumerable<PersonDto> Map(this IEnumerable<Person<Guid>> persons)
+    {
+        return persons.Select(x => x.Map());
+    }
 }
