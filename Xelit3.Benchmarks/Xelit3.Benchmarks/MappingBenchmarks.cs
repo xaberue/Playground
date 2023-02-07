@@ -4,6 +4,7 @@ using Bogus;
 using Mapster;
 using Xelit3.Tests.Model;
 using IAutoMapper = AutoMapper.IMapper;
+using IMapsterMapper = MapsterMapper.IMapper;
 
 
 namespace Xelit3.Benchmarks;
@@ -12,6 +13,8 @@ public class MappingBenchmarks
 {
 
     private IAutoMapper _automapper;
+    private IMapsterMapper _mapster;
+    private TypeAdapterConfig _mapsterConfig;
     private IEnumerable<Person<Guid>> _persons;
     private Person<Guid> _person;
 
@@ -26,10 +29,24 @@ public class MappingBenchmarks
             .Generate(1000);
 
         _person = _persons.First();
+        
+        SetupAutomapperConfig();
+        SetupMapsterConfig();
+    }
 
-        var config = new MapperConfiguration(cfg => cfg.CreateMap<Person<Guid>, PersonDto>());
+    private void SetupAutomapperConfig()
+    {
+        var automapperConfig = new MapperConfiguration(cfg => cfg.CreateMap<Person<Guid>, PersonDto>());
 
-        _automapper = new Mapper(config);
+        _automapper = new Mapper(automapperConfig);
+    }
+
+    private void SetupMapsterConfig()
+    {
+        _mapsterConfig = new TypeAdapterConfig();
+        _mapsterConfig.NewConfig<Person<Guid>, PersonDto>();
+
+        _mapster = new MapsterMapper.Mapper(_mapsterConfig);
     }
 
 
@@ -64,15 +81,33 @@ public class MappingBenchmarks
     }
 
     [Benchmark]
-    public void SingleElementMapsterBenchmark()
+    public void SingleElementMapsterBenchmark_WithoutConfig()
     {
         var dto = _person.Adapt<PersonDto>();
     }
 
     [Benchmark]
+    public void SingleElementMapsterBenchmark_WithConfig()
+    {
+        var dto = _person.Adapt<PersonDto>(_mapsterConfig);
+    }    
+
+    [Benchmark]
     public void MultipleElementsMapsterBenchmark()
     {
         var dtos = _persons.Adapt<IEnumerable<PersonDto>>().ToList();
+    }
+
+    [Benchmark]
+    public void SingleElementMapsterBenchmark_UsingType()
+    {
+        var dto = _mapster.From(_person).AdaptToType<PersonDto>();
+    }
+
+    [Benchmark]
+    public void MultipleElementsMapsterBenchmark_UsingType()
+    {
+        var dto = _mapster.From(_persons).AdaptToType<IEnumerable<PersonDto>>().ToList();
     }
 
 }
