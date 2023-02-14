@@ -3,7 +3,7 @@ using Xelit3.Tests.Model;
 
 namespace Xelit3.Benchmarks;
 
-internal class MappingRegister : ICodeGenerationRegister
+public class MappingRegister : ICodeGenerationRegister
 {
     public void Register(CodeGenerationConfig config)
     {
