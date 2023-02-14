@@ -11,3 +11,7 @@ public class Person<TId> : ModelBase<TId>
     public ICollection<Address<TId>> Addresses { get; set; }
     public ICollection<Post<TId>> Posts { get; set; }
 }
+
+
+
+public class PersonDefault : Post<Guid> { }

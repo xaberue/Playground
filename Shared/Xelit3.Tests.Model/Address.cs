@@ -12,3 +12,7 @@ public class Address<TId> : ModelBase<TId>
     public Person<TId> Person { get; set; }
 
 }
+
+
+
+public class AddressDefault : Post<Guid> { }

@@ -7,3 +7,7 @@ public class Country<TId> : ModelBase<TId>
     public ICollection<City<TId>> Cities { get; set; }
     public ICollection<Person<TId>> Citizens { get; set; }
 }
+
+
+
+public class CountryDefault : Post<Guid> { }

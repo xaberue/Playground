@@ -9,3 +9,7 @@ public class City<TId> : ModelBase<TId>
     public Country<TId> Country { get; set; }
     public ICollection<Address<TId>> Addresses { get; set; }
 }
+
+
+
+public class CityDefault : Post<Guid> { }

@@ -8,3 +8,7 @@ public class Post<TId> : ModelBase<TId>
     public Person<TId> Author { get; set; }
 
 }
+
+
+
+public class PostDefault : Post<Guid> { }
