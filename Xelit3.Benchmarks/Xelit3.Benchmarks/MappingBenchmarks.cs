@@ -2,6 +2,7 @@
 using BenchmarkDotNet.Attributes;
 using Bogus;
 using Mapster;
+using Xelit3.Benchmarks.Generated;
 using Xelit3.Tests.Model;
 using IAutoMapper = AutoMapper.IMapper;
 using IMapsterMapper = MapsterMapper.IMapper;
@@ -16,7 +17,9 @@ public class MappingBenchmarks
     private IMapsterMapper _mapster;
     private TypeAdapterConfig _mapsterConfig;
     private IEnumerable<Person<Guid>> _persons;
+    private IEnumerable<PersonDefault> _personsDefault;
     private Person<Guid> _person;
+    private PersonDefault _personDefault;
 
 
     [GlobalSetup]
@@ -27,9 +30,15 @@ public class MappingBenchmarks
             .RuleFor(x => x.Surname, f => f.Person.LastName)
             .RuleFor(x => x.BirthDate, f => f.Person.DateOfBirth)
             .Generate(1000);
+        _personsDefault = new Faker<PersonDefault>()
+            .RuleFor(x => x.Name, f => f.Person.FirstName)
+            .RuleFor(x => x.Surname, f => f.Person.LastName)
+            .RuleFor(x => x.BirthDate, f => f.Person.DateOfBirth)
+            .Generate(1000);
 
         _person = _persons.First();
-        
+        _personDefault = _personsDefault.First();
+
         SetupAutomapperConfig();
         SetupMapsterConfig();
     }
@@ -108,6 +117,18 @@ public class MappingBenchmarks
     public void MultipleElementsMapsterBenchmark_UsingType()
     {
         var dto = _mapster.From(_persons).AdaptToType<IEnumerable<PersonDto>>().ToList();
+    }
+
+    [Benchmark]
+    public void SingleElementMapsterBenchmark_UsingCodeGenerator()
+    {
+        var dto = _personDefault.AdaptToDto();
+    }
+
+    [Benchmark]
+    public void MultipleElementsMapsterBenchmark_UsingCodeGenerator()
+    {
+        var dto = _personsDefault.Select(x => x.AdaptToDto()).ToList();
     }
 
 }
