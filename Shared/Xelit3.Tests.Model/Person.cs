@@ -14,4 +14,4 @@ public class Person<TId> : ModelBase<TId>
 
 
 
-public class PersonDefault : Post<Guid> { }
+public class PersonDefault : Person<Guid> { }

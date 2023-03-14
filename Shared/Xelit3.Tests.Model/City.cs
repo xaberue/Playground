@@ -12,4 +12,4 @@ public class City<TId> : ModelBase<TId>
 
 
 
-public class CityDefault : Post<Guid> { }
+public class CityDefault : City<Guid> { }

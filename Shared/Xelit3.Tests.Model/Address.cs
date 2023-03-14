@@ -15,4 +15,4 @@ public class Address<TId> : ModelBase<TId>
 
 
 
-public class AddressDefault : Post<Guid> { }
+public class AddressDefault : Address<Guid> { }

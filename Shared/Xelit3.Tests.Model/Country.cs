@@ -10,4 +10,4 @@ public class Country<TId> : ModelBase<TId>
 
 
 
-public class CountryDefault : Post<Guid> { }
+public class CountryDefault : Country<Guid> { }
