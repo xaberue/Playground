@@ -1,7 +1,7 @@
-﻿using Bogus;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Xelit3.Benchmarks;
 using Xelit3.Tests.Model;
+using Xelit3.Tests.Model.Helpers;
 
 namespace Xelit3.Playground.SqlServer;
 
@@ -66,33 +66,10 @@ public class SqlServerEfCoreIdFetchBenchmarksHelper
         Console.WriteLine($"Added new country, ID: {_testCountryGuid.Id}");
         Console.WriteLine($"Added new country, ID: {_testCountryInt.Id}");
         Console.WriteLine($"Added new country, ID: {_testCountryLong.Id}");
-
-
-        _testPersonsGuid = new Faker<Person<Guid>>()
-            .RuleFor(x => x.Name, f => f.Person.FirstName)
-            .RuleFor(x => x.Surname, f => f.Person.LastName)
-            .RuleFor(x => x.OriginId, _testCountryGuid.Id)
-            .RuleFor(x => x.Origin, _testCountryGuid)
-            .RuleFor(x => x.BirthDate, f => f.Person.DateOfBirth)
-            .Generate(personsCount);
-
-        _testPersonsInt = new Faker<Person<int>>()
-            .RuleFor(x => x.Id, 0)
-            .RuleFor(x => x.Name, f => f.Person.FirstName)
-            .RuleFor(x => x.Surname, f => f.Person.LastName)
-            .RuleFor(x => x.OriginId, _testCountryInt.Id)
-            .RuleFor(x => x.Origin, _testCountryInt)
-            .RuleFor(x => x.BirthDate, f => f.Person.DateOfBirth)
-            .Generate(personsCount);
-
-        _testPersonsLong = new Faker<Person<long>>()
-            .RuleFor(x => x.Id, 0)
-            .RuleFor(x => x.Name, f => f.Person.FirstName)
-            .RuleFor(x => x.Surname, f => f.Person.LastName)
-            .RuleFor(x => x.OriginId, _testCountryLong.Id)
-            .RuleFor(x => x.Origin, _testCountryLong)
-            .RuleFor(x => x.BirthDate, f => f.Person.DateOfBirth)
-            .Generate(personsCount);
+        
+        _testPersonsGuid = PersonHelper.Generate<Guid>(personsCount, _testCountryGuid);
+        _testPersonsInt = PersonHelper.Generate<int>(personsCount, _testCountryInt);
+        _testPersonsLong = PersonHelper.Generate<long>(personsCount, _testCountryLong);       
 
         DbContext.AddRange(_testPersonsGuid);
         Console.WriteLine($"Added {personsCount} persons. GUID Id type");
@@ -108,19 +85,8 @@ public class SqlServerEfCoreIdFetchBenchmarksHelper
 
         foreach (var personTest in _testPersonsInt)
         {
-            var generatedAddresses = new Faker<Address<int>>()
-                .RuleFor(x => x.Id, 0)
-                .RuleFor(x => x.CityId, _testCityInt.Id)
-                .RuleFor(x => x.PersonId, personTest.Id)
-                .RuleFor(x => x.Line, f => f.Address.FullAddress())
-                .Generate(10);
-
-            var generatedPosts = new Faker<Post<int>>()
-                .RuleFor(x => x.Id, 0)
-                .RuleFor(x => x.AuthorId, personTest.Id)
-                .RuleFor(x => x.Title, "Title")
-                .RuleFor(x => x.Text, f => f.Lorem.Text())
-                .Generate(10);
+            var generatedAddresses = AddressHelper.Generate<int>(10, _testCityInt, personTest);
+            var generatedPosts = PostHelper.Generate<int>(10, personTest);
 
             _testPersonsAddresses.AddRange(generatedAddresses);
             _testPersonsPosts.AddRange(generatedPosts);
@@ -139,6 +105,8 @@ public class SqlServerEfCoreIdFetchBenchmarksHelper
         RandomPersonLong = _testPersonsLong.Skip(random).First();
         Console.WriteLine($"Prepared random persons to find...");
     }
+
+    
 
     public void Finish()
     {
