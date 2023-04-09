@@ -26,7 +26,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\..\Shared\Xelit3.Tests.Model\Xelit3.Tests.Model.csproj" />
+		<ProjectReference Include="..\Xelit3.Tests.Model\Xelit3.Tests.Model.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
