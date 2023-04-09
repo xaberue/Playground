@@ -51,6 +51,34 @@ public class SqlServerEfCoreIdFetchBenchmarks
             .Take(SqlServerEfCoreIdFetchBenchmarksHelper.Instance.RowsToRetrieve)
             .ToList();
     }
+
+    [Benchmark]
+    public void RetrieveMultilpeRowsWithCartesianValues()
+    {
+        var data = SqlServerEfCoreIdFetchBenchmarksHelper.Instance.DbContext.Persons_Int
+            .Include(x => x.Addresses)
+            .Include(x => x.Posts)            
+            .First();
+    }
+
+    [Benchmark]
+    public void RetrieveMultilpeRowsWithoutCartesianValues_SplitQuery()
+    {
+        var data = SqlServerEfCoreIdFetchBenchmarksHelper.Instance.DbContext.Persons_Int
+            .Include(x => x.Addresses)
+            .Include(x => x.Posts)
+            .AsSplitQuery()
+            .First();
+    }
+
+    [Benchmark]
+    public void RetrieveMultilpeRowsWithoutCartesianValues_ExplicitLoading()
+    {
+        var data = SqlServerEfCoreIdFetchBenchmarksHelper.Instance.DbContext.Persons_Int.First();
+
+        SqlServerEfCoreIdFetchBenchmarksHelper.Instance.DbContext.Entry(data).Collection(x => x.Addresses).Load();
+        SqlServerEfCoreIdFetchBenchmarksHelper.Instance.DbContext.Entry(data).Collection(x => x.Posts).Load();
+    }
 }
 
 
@@ -65,14 +93,19 @@ public class SqlServerEfCoreIdFetchBenchmarksHelper
     internal int RowsNumber { get; private set; }
     internal int RowsToRetrieve => RowsNumber * 20 / 100;
 
-
+        
     Country<Guid> _testCountryGuid = new Country<Guid>() { Id = Guid.NewGuid(), Name = "Kenya" };
     Country<int> _testCountryInt = new Country<int>() { Name = "Kenya" };
     Country<long> _testCountryLong = new Country<long>() { Name = "Kenya" };
+    
+    City<int> _testCityInt = new City<int>() { Name = "Barcelona", Population = 3600000 };
 
     List<Person<Guid>> _testPersonsGuid = new List<Person<Guid>>();
     List<Person<int>> _testPersonsInt = new List<Person<int>>();
     List<Person<long>> _testPersonsLong = new List<Person<long>>();
+    
+    List<Address<int>> _testPersonsAddresses = new List<Address<int>>();
+    List<Post<int>> _testPersonsPosts = new List<Post<int>>();
 
 
     private SqlServerEfCoreIdFetchBenchmarksHelper()
@@ -94,12 +127,19 @@ public class SqlServerEfCoreIdFetchBenchmarksHelper
 
     public void Initialize(int personsCount)
     {
-        DbContext.Add(_testCountryGuid);        
+        DbContext.Add(_testCountryGuid);
         DbContext.Add(_testCountryInt);        
         DbContext.Add(_testCountryLong);
 
         DbContext.SaveChanges();
 
+        _testCityInt.CountryId = _testCountryInt.Id;
+        DbContext.Add(_testCityInt);
+
+        DbContext.SaveChanges();
+
+        Console.WriteLine($"Added new city, ID: {_testCityInt.Id}");
+        
         Console.WriteLine($"Added new country, ID: {_testCountryGuid.Id}");
         Console.WriteLine($"Added new country, ID: {_testCountryInt.Id}");
         Console.WriteLine($"Added new country, ID: {_testCountryLong.Id}");
@@ -131,7 +171,6 @@ public class SqlServerEfCoreIdFetchBenchmarksHelper
             .RuleFor(x => x.BirthDate, f => f.Person.DateOfBirth)
             .Generate(personsCount);
 
-        
         DbContext.AddRange(_testPersonsGuid);
         Console.WriteLine($"Added {personsCount} persons. GUID Id type");
 
@@ -144,6 +183,31 @@ public class SqlServerEfCoreIdFetchBenchmarksHelper
         DbContext.SaveChanges();
         Console.WriteLine($"Transaction completed...");
 
+        foreach (var personTest in _testPersonsInt)
+        {
+            var generatedAddresses = new Faker<Address<int>>()
+                .RuleFor(x => x.Id, 0)
+                .RuleFor(x => x.CityId, _testCityInt.Id)
+                .RuleFor(x => x.PersonId, personTest.Id)
+                .RuleFor(x => x.Line, f => f.Address.FullAddress())
+                .Generate(10);
+
+            var generatedPosts = new Faker<Post<int>>()
+                .RuleFor(x => x.Id, 0)
+                .RuleFor(x => x.AuthorId, personTest.Id)
+                .RuleFor(x => x.Title, "Title")
+                .RuleFor(x => x.Text, f => f.Lorem.Text())
+                .Generate(10);
+
+            _testPersonsAddresses.AddRange(generatedAddresses);
+            _testPersonsPosts.AddRange(generatedPosts);
+        }
+
+        DbContext.AddRange(_testPersonsAddresses);
+        DbContext.AddRange(_testPersonsPosts);
+        DbContext.SaveChanges();
+        Console.WriteLine($"Added {_testPersonsAddresses.Count} addresses in total (for each INT user). INT Id type");
+        Console.WriteLine($"Added {_testPersonsPosts.Count} posts in total (for each INT user). INT Id type");
 
         var random = new Random().Next(personsCount);
 
@@ -155,9 +219,15 @@ public class SqlServerEfCoreIdFetchBenchmarksHelper
 
     public void Finish()
     {
+        DbContext.Database.ExecuteSqlRaw("DELETE FROM [dbo].[Posts_int]");
+
+        DbContext.Database.ExecuteSqlRaw("DELETE FROM [dbo].[Addresses_Int]");
+
         DbContext.Database.ExecuteSqlRaw("DELETE FROM [dbo].[Persons_Guid]");
         DbContext.Database.ExecuteSqlRaw("DELETE FROM [dbo].[Persons_int]");
         DbContext.Database.ExecuteSqlRaw("DELETE FROM [dbo].[Persons_long]");
+
+        DbContext.Database.ExecuteSqlRaw("DELETE FROM [dbo].[Cities_int]");
 
         DbContext.Database.ExecuteSqlRaw("DELETE FROM [dbo].[Countries_Guid]");
         DbContext.Database.ExecuteSqlRaw("DELETE FROM [dbo].[Countries_int]");
