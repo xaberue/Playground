@@ -2,6 +2,7 @@
 using BenchmarkDotNet.Engines;
 using Dapper;
 using System.Data.SqlClient;
+using Xelit3.Tests.Model.Models;
 
 namespace Xelit3.Playground.Benchmarks;
 
