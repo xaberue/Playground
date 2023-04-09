@@ -36,7 +36,7 @@ public class SqlServerEfCoreIdFetchBenchmarks
     }
 
     [Benchmark]
-    public async Task RetrieveMultilpeRowsWithTracking()
+    public void RetrieveMultilpeRowsWithTracking()
     {
         var data = SqlServerEfCoreIdFetchBenchmarksHelper.Instance.DbContext.Persons_Int
             .Take(SqlServerEfCoreIdFetchBenchmarksHelper.Instance.RowsToRetrieve)
@@ -44,7 +44,7 @@ public class SqlServerEfCoreIdFetchBenchmarks
     }
 
     [Benchmark]
-    public async Task RetrieveMultilpeRowsWithoutTracking()
+    public void RetrieveMultilpeRowsWithoutTracking()
     {
         var data = SqlServerEfCoreIdFetchBenchmarksHelper.Instance.DbContext.Persons_Int
             .AsNoTracking()
