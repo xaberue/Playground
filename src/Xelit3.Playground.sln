@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xelit3.Benchmarks", "Xelit3
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xelit3.Tests.Model", "Xelit3.Tests.Model\Xelit3.Tests.Model.csproj", "{2D489611-4B14-4CD3-BAFA-8376D29A96AF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xelit3.Playground.SqlServer", "Xelit3.Playground.SqlServer\Xelit3.Playground.SqlServer.csproj", "{8A72EE50-118C-45D2-B5F8-BE128F399942}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{2D489611-4B14-4CD3-BAFA-8376D29A96AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2D489611-4B14-4CD3-BAFA-8376D29A96AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2D489611-4B14-4CD3-BAFA-8376D29A96AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A72EE50-118C-45D2-B5F8-BE128F399942}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A72EE50-118C-45D2-B5F8-BE128F399942}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A72EE50-118C-45D2-B5F8-BE128F399942}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A72EE50-118C-45D2-B5F8-BE128F399942}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

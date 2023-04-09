@@ -1,6 +1,7 @@
 ﻿using BenchmarkDotNet.Reports;
 using BenchmarkDotNet.Running;
 using Xelit3.Benchmarks;
+using Xelit3.Playground.SqlServer;
 
 var exit = false;
 
