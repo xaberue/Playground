@@ -16,7 +16,7 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\Xelit3.Playground.SqlServer\Xelit3.Playground.SqlServer.csproj" />
-		<ProjectReference Include="..\Xelit3.Tests.Model\Xelit3.Tests.Model.csproj" />
+		<ProjectReference Include="..\Xelit3.Playground.Model\Xelit3.Playground.Model.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

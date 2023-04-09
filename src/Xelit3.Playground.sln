@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32825.248
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xelit3.Benchmarks", "Xelit3.Benchmarks\Xelit3.Benchmarks.csproj", "{0EE1E884-37D6-407B-B712-5D744AF62F5A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xelit3.Playground.Benchmarks", "Xelit3.Playground.Benchmarks\Xelit3.Playground.Benchmarks.csproj", "{0EE1E884-37D6-407B-B712-5D744AF62F5A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xelit3.Tests.Model", "Xelit3.Tests.Model\Xelit3.Tests.Model.csproj", "{2D489611-4B14-4CD3-BAFA-8376D29A96AF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xelit3.Playground.Model", "Xelit3.Playground.Model\Xelit3.Playground.Model.csproj", "{2D489611-4B14-4CD3-BAFA-8376D29A96AF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xelit3.Playground.SqlServer", "Xelit3.Playground.SqlServer\Xelit3.Playground.SqlServer.csproj", "{8A72EE50-118C-45D2-B5F8-BE128F399942}"
 EndProject

@@ -24,7 +24,7 @@
 
 
 	<ItemGroup>
-	  <ProjectReference Include="..\Xelit3.Tests.Model\Xelit3.Tests.Model.csproj" />
+	  <ProjectReference Include="..\Xelit3.Playground.Model\Xelit3.Playground.Model.csproj" />
 	</ItemGroup>
 
 </Project>
