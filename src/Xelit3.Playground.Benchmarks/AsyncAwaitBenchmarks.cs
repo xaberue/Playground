@@ -3,7 +3,7 @@ using BenchmarkDotNet.Engines;
 using Dapper;
 using System.Data.SqlClient;
 
-namespace Xelit3.Benchmarks;
+namespace Xelit3.Playground.Benchmarks;
 
 [MemoryDiagnoser(false)]
 public class AsyncAwaitBenchmarks
@@ -79,13 +79,13 @@ public class AsyncAwaitBenchmarks
         return await db.QueryAsync<User>(queryString);
     }
 
-    private  Task<IEnumerable<User>> InvokeDbQuery()
+    private Task<IEnumerable<User>> InvokeDbQuery()
     {
         var queryString = @"SELECT * FROM [dbo].[Users]";
 
         //Be careful, this connection is not disposed for testing purpose, never use in a real scenario
         var db = new SqlConnection("Data Source=localhost;Initial Catalog=Training;Integrated Security=True");
-        return  db.QueryAsync<User>(queryString);
+        return db.QueryAsync<User>(queryString);
     }
 
 }

@@ -1,5 +1,5 @@
 using System;
-using Xelit3.Tests.Model;
+using Xelit3.Tests.Model.Models;
 
 namespace Xelit3.Benchmarks.Generated
 {

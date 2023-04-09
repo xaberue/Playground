@@ -3,12 +3,12 @@ using BenchmarkDotNet.Attributes;
 using Bogus;
 using Mapster;
 using Xelit3.Benchmarks.Generated;
-using Xelit3.Tests.Model;
+using Xelit3.Tests.Model.Models;
 using IAutoMapper = AutoMapper.IMapper;
 using IMapsterMapper = MapsterMapper.IMapper;
 
 
-namespace Xelit3.Benchmarks;
+namespace Xelit3.Playground.Benchmarks;
 
 public class MappingBenchmarks
 {
@@ -99,7 +99,7 @@ public class MappingBenchmarks
     public void SingleElementMapsterBenchmark_WithConfig()
     {
         var dto = _person.Adapt<PersonDto>(_mapsterConfig);
-    }    
+    }
 
     [Benchmark]
     public void MultipleElementsMapsterBenchmark()

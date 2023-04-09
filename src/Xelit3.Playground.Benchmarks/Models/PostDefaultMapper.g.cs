@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Mapster;
 using Xelit3.Benchmarks.Generated;
-using Xelit3.Tests.Model;
+using Xelit3.Tests.Model.Models;
 
 namespace Xelit3.Benchmarks.Generated
 {

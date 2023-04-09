@@ -2,7 +2,7 @@
 using BenchmarkDotNet.Jobs;
 using BenchmarkDotNet.Toolchains.InProcess.NoEmit;
 
-namespace Xelit3.Benchmarks
+namespace Xelit3.Playground.Benchmarks
 {
     public class AntivirusFriendlyConfig : ManualConfig
     {

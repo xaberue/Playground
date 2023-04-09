@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Xelit3.Tests.Model;
+using Xelit3.Tests.Model.Models;
 
-namespace Xelit3.Benchmarks;
+namespace Xelit3.Playground.SqlServer;
 
 public class EFTestDataContext : DbContext
 {

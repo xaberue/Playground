@@ -4,19 +4,19 @@ using Microsoft.EntityFrameworkCore;
 using Xelit3.Playground.SqlServer;
 using Xelit3.Tests.Model;
 
-namespace Xelit3.Benchmarks;
+namespace Xelit3.Playground.Benchmarks;
 
 
 [Config(typeof(AntivirusFriendlyConfig))]
 [MemoryDiagnoser(false)]
 public class SqlServerEfCoreIdFetchBenchmarks
 {
-    
+
     [Benchmark]
     public async Task<bool> RetrieveSingleElementFromGuid()
     {
-        var element = SqlServerEfCoreIdFetchBenchmarksHelper.Instance.DbContext.Persons_Guid.Find(SqlServerEfCoreIdFetchBenchmarksHelper.Instance.RandomPersonGuid.Id);        
-        
+        var element = SqlServerEfCoreIdFetchBenchmarksHelper.Instance.DbContext.Persons_Guid.Find(SqlServerEfCoreIdFetchBenchmarksHelper.Instance.RandomPersonGuid.Id);
+
         return await Task.FromResult(true);
     }
 
@@ -24,7 +24,7 @@ public class SqlServerEfCoreIdFetchBenchmarks
     public async Task<bool> RetrieveSingleElementFromInt()
     {
         var element = SqlServerEfCoreIdFetchBenchmarksHelper.Instance.DbContext.Persons_Int.Find(SqlServerEfCoreIdFetchBenchmarksHelper.Instance.RandomPersonInt.Id);
-        
+
         return await Task.FromResult(true);
     }
 
@@ -58,7 +58,7 @@ public class SqlServerEfCoreIdFetchBenchmarks
     {
         var data = SqlServerEfCoreIdFetchBenchmarksHelper.Instance.DbContext.Persons_Int
             .Include(x => x.Addresses)
-            .Include(x => x.Posts)            
+            .Include(x => x.Posts)
             .First();
     }
 

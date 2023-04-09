@@ -1,4 +1,4 @@
-﻿namespace Xelit3.Tests.Model;
+﻿namespace Xelit3.Tests.Model.Models;
 
 public class Country<TId> : ModelBase<TId>
 {

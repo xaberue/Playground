@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Xelit3.Benchmarks;
-using Xelit3.Tests.Model;
 using Xelit3.Tests.Model.Helpers;
+using Xelit3.Tests.Model.Models;
 
 namespace Xelit3.Playground.SqlServer;
 
