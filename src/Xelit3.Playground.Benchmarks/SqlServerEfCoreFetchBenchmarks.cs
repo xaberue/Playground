@@ -1,15 +1,13 @@
 ﻿using BenchmarkDotNet.Attributes;
-using Bogus;
 using Microsoft.EntityFrameworkCore;
 using Xelit3.Playground.SqlServer;
-using Xelit3.Tests.Model;
 
 namespace Xelit3.Playground.Benchmarks;
 
 
 [Config(typeof(AntivirusFriendlyConfig))]
 [MemoryDiagnoser(false)]
-public class SqlServerEfCoreIdFetchBenchmarks
+public class SqlServerEfCoreFetchBenchmarks
 {
 
     [Benchmark]

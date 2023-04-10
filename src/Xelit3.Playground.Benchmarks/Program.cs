@@ -26,7 +26,7 @@ while (!exit)
         case "2":
             var personsCount = GetPersonsSizeCount();
             EFTestDataContextHelper.Instance.Initialize(personsCount);
-            summary = BenchmarkRunner.Run<SqlServerEfCoreIdFetchBenchmarks>();
+            summary = BenchmarkRunner.Run<SqlServerEfCoreFetchBenchmarks>();
             EFTestDataContextHelper.Instance.Finish();
             break;
 
