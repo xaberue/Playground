@@ -4,7 +4,7 @@ using Xelit3.Tests.Model.Models;
 
 namespace Xelit3.Playground.SqlServer;
 
-public class SqlServerEfCoreIdFetchBenchmarksHelper
+public class EFTestDataContextHelper
 {
     public EFTestDataContext DbContext { get; private set; }
 
@@ -30,19 +30,19 @@ public class SqlServerEfCoreIdFetchBenchmarksHelper
     List<Post<int>> _testPersonsPosts = new List<Post<int>>();
 
 
-    private SqlServerEfCoreIdFetchBenchmarksHelper()
+    private EFTestDataContextHelper()
     {
         DbContext = new EFTestDataContext();
     }
 
-    private static SqlServerEfCoreIdFetchBenchmarksHelper _instance = null;
-    public static SqlServerEfCoreIdFetchBenchmarksHelper Instance => TryPrepareAndReturnInstance();
+    private static EFTestDataContextHelper _instance = null;
+    public static EFTestDataContextHelper Instance => TryPrepareAndReturnInstance();
 
 
-    private static SqlServerEfCoreIdFetchBenchmarksHelper TryPrepareAndReturnInstance()
+    private static EFTestDataContextHelper TryPrepareAndReturnInstance()
     {
         if (_instance == null)
-            _instance = new SqlServerEfCoreIdFetchBenchmarksHelper();
+            _instance = new EFTestDataContextHelper();
 
         return _instance;
     }
