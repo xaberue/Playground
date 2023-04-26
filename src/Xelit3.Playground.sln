@@ -11,13 +11,18 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xelit3.Playground.SqlServer
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xelit3.Playground.Samples", "Xelit3.Playground.Samples\Xelit3.Playground.Samples.csproj", "{FD1A9A58-F019-4C7B-B201-5928C263901C}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{974129EE-4601-4759-82B9-8A8C345D05D1}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1. Samples", "1. Samples", "{974129EE-4601-4759-82B9-8A8C345D05D1}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{7FD31CE0-795C-4686-8CD7-80C9841C4C9A}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3. Shared", "3. Shared", "{7FD31CE0-795C-4686-8CD7-80C9841C4C9A}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Benchmarks", "Benchmarks", "{EE0A52EC-6CE9-4B29-A31E-9154319D6812}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2. Benchmarks", "2. Benchmarks", "{EE0A52EC-6CE9-4B29-A31E-9154319D6812}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xelit3.Playground.AspNetCore.AppSettings", "Xelit3.Playground.AspNetCore.AppSettings\Xelit3.Playground.AspNetCore.AppSettings.csproj", "{3CBED3E3-1844-4323-96FF-37B79F27A255}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xelit3.Playground.AspNetCore.AppSettings", "Xelit3.Playground.AspNetCore.AppSettings\Xelit3.Playground.AspNetCore.AppSettings.csproj", "{3CBED3E3-1844-4323-96FF-37B79F27A255}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4. Documentation", "4. Documentation", "{50E4A80A-FAB5-497D-9E54-047417409F96}"
+	ProjectSection(SolutionItems) = preProject
+		..\README.md = ..\README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
