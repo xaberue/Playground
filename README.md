@@ -6,7 +6,7 @@ Playground repository contains practical examples, comparisions and benchmarks, 
 ## Links
 
 - Follow me on
-  - [Twitter](https://twitter.com/_Xelit3_)
+  - [Twitter](https://twitter.com/Xelit3_dev)
   - [Github](https://github.com/Xelit3)
   - [LinkedIn](https://www.linkedin.com/in/xabelaira/)
   - [WeAreDotNet](https://www.wearedotnet.io/Xelit3)
