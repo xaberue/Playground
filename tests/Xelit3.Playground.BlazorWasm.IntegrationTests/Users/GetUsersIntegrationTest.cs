@@ -30,7 +30,7 @@ public class GetUsersIntegrationTest : IntegrationTestBase, IAsyncLifetime
         // Assert
         response.EnsureSuccessStatusCode();
         Assert.True(usersList.Count() >= _testUsers.Count);
-        Assert.Empty(usersList.Select(x => x.Id).Except(_testUsers.Select(x => x.Id)));
+        Assert.Empty(_testUsers.Select(x => x.Id).Except(usersList.Select(x => x.Id)));
     }
 
 
