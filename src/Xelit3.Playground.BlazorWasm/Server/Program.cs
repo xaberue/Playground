@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.ResponseCompression;
+using Xelit3.Playground.SqlServer;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -6,6 +7,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
+
+var connectionString = builder.Configuration.GetConnectionString("DefaultDbConnectionString");
+
+builder.Services.AddScoped(x => new EFTestDataContext(connectionString));
 
 var app = builder.Build();
 

@@ -29,10 +29,10 @@ public class EFTestDataContextHelper
     List<Address<int>> _testPersonsAddresses = new List<Address<int>>();
     List<Post<int>> _testPersonsPosts = new List<Post<int>>();
 
-
+    
     private EFTestDataContextHelper()
     {
-        DbContext = new EFTestDataContext();
+        DbContext = new EFTestDataContext("Data Source=localhost;Initial Catalog=Test;Integrated Security=True;TrustServerCertificate=True");
     }
 
     private static EFTestDataContextHelper _instance = null;

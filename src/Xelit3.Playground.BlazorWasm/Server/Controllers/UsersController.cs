@@ -13,9 +13,9 @@ namespace Xelit3.Playground.BlazorWasm.Server.Controllers
         private readonly EFTestDataContext _dbContext;
         
 
-        public UsersController()
+        public UsersController(EFTestDataContext eFTestDataContext)
         {
-            _dbContext = new EFTestDataContext();
+            _dbContext = eFTestDataContext;
         }
 
 
