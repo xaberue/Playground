@@ -6,7 +6,7 @@ using Xelit3.Playground.SqlServer;
 namespace Xelit3.Playground.BlazorWasm.Server.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class UsersController : ControllerBase
     {
         
