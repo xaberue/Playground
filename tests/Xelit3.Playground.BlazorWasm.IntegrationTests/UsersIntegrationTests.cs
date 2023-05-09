@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
+using System.Net.Http.Json;
 using Xelit3.Playground.BlazorWasm.IntegrationTests.Base;
 using Xelit3.Playground.BlazorWasm.IntegrationTests.Configuration;
+using Xelit3.Playground.BlazorWasm.Shared;
 using Xelit3.Tests.Model.Helpers;
 using Xelit3.Tests.Model.Models;
 
@@ -19,9 +21,16 @@ public class UsersIntegrationTests : IntegrationTestBase, IAsyncLifetime
 
 
     [Fact]
-    public async Task Test_1()
+    public async Task Given_UsersDataInserted_When_UsersRequested_Then_UsersRetrived()
     {
-       //TODO
+        // Act
+        var response = await Client.GetAsync("api/users");
+        var usersList = await response.Content.ReadFromJsonAsync<IEnumerable<UserDto>>();
+
+        // Assert
+        response.EnsureSuccessStatusCode();
+        Assert.True(usersList.Count() >= _testUsers.Count);
+        Assert.Empty(usersList.Select(x => x.Id).Except(_testUsers.Select(x => x.Id)));
     }
 
 

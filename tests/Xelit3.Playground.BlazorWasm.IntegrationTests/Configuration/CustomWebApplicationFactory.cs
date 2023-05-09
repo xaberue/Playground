@@ -18,7 +18,7 @@ public class CustomWebApplicationFactory<TProgram> : WebApplicationFactory<TProg
             services.AddScoped(x => DbContextHelper.CreateDbContext());
         });
 
-        builder.UseEnvironment("Tests");
+        builder.UseEnvironment("Development");
     }
 
 }
