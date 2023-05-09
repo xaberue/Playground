@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.ResponseCompression;
 using Xelit3.Playground.SqlServer;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -37,5 +36,11 @@ app.UseRouting();
 app.MapRazorPages();
 app.MapControllers();
 app.MapFallbackToFile("index.html");
+
+using (var scope = app.Services.CreateAsyncScope())
+{
+    var dbContext = scope.ServiceProvider.GetRequiredService<EFTestDataContext>();
+    dbContext.Database.EnsureCreated();
+}
 
 app.Run();

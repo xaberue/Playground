@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Xelit3.Playground.BlazorWasm.IntegrationTests": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Tests"
+      }
+    }
+  }
+}
