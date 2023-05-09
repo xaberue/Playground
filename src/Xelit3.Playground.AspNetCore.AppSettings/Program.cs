@@ -1,17 +1,26 @@
+#if !DEBUG
+using Azure.Identity;
+#endif
 using Xelit3.Playground.AspNetCore.AppSettings;
 
 var builder = WebApplication.CreateBuilder(args);
 
+#if !DEBUG
+var keyVaulUrl = builder.Configuration["AzureKeyVaultUrl"];
+if(keyVaulUrl == null)
+    throw new ArgumentNullException("AzureKeyVaultUrl must be configured for the given environment");
+
+builder.Configuration.AddAzureKeyVault(new Uri(keyVaulUrl), new DefaultAzureCredential());
+#endif
+
 var settings = builder.Configuration.GetSection("ExternalServices").Get<Settings>();
 
-// Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
