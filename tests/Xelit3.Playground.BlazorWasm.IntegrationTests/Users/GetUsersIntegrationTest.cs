@@ -8,14 +8,14 @@ using Xelit3.Tests.Model.Models;
 
 namespace Xelit3.Playground.BlazorWasm.IntegrationTests;
 
-public class UsersIntegrationTests : IntegrationTestBase, IAsyncLifetime
+public class GetUsersIntegrationTest : IntegrationTestBase, IAsyncLifetime
 {
 
     Country<Guid>? _testCountry = null;
     ICollection<Person<Guid>>? _testUsers = null;
 
 
-    public UsersIntegrationTests(CustomWebApplicationFactory<Program> factory)
+    public GetUsersIntegrationTest(CustomWebApplicationFactory<Program> factory)
         : base(factory)
     { }
 
