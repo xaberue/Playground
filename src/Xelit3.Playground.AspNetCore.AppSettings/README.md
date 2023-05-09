@@ -1,5 +1,7 @@
 # Playground
 
+## Secure AppSettings from local to Azure
+
 This project contains an example on how to manage settings safely and using best practices in a real project from on-premises to production on Azure.
 
 This process is documented at this link.
