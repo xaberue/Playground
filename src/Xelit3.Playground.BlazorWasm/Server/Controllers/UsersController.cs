@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Xelit3.Playground.BlazorWasm.Shared;
 using Xelit3.Playground.SqlServer;
+using Xelit3.Tests.Model.Models;
 
 namespace Xelit3.Playground.BlazorWasm.Server.Controllers
 {
@@ -20,14 +21,26 @@ namespace Xelit3.Playground.BlazorWasm.Server.Controllers
 
 
         [HttpGet]
-        public IEnumerable<UserDto> GetAll()
+        public IActionResult GetAll()
         {
             var users = _dbContext.Persons_Guid
                 .Include(x => x.Origin)
                 .ToList();
 
-            return users
-                .Select(x => new UserDto(x.Id, $"{x.Name} {x.Surname}", x.Origin?.Name ?? "Unknown", x.BirthDate));
+            return Ok(users
+                .Select(x => new UserDto(x.Id, $"{x.Name} {x.Surname}", x.Origin?.Name ?? "Unknown", x.BirthDate)));
+        }
+
+
+        [HttpPost]
+        public IActionResult Save(UserCreationDto userCreationDto)
+        {
+            var user = new Person<Guid> { OriginId = userCreationDto.OriginId, Name = userCreationDto.Name, Surname = userCreationDto.Surname, BirthDate = userCreationDto.BirthDate };
+
+            _dbContext.Persons_Guid.Add(user);
+            _dbContext.SaveChanges();
+
+            return CreatedAtAction("Save", new UserDto(user.Id, $"{user.Name} {user.Surname}", user.Origin?.Name ?? "Unknown", user.BirthDate));
         }
     }
 }

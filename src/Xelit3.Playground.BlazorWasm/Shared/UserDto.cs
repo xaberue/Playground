@@ -7,4 +7,13 @@ namespace Xelit3.Playground.BlazorWasm.Shared
             string Origin,
             DateTime BirthDate
         );
+
+
+    public record UserCreationDto
+        (            
+            Guid OriginId,
+            string Name,
+            string Surname,
+            DateTime BirthDate
+        );
 }
