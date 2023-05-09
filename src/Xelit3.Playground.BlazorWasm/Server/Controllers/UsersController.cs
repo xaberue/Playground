@@ -10,9 +10,9 @@ namespace Xelit3.Playground.BlazorWasm.Server.Controllers
     [Route("api/[controller]")]
     public class UsersController : ControllerBase
     {
-        
+
         private readonly EFTestDataContext _dbContext;
-        
+
 
         public UsersController(EFTestDataContext eFTestDataContext)
         {
@@ -25,6 +25,18 @@ namespace Xelit3.Playground.BlazorWasm.Server.Controllers
         {
             var users = _dbContext.Persons_Guid
                 .Include(x => x.Origin)
+                .ToList();
+
+            return Ok(users
+                .Select(x => new UserDto(x.Id, $"{x.Name} {x.Surname}", x.Origin?.Name ?? "Unknown", x.BirthDate)));
+        }
+
+        [HttpGet("paginated")]
+        public IActionResult GetAll(int page, int size)
+        {
+            var users = _dbContext.Persons_Guid
+                .Include(x => x.Origin)
+                .Skip(size * page).Take(size)
                 .ToList();
 
             return Ok(users
