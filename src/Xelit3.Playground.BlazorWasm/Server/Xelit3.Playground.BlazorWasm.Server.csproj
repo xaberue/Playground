@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Xelit3.Playground.SqlServer\Xelit3.Playground.SqlServer.csproj" />
     <ProjectReference Include="..\Client\Xelit3.Playground.BlazorWasm.Client.csproj" />
     <ProjectReference Include="..\Shared\Xelit3.Playground.BlazorWasm.Shared.csproj" />
   </ItemGroup>
