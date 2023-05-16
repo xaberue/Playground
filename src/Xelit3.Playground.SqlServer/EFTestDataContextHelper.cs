@@ -52,6 +52,8 @@ public class EFTestDataContextHelper
 
     public void InitializeDefault(int personsCount)
     {
+        DbContext.Database.EnsureCreated();
+
         DbContext.Add(_testCountryGuid);
         
         DbContext.SaveChanges();
@@ -142,15 +144,21 @@ public class EFTestDataContextHelper
 
     public void Finish()
     {
+        DbContext.Database.ExecuteSqlRaw("DELETE FROM [dbo].[Posts_Guid]");
         DbContext.Database.ExecuteSqlRaw("DELETE FROM [dbo].[Posts_int]");
+        DbContext.Database.ExecuteSqlRaw("DELETE FROM [dbo].[Posts_long]");
 
+        DbContext.Database.ExecuteSqlRaw("DELETE FROM [dbo].[Addresses_Guid]");
         DbContext.Database.ExecuteSqlRaw("DELETE FROM [dbo].[Addresses_Int]");
+        DbContext.Database.ExecuteSqlRaw("DELETE FROM [dbo].[Addresses_long]");
 
         DbContext.Database.ExecuteSqlRaw("DELETE FROM [dbo].[Persons_Guid]");
         DbContext.Database.ExecuteSqlRaw("DELETE FROM [dbo].[Persons_int]");
         DbContext.Database.ExecuteSqlRaw("DELETE FROM [dbo].[Persons_long]");
 
+        DbContext.Database.ExecuteSqlRaw("DELETE FROM [dbo].[Cities_Guid]");
         DbContext.Database.ExecuteSqlRaw("DELETE FROM [dbo].[Cities_int]");
+        DbContext.Database.ExecuteSqlRaw("DELETE FROM [dbo].[Cities_long]");
 
         DbContext.Database.ExecuteSqlRaw("DELETE FROM [dbo].[Countries_Guid]");
         DbContext.Database.ExecuteSqlRaw("DELETE FROM [dbo].[Countries_int]");
