@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Xelit3.Tests.Model;
 using Xelit3.Tests.Model.Helpers;
 using Xelit3.Tests.Model.Models;
 
@@ -16,11 +17,11 @@ public class EFTestDataContextHelper
     public int RowsToRetrieve => RowsNumber * 20 / 100;
 
 
-    Country<Guid> _testCountryGuid = new Country<Guid>() { Id = Guid.NewGuid(), Name = "Kenya" };
-    Country<int> _testCountryInt = new Country<int>() { Name = "Kenya" };
-    Country<long> _testCountryLong = new Country<long>() { Name = "Kenya" };
+    Country<Guid> _testCountryGuid = CountryHelper.GetSingle<Guid>();
+    Country<int> _testCountryInt = CountryHelper.GetSingle<int>();
+    Country<long> _testCountryLong = CountryHelper.GetSingle<long>();
 
-    City<int> _testCityInt = new City<int>() { Name = "Barcelona", Population = 3600000 };
+    City<int> _testCityInt = CityHelper.GetSingle<int>();
 
     List<Person<Guid>> _testPersonsGuid = new List<Person<Guid>>();
     List<Person<int>> _testPersonsInt = new List<Person<int>>();
