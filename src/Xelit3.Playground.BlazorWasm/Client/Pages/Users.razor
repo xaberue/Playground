@@ -1,4 +1,4 @@
-﻿@page "/fetchdata"
+﻿@page "/users"
 @using Xelit3.Playground.BlazorWasm.Shared
 @inject HttpClient Http
 
@@ -37,23 +37,45 @@ else
     </table>
 }
 
+<button class="btn btn-secondary" @onclick="PrevPage" disabled=@prevDisabled>Previous</button>
+<button class="btn btn-secondary" @onclick="NextPage" disabled=@nextDisabled>Next</button>
 <button class="btn btn-primary" @onclick="AddUser">Add</button>
 
 
 
 @code {
-    
+
+    private int page = 0;
+    private int pageSize = 25;    
     private UserDto[]? users;
+    private bool prevDisabled = true;
+    private bool nextDisabled = false;
 
 
     protected override async Task OnInitializedAsync()
     {
-        users = await Http.GetFromJsonAsync<UserDto[]>("Users");
+        await ChangePage(0);
     }
-    
+
 
     private void AddUser()
     {
-        
+
     }
+
+    private async Task PrevPage() => await ChangePage(-1);
+
+    private async Task NextPage() => await ChangePage(1);
+
+    private async Task ChangePage(int pageDiff)
+    {
+        page += pageDiff;
+        users = await Http.GetFromJsonAsync<UserDto[]>($"users/paginated?page={page}&size={pageSize}");
+
+        prevDisabled = (page == 0);
+        nextDisabled = (users?.Count() < pageSize);
+    }
+
+
+
 }
