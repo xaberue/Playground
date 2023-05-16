@@ -8,7 +8,7 @@ var exit = false;
 while (!exit)
 {
 	Console.WriteLine("(1). Run Async/Await benchmarks ");
-	Console.WriteLine("(2). Run DB benchmarks ");
+	Console.WriteLine("(2). Run EFCore different PK's fetching benchmarks ");
 	Console.WriteLine("(3). Run mapping benchmarks ");
     Console.WriteLine("-----------------------------------------");
 	Console.WriteLine("(e). EXIT ");
@@ -24,14 +24,21 @@ while (!exit)
 			break;
 
         case "2":
-            var personsCount = GetPersonsSizeCount();
-            EFTestDataContextHelper.Instance.Initialize(personsCount);
-            summary = BenchmarkRunner.Run<SqlServerEfCoreFetchBenchmarks>();
-            EFTestDataContextHelper.Instance.Finish();
+            summary = BenchmarkRunner.Run<MappingBenchmarks>();
             break;
 
         case "3":
-            summary = BenchmarkRunner.Run<MappingBenchmarks>();
+            var personsCount1 = GetPersonsSizeCount();
+            EFTestDataContextHelper.Instance.InitializeAllKeyTypes(personsCount1);
+            summary = BenchmarkRunner.Run<SqlServerEfCoreFetchingDifferentPrinaryKeysBenchmarks>();
+            EFTestDataContextHelper.Instance.Finish();
+            break;
+
+        case "4":
+            var personsCount2 = GetPersonsSizeCount();
+            EFTestDataContextHelper.Instance.InitializeDefault(personsCount2);
+            summary = BenchmarkRunner.Run<SqlServerQueryBenchmarks>();
+            EFTestDataContextHelper.Instance.Finish();
             break;
 
         case "e":

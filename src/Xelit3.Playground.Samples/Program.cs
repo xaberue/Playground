@@ -17,7 +17,7 @@ while (!exit)
         case "1":
             //Prepare
             var personsCount = GetPersonsSizeCount();
-            EFTestDataContextHelper.Instance.Initialize(personsCount);
+            EFTestDataContextHelper.Instance.InitializeAllKeyTypes(personsCount);
             
             //Run
             SqlServerEfCoreFetchingSamples.Run();

@@ -21,14 +21,16 @@ public class EFTestDataContextHelper
     Country<int> _testCountryInt = CountryHelper.GetSingle<int>();
     Country<long> _testCountryLong = CountryHelper.GetSingle<long>();
 
+    City<Guid> _testCityGuid = CityHelper.GetSingle<Guid>();
     City<int> _testCityInt = CityHelper.GetSingle<int>();
+    
 
     List<Person<Guid>> _testPersonsGuid = new List<Person<Guid>>();
     List<Person<int>> _testPersonsInt = new List<Person<int>>();
     List<Person<long>> _testPersonsLong = new List<Person<long>>();
 
-    List<Address<int>> _testPersonsAddresses = new List<Address<int>>();
-    List<Post<int>> _testPersonsPosts = new List<Post<int>>();
+    List<Address<Guid>> _testPersonsAddresses = new List<Address<Guid>>();
+    List<Post<Guid>> _testPersonsPosts = new List<Post<Guid>>();
 
     
     private EFTestDataContextHelper()
@@ -48,7 +50,52 @@ public class EFTestDataContextHelper
         return _instance;
     }
 
-    public void Initialize(int personsCount)
+    public void InitializeDefault(int personsCount)
+    {
+        DbContext.Add(_testCountryGuid);
+        
+        DbContext.SaveChanges();
+
+        _testCityGuid.CountryId = _testCountryGuid.Id;
+        DbContext.Add(_testCityGuid);
+
+        DbContext.SaveChanges();
+
+        Console.WriteLine($"Added new city, ID: {_testCityGuid.Id}");
+
+        Console.WriteLine($"Added new country, ID: {_testCountryGuid.Id}");
+        
+        
+        _testPersonsGuid = PersonHelper.Generate<Guid>(personsCount, _testCountryGuid);
+        
+        DbContext.AddRange(_testPersonsGuid);
+        Console.WriteLine($"Added {personsCount} persons. GUID Id type");
+
+        DbContext.SaveChanges();
+
+        foreach (var personTest in _testPersonsGuid)
+        {
+            var generatedAddresses = AddressHelper.Generate<Guid>(10, _testCityGuid, personTest);
+            var generatedPosts = PostHelper.Generate<Guid>(100, personTest);
+
+            _testPersonsAddresses.AddRange(generatedAddresses);
+            _testPersonsPosts.AddRange(generatedPosts);
+        }
+
+        DbContext.AddRange(_testPersonsAddresses);
+        DbContext.AddRange(_testPersonsPosts);
+        DbContext.SaveChanges();
+        Console.WriteLine($"Added {_testPersonsAddresses.Count} addresses in total (for each user). GUID Id type");
+        Console.WriteLine($"Added {_testPersonsPosts.Count} posts in total (for each user). GUID Id type");
+
+        var random = new Random().Next(personsCount);
+
+        RandomPersonGuid = _testPersonsGuid.Skip(random).First();
+        
+        Console.WriteLine($"Prepared random person to find...");
+    }
+
+    public void InitializeAllKeyTypes(int personsCount)
     {
         DbContext.Add(_testCountryGuid);
         DbContext.Add(_testCountryInt);
@@ -66,10 +113,10 @@ public class EFTestDataContextHelper
         Console.WriteLine($"Added new country, ID: {_testCountryGuid.Id}");
         Console.WriteLine($"Added new country, ID: {_testCountryInt.Id}");
         Console.WriteLine($"Added new country, ID: {_testCountryLong.Id}");
-        
+
         _testPersonsGuid = PersonHelper.Generate<Guid>(personsCount, _testCountryGuid);
         _testPersonsInt = PersonHelper.Generate<int>(personsCount, _testCountryInt);
-        _testPersonsLong = PersonHelper.Generate<long>(personsCount, _testCountryLong);       
+        _testPersonsLong = PersonHelper.Generate<long>(personsCount, _testCountryLong);
 
         DbContext.AddRange(_testPersonsGuid);
         Console.WriteLine($"Added {personsCount} persons. GUID Id type");
@@ -81,22 +128,7 @@ public class EFTestDataContextHelper
         Console.WriteLine($"Added {personsCount} persons. LONG Id type");
 
         DbContext.SaveChanges();
-        Console.WriteLine($"Transaction completed...");
-
-        foreach (var personTest in _testPersonsInt)
-        {
-            var generatedAddresses = AddressHelper.Generate<int>(10, _testCityInt, personTest);
-            var generatedPosts = PostHelper.Generate<int>(10, personTest);
-
-            _testPersonsAddresses.AddRange(generatedAddresses);
-            _testPersonsPosts.AddRange(generatedPosts);
-        }
-
-        DbContext.AddRange(_testPersonsAddresses);
-        DbContext.AddRange(_testPersonsPosts);
-        DbContext.SaveChanges();
-        Console.WriteLine($"Added {_testPersonsAddresses.Count} addresses in total (for each INT user). INT Id type");
-        Console.WriteLine($"Added {_testPersonsPosts.Count} posts in total (for each INT user). INT Id type");
+        Console.WriteLine($"Transaction completed...");        
 
         var random = new Random().Next(personsCount);
 
@@ -106,7 +138,7 @@ public class EFTestDataContextHelper
         Console.WriteLine($"Prepared random persons to find...");
     }
 
-    
+
 
     public void Finish()
     {

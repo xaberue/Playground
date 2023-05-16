@@ -12,7 +12,7 @@ public class Person<TId> : ModelBase<TId>
 
     public Country<TId> Origin { get; set; }
     public ICollection<Address<TId>> Addresses { get; set; }
-    public ICollection<Post<TId>> Posts { get; set; }
+    public ICollection<Post<TId>> Posts { get; set; }    
 }
 
 

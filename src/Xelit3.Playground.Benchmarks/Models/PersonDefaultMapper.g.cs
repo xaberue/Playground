@@ -17,6 +17,9 @@ namespace Xelit3.Benchmarks.Generated
                 OriginId = p1.OriginId,
                 Name = p1.Name,
                 Surname = p1.Surname,
+                Email = p1.Email,
+                PhoneNumber = p1.PhoneNumber,
+                Bio = p1.Bio,
                 BirthDate = p1.BirthDate,
                 Origin = funcMain1(p1.Origin),
                 Addresses = funcMain12(p1.Addresses),
@@ -35,6 +38,9 @@ namespace Xelit3.Benchmarks.Generated
             result.OriginId = p40.OriginId;
             result.Name = p40.Name;
             result.Surname = p40.Surname;
+            result.Email = p40.Email;
+            result.PhoneNumber = p40.PhoneNumber;
+            result.Bio = p40.Bio;
             result.BirthDate = p40.BirthDate;
             result.Origin = funcMain39(p40.Origin, result.Origin);
             result.Addresses = funcMain50(p40.Addresses, result.Addresses);
