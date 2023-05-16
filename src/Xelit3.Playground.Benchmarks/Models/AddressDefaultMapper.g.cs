@@ -62,6 +62,9 @@ namespace Xelit3.Benchmarks.Generated
                 OriginId = p16.OriginId,
                 Name = p16.Name,
                 Surname = p16.Surname,
+                Email = p16.Email,
+                PhoneNumber = p16.PhoneNumber,
+                Bio = p16.Bio,
                 BirthDate = p16.BirthDate,
                 Origin = funcMain16(p16.Origin),
                 Addresses = funcMain21(p16.Addresses),
@@ -99,6 +102,9 @@ namespace Xelit3.Benchmarks.Generated
             result.OriginId = p50.OriginId;
             result.Name = p50.Name;
             result.Surname = p50.Surname;
+            result.Email = p50.Email;
+            result.PhoneNumber = p50.PhoneNumber;
+            result.Bio = p50.Bio;
             result.BirthDate = p50.BirthDate;
             result.Origin = funcMain43(p50.Origin, result.Origin);
             result.Addresses = funcMain48(p50.Addresses, result.Addresses);
@@ -505,6 +511,9 @@ namespace Xelit3.Benchmarks.Generated
                 OriginId = p6.OriginId,
                 Name = p6.Name,
                 Surname = p6.Surname,
+                Email = p6.Email,
+                PhoneNumber = p6.PhoneNumber,
+                Bio = p6.Bio,
                 BirthDate = p6.BirthDate,
                 Origin = TypeAdapterConfig1.GetMapFunction<Country<Guid>, Country<Guid>>().Invoke(p6.Origin),
                 Addresses = funcMain6(p6.Addresses),
@@ -520,6 +529,9 @@ namespace Xelit3.Benchmarks.Generated
                 OriginId = p11.OriginId,
                 Name = p11.Name,
                 Surname = p11.Surname,
+                Email = p11.Email,
+                PhoneNumber = p11.PhoneNumber,
+                Bio = p11.Bio,
                 BirthDate = p11.BirthDate,
                 Origin = funcMain11(p11.Origin),
                 Addresses = TypeAdapterConfig1.GetMapFunction<ICollection<Address<Guid>>, ICollection<Address<Guid>>>().Invoke(p11.Addresses),
@@ -561,6 +573,9 @@ namespace Xelit3.Benchmarks.Generated
                 OriginId = p39.OriginId,
                 Name = p39.Name,
                 Surname = p39.Surname,
+                Email = p39.Email,
+                PhoneNumber = p39.PhoneNumber,
+                Bio = p39.Bio,
                 BirthDate = p39.BirthDate,
                 Origin = TypeAdapterConfig1.GetMapFunction<Country<Guid>, Country<Guid>>().Invoke(p39.Origin),
                 Addresses = funcMain33(p39.Addresses),
@@ -576,6 +591,9 @@ namespace Xelit3.Benchmarks.Generated
                 OriginId = p45.OriginId,
                 Name = p45.Name,
                 Surname = p45.Surname,
+                Email = p45.Email,
+                PhoneNumber = p45.PhoneNumber,
+                Bio = p45.Bio,
                 BirthDate = p45.BirthDate,
                 Origin = funcMain38(p45.Origin),
                 Addresses = TypeAdapterConfig1.GetMapFunction<ICollection<Address<Guid>>, ICollection<Address<Guid>>>().Invoke(p45.Addresses),

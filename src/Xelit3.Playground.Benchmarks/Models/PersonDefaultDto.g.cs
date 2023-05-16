@@ -9,6 +9,9 @@ namespace Xelit3.Benchmarks.Generated
         public Guid OriginId { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
+        public string Email { get; set; }
+        public string PhoneNumber { get; set; }
+        public string Bio { get; set; }
         public DateTime BirthDate { get; set; }
         public Country<Guid> Origin { get; set; }
         public ICollection<Address<Guid>> Addresses { get; set; }
