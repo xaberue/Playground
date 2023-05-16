@@ -44,7 +44,7 @@ public class GetUsersIntegrationTest : IntegrationTestBase, IAsyncLifetime
         var test = dbContext.Database.GetConnectionString();
         await dbContext.AddAsync(_testCountry);
         await dbContext.SaveChangesAsync();
-        await dbContext.Persons_Guid.AddRangeAsync(_testUsers);
+        await dbContext.Persons.AddRangeAsync(_testUsers);
         await dbContext.SaveChangesAsync();
     }
 
@@ -52,7 +52,7 @@ public class GetUsersIntegrationTest : IntegrationTestBase, IAsyncLifetime
     {
         using var dbContext = GetDbContext();
 
-        dbContext.Persons_Guid.RemoveRange(_testUsers);
+        dbContext.Persons.RemoveRange(_testUsers);
         await dbContext.SaveChangesAsync();
         dbContext.Remove(_testCountry);
         await dbContext.SaveChangesAsync();

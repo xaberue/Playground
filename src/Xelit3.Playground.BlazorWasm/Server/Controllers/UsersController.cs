@@ -24,7 +24,7 @@ public class UsersController : ControllerBase
     [HttpGet]
     public IActionResult GetAll()
     {
-        var users = _dbContext.Persons_Guid
+        var users = _dbContext.Persons
             .Include(x => x.Origin)
             .ToList();
 
@@ -35,7 +35,7 @@ public class UsersController : ControllerBase
     [HttpGet("paginated")]
     public IActionResult GetAll(int page, int size)
     {
-        var users = _dbContext.Persons_Guid
+        var users = _dbContext.Persons
             .Include(x => x.Origin)
             .OrderBy(x => x.Name)
             .Skip(size * page).Take(size)
@@ -51,7 +51,7 @@ public class UsersController : ControllerBase
     {
         var user = new Person<Guid> { OriginId = userCreationDto.OriginId, Name = userCreationDto.Name, Surname = userCreationDto.Surname, BirthDate = userCreationDto.BirthDate };
 
-        _dbContext.Persons_Guid.Add(user);
+        _dbContext.Persons.Add(user);
         _dbContext.SaveChanges();
 
         return CreatedAtAction("Save", new UserDto(user.Id, $"{user.Name} {user.Surname}", user.Origin?.Name ?? "Unknown", user.BirthDate));

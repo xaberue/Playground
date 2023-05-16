@@ -54,8 +54,8 @@ public class PostUsersIntegrationTest : IntegrationTestBase, IAsyncLifetime
     {
         using var dbContext = GetDbContext();
 
-        var user = dbContext.Persons_Guid.Find(_userIdCreated);
-        dbContext.Persons_Guid.Remove(user);
+        var user = dbContext.Persons.Find(_userIdCreated);
+        dbContext.Persons.Remove(user);
         await dbContext.SaveChangesAsync();
         dbContext.Remove(_testCountry);
         await dbContext.SaveChangesAsync();

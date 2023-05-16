@@ -9,9 +9,12 @@ public class EFTestDataContext : DbContext
     private readonly string _connectionString;
 
 
-    public DbSet<Person<Guid>> Persons_Guid { get; set; }
-    public DbSet<Person<int>> Persons_Int { get; set; }
-    public DbSet<Person<long>> Persons_Long { get; set; }
+    public DbSet<Person<Guid>> Persons { get; set; }
+    public DbSet<Address<Guid>> Addresses { get; set; }
+    public DbSet<Country<Guid>> Countries { get; set; }
+    public DbSet<City<Guid>> Cities { get; set; }
+    public DbSet<Post<Guid>> Posts { get; set; }
+
 
 
     public EFTestDataContext(string connectionString)
