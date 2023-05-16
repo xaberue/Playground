@@ -1,7 +1,6 @@
 ﻿using BenchmarkDotNet.Attributes;
 using Microsoft.EntityFrameworkCore;
 using Xelit3.Playground.SqlServer;
-using Xelit3.Tests.Model.Models;
 
 namespace Xelit3.Playground.Benchmarks;
 
@@ -12,7 +11,7 @@ public class SqlServerQueryBenchmarks
 {
 
     [Benchmark]
-    public void RetrieveMultilpeRowsWithTracking()
+    public void RetrieveMultipleRowsWithTracking()
     {
         var data = EFTestDataContextHelper.Instance.DbContext.Persons
             .Take(EFTestDataContextHelper.Instance.RowsToRetrieve)
@@ -20,7 +19,7 @@ public class SqlServerQueryBenchmarks
     }
 
     [Benchmark]
-    public void RetrieveMultilpeRowsWithoutTracking()
+    public void RetrieveMultipleRowsWithoutTracking()
     {
         var data = EFTestDataContextHelper.Instance.DbContext.Persons
             .AsNoTracking()
@@ -29,7 +28,34 @@ public class SqlServerQueryBenchmarks
     }
 
     [Benchmark]
-    public void RetrieveMultilpeRowsWithCartesianValues()
+    public void RetrieveMultipleWithNestedEntitiesRowsUsingLinq()
+    {
+        var data = EFTestDataContextHelper.Instance.DbContext.Persons
+            .Include(x => x.Addresses)
+            .Include(x => x.Posts)
+            .ToList();
+    }
+
+    [Benchmark]
+    public void RetrieveMultipleWithNestedEntitiesRowsUsingLinqAndSplitQuery()
+    {
+        var data = EFTestDataContextHelper.Instance.DbContext.Persons
+            .Include(x => x.Addresses)
+            .Include(x => x.Posts)
+            .AsSplitQuery()
+            .ToList();
+    }
+
+    [Benchmark]
+    public void RetrieveMultipleWithNestedEntitiesUsingViewFromEFCore()
+    {
+        var data = EFTestDataContextHelper.Instance.DbContext.PersonFullQuery
+            .Take(EFTestDataContextHelper.Instance.RowsToRetrieve)
+            .ToList();
+    }
+
+    [Benchmark]
+    public void RetrieveFirstRowUsingLinq()
     {
         var data = EFTestDataContextHelper.Instance.DbContext.Persons
             .Include(x => x.Addresses)
@@ -38,7 +64,7 @@ public class SqlServerQueryBenchmarks
     }
 
     [Benchmark]
-    public void RetrieveMultilpeRowsWithoutCartesianValues_SplitQuery()
+    public void RetrieveFirstRowUsingLinqAndSplitQueries()
     {
         var data = EFTestDataContextHelper.Instance.DbContext.Persons
             .Include(x => x.Addresses)
@@ -48,11 +74,12 @@ public class SqlServerQueryBenchmarks
     }
 
     [Benchmark]
-    public void RetrieveMultilpeRowsWithoutCartesianValues_ExplicitLoading()
+    public void RetrieveFirstRowUsingLinqAndExplicitLoading()
     {
-        var data = EFTestDataContextHelper.Instance.DbContext.Set<Person<int>>().First();
+        var data = EFTestDataContextHelper.Instance.DbContext.Persons.First();
 
         EFTestDataContextHelper.Instance.DbContext.Entry(data).Collection(x => x.Addresses).Load();
         EFTestDataContextHelper.Instance.DbContext.Entry(data).Collection(x => x.Posts).Load();
     }
+   
 }

@@ -8,8 +8,9 @@ var exit = false;
 while (!exit)
 {
 	Console.WriteLine("(1). Run Async/Await benchmarks ");
-	Console.WriteLine("(2). Run EFCore different PK's fetching benchmarks ");
-	Console.WriteLine("(3). Run mapping benchmarks ");
+	Console.WriteLine("(2). Run mapping benchmarks ");
+	Console.WriteLine("(3). Run SqlServer EFCore different PK's fetching benchmarks ");
+	Console.WriteLine("(4). Run SqlServer different feching mechanisms benchmarks ");
     Console.WriteLine("-----------------------------------------");
 	Console.WriteLine("(e). EXIT ");
 	Console.WriteLine("\nPlease write one option:");

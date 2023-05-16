@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Xelit3.Tests.Model.Models;
+using Xelit3.Tests.Model.Views;
 
 namespace Xelit3.Playground.SqlServer;
 
@@ -14,10 +15,10 @@ public class EFTestDataContext : DbContext
     public DbSet<Country<Guid>> Countries { get; set; }
     public DbSet<City<Guid>> Cities { get; set; }
     public DbSet<Post<Guid>> Posts { get; set; }
+    public DbSet<PersonFull> PersonFullQuery { get; private set; }
 
 
-
-    public EFTestDataContext(string connectionString)
+    public EFTestDataContext(string connectionString = "Data Source=localhost;Initial Catalog=Test;Integrated Security=True;TrustServerCertificate=True")
     {
         _connectionString = connectionString;
     }
@@ -32,6 +33,8 @@ public class EFTestDataContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<PersonFull>().ToView("PersonsFullView").HasNoKey();
+
         #region Test Model GUID
 
         modelBuilder.Entity<Person<Guid>>(entity =>
