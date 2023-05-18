@@ -15,7 +15,8 @@ public class EFTestDataContext : DbContext
     public DbSet<Country<Guid>> Countries { get; set; }
     public DbSet<City<Guid>> Cities { get; set; }
     public DbSet<Post<Guid>> Posts { get; set; }
-    public DbSet<PersonFull> PersonFullQuery { get; private set; }
+    public DbSet<PersonSimpleView> PersonSimpleQuery { get; private set; }
+    public DbSet<PersonFullView> PersonFullQuery { get; private set; }
 
 
     public EFTestDataContext(string connectionString = "Data Source=localhost;Initial Catalog=Test;Integrated Security=True;TrustServerCertificate=True")
@@ -33,7 +34,8 @@ public class EFTestDataContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<PersonFull>().ToView("PersonsFullView").HasNoKey();
+        modelBuilder.Entity<PersonSimpleView>().ToView("PersonsSimpleView").HasKey(x => x.Id);
+        modelBuilder.Entity<PersonFullView>().ToView("PersonsFullView").HasNoKey();
 
         #region Test Model GUID
 

@@ -11,7 +11,7 @@ namespace Xelit3.Benchmarks.Migrations
 
         private const string VIEW_NAME = "PersonsFullView";
 
-
+        /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             var view = @$"
