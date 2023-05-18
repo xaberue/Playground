@@ -22,10 +22,10 @@ Multiple benchmarks comparing solutions in several development scenarios can be 
 
 - [Async vs Await performance invoking Tasks](https://github.com/Xelit3/Playground/blob/main/src/Xelit3.Playground.Benchmarks/Xelit3.Benchmarks.AsyncAwaitBenchmarks-report.md)
 - [EFCore benchmarks retrieving data with different ID types](https://github.com/Xelit3/Playground/blob/main/src/Xelit3.Playground.Benchmarks/Xelit3.Benchmarks.SqlServerEfCoreIdFetchBenchmarks-report.md)
-- [SqlServer benchmarks querying data using different approaches](https://github.com/Xelit3/Playground/blob/main/src/Xelit3.Playground.Benchmarks/Xelit3.Playground.Benchmarks.SqlServerQueryBenchmarks-report.md)
+- _[SqlServer benchmarks querying data using different approaches](https://github.com/Xelit3/Playground/blob/main/src/Xelit3.Playground.Benchmarks/Xelit3.Playground.Benchmarks.SqlServerQueryBenchmarks-report.md)_
 - [Mapping approaches and tools benchmarks](https://github.com/Xelit3/Playground/blob/main/src/Xelit3.Playground.Benchmarks/Xelit3.Benchmarks.MappingBenchmarks-report.md)
 
-
+_In progress benchmarking in italic_
 
 ## Links
 
