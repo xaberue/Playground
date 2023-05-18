@@ -4,7 +4,7 @@
 
 This project contains an example on how to manage settings safely and using best practices in a real project from on-premises to production on Azure.
 
-This process is documented at this link.
+This process is documented at [this](https://dev.to/xelit3/managing-aspnetcore-appsettings-from-local-to-release-ngi) link.
 
 
 
