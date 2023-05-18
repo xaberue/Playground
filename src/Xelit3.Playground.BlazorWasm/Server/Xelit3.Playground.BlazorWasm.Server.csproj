@@ -18,6 +18,6 @@
 
 	<ItemGroup>
 		<InternalsVisibleTo Include="Xelit3.Playground.BlazorWasm.IntegrationTests" />
-	</ItemGroup>	
+	</ItemGroup>
 
 </Project>
