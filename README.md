@@ -2,6 +2,30 @@
 
 Playground repository contains practical examples, comparisions and benchmarks, including reports for evaluation and best practices definition.
 
+## Hands on POC's
+
+### AppSettings from local to production
+
+[Link](https://github.com/Xelit3/Playground/tree/main/src/Xelit3.Playground.AspNetCore.AppSettings) to code, and to the blog [entry](https://dev.to/xelit3/managing-aspnetcore-appsettings-from-local-to-release-ngi) in DEV.to
+
+### Blazor WASM project quick sample
+
+ _(In progress)_
+
+### Full project test strategy
+
+_(In progress)_
+
+## Benchmarks
+
+Multiple benchmarks comparing solutions in several development scenarios can be found [here](https://github.com/Xelit3/Playground/tree/main/src/Xelit3.Playground.Benchmarks)
+
+- [Async vs Await performance invoking Tasks](https://github.com/Xelit3/Playground/blob/main/src/Xelit3.Playground.Benchmarks/Xelit3.Benchmarks.AsyncAwaitBenchmarks-report.md)
+- [EFCore benchmarks retrieving data with different ID types](https://github.com/Xelit3/Playground/blob/main/src/Xelit3.Playground.Benchmarks/Xelit3.Benchmarks.SqlServerEfCoreIdFetchBenchmarks-report.md)
+- [SqlServer benchmarks querying data using different approaches](https://github.com/Xelit3/Playground/blob/main/src/Xelit3.Playground.Benchmarks/Xelit3.Playground.Benchmarks.SqlServerQueryBenchmarks-report.md)
+- [Mapping approaches and tools benchmarks](https://github.com/Xelit3/Playground/blob/main/src/Xelit3.Playground.Benchmarks/Xelit3.Benchmarks.MappingBenchmarks-report.md)
+
+
 
 ## Links
 
