@@ -45,7 +45,7 @@ public class MappingBenchmarks
 
     private void SetupAutomapperConfig()
     {
-        var automapperConfig = new MapperConfiguration(cfg => cfg.CreateMap<Person<Guid>, PersonDto>());
+        var automapperConfig = new MapperConfiguration(cfg => cfg.CreateMap<Person<Guid>, PersonMappingDto>());
 
         _automapper = new Mapper(automapperConfig);
     }
@@ -53,7 +53,7 @@ public class MappingBenchmarks
     private void SetupMapsterConfig()
     {
         _mapsterConfig = new TypeAdapterConfig();
-        _mapsterConfig.NewConfig<Person<Guid>, PersonDto>();
+        _mapsterConfig.NewConfig<Person<Guid>, PersonMappingDto>();
 
         _mapster = new MapsterMapper.Mapper(_mapsterConfig);
     }
@@ -74,49 +74,49 @@ public class MappingBenchmarks
     [Benchmark]
     public void SingleElementAutomapperBenchmark()
     {
-        var dto = _automapper.Map<PersonDto>(_person);
+        var dto = _automapper.Map<PersonMappingDto>(_person);
     }
 
     [Benchmark]
     public void MultipleElementAutomapperBenchmark_WithIEnumerableMap()
     {
-        var dtos = _automapper.Map<IEnumerable<PersonDto>>(_persons).ToList();
+        var dtos = _automapper.Map<IEnumerable<PersonMappingDto>>(_persons).ToList();
     }
 
     [Benchmark]
     public void MultipleElementAutomapperBenchmark_WithSelect()
     {
-        var dtos = _persons.Select(x => _automapper.Map<PersonDto>(x)).ToList();
+        var dtos = _persons.Select(x => _automapper.Map<PersonMappingDto>(x)).ToList();
     }
 
     [Benchmark]
     public void SingleElementMapsterBenchmark_WithoutConfig()
     {
-        var dto = _person.Adapt<PersonDto>();
+        var dto = _person.Adapt<PersonMappingDto>();
     }
 
     [Benchmark]
     public void SingleElementMapsterBenchmark_WithConfig()
     {
-        var dto = _person.Adapt<PersonDto>(_mapsterConfig);
+        var dto = _person.Adapt<PersonMappingDto>(_mapsterConfig);
     }
 
     [Benchmark]
     public void MultipleElementsMapsterBenchmark()
     {
-        var dtos = _persons.Adapt<IEnumerable<PersonDto>>().ToList();
+        var dtos = _persons.Adapt<IEnumerable<PersonMappingDto>>().ToList();
     }
 
     [Benchmark]
     public void SingleElementMapsterBenchmark_UsingType()
     {
-        var dto = _mapster.From(_person).AdaptToType<PersonDto>();
+        var dto = _mapster.From(_person).AdaptToType<PersonMappingDto>();
     }
 
     [Benchmark]
     public void MultipleElementsMapsterBenchmark_UsingType()
     {
-        var dto = _mapster.From(_persons).AdaptToType<IEnumerable<PersonDto>>().ToList();
+        var dto = _mapster.From(_persons).AdaptToType<IEnumerable<PersonMappingDto>>().ToList();
     }
 
     [Benchmark]
@@ -134,7 +134,7 @@ public class MappingBenchmarks
 }
 
 
-public class PersonDto
+public class PersonMappingDto
 {
     public Guid OriginId { get; set; }
     public string Name { get; set; } = string.Empty;
@@ -145,9 +145,9 @@ public class PersonDto
 
 public static class PersonMapper
 {
-    public static PersonDto Map(this Person<Guid> person)
+    public static PersonMappingDto Map(this Person<Guid> person)
     {
-        return new PersonDto
+        return new PersonMappingDto
         {
             Name = person.Name,
             Surname = person.Surname,
@@ -156,7 +156,7 @@ public static class PersonMapper
         };
     }
 
-    public static IEnumerable<PersonDto> Map(this IEnumerable<Person<Guid>> persons)
+    public static IEnumerable<PersonMappingDto> Map(this IEnumerable<Person<Guid>> persons)
     {
         return persons.Select(x => x.Map());
     }
