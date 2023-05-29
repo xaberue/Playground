@@ -31,8 +31,8 @@ public static class SqlServerEfCoreFetchingSamples
 
     private static IEnumerable<Person<int>> RetrieveMultilpeRows()
     {
-        return EFTestDataContextHelper.Instance.DbContext.Set<Person<int>>()
-            .Take(EFTestDataContextHelper.Instance.RowsToRetrieve)
+        return SqlServerDbTestDataContextHelper.Instance.DbContext.Set<Person<int>>()
+            .Take(SqlServerDbTestDataContextHelper.Instance.RowsToRetrieve)
             .Include(x => x.Addresses)
             .Include(x => x.Posts)
             .ToList();
@@ -40,28 +40,28 @@ public static class SqlServerEfCoreFetchingSamples
 
     private static IEnumerable<Person<int>> RetrieveMultilpeRowsWithoutTracking()
     {
-        return EFTestDataContextHelper.Instance.DbContext.Set<Person<int>>()
+        return SqlServerDbTestDataContextHelper.Instance.DbContext.Set<Person<int>>()
             .Include(x => x.Addresses)
             .Include(x => x.Posts)
             .AsNoTracking()
-            .Take(EFTestDataContextHelper.Instance.RowsToRetrieve)
+            .Take(SqlServerDbTestDataContextHelper.Instance.RowsToRetrieve)
             .ToList();
     }
 
     private static IEnumerable<Person<int>> RetrieveMultilpeRowsWithoutCartesianValues_SplitQuery()
     {
-        return EFTestDataContextHelper.Instance.DbContext.Set<Person<int>>()
+        return SqlServerDbTestDataContextHelper.Instance.DbContext.Set<Person<int>>()
             .Include(x => x.Addresses)
             .Include(x => x.Posts)
             .AsSplitQuery()
-            .Take(EFTestDataContextHelper.Instance.RowsToRetrieve)
+            .Take(SqlServerDbTestDataContextHelper.Instance.RowsToRetrieve)
             .ToList();
     }
 
 
     private static Person<int> RetrieveSingleElementWithCartesianValues()
     {
-        return EFTestDataContextHelper.Instance.DbContext.Set<Person<int>>()
+        return SqlServerDbTestDataContextHelper.Instance.DbContext.Set<Person<int>>()
             .Include(x => x.Addresses)
             .Include(x => x.Posts)
             .AsNoTracking()
@@ -70,7 +70,7 @@ public static class SqlServerEfCoreFetchingSamples
 
     private static Person<int> RetrieveSingleElementWithoutCartesianValues_SplitQuery()
     {
-        return EFTestDataContextHelper.Instance.DbContext.Set<Person<int>>()
+        return SqlServerDbTestDataContextHelper.Instance.DbContext.Set<Person<int>>()
             .Include(x => x.Addresses)
             .Include(x => x.Posts)
             .AsSplitQuery()
@@ -79,12 +79,12 @@ public static class SqlServerEfCoreFetchingSamples
 
     private static Person<int> RetrieveSingleElementWithoutCartesianValues_ExplicitLoading()
     {
-        var data = EFTestDataContextHelper.Instance.DbContext.Set<Person<int>>().First();
+        var data = SqlServerDbTestDataContextHelper.Instance.DbContext.Set<Person<int>>().First();
 
         //https://learn.microsoft.com/en-us/ef/core/querying/related-data/explicit
 
-        EFTestDataContextHelper.Instance.DbContext.Entry(data).Collection(x => x.Addresses).Query();
-        EFTestDataContextHelper.Instance.DbContext.Entry(data).Collection(x => x.Posts).Query();
+        SqlServerDbTestDataContextHelper.Instance.DbContext.Entry(data).Collection(x => x.Addresses).Query();
+        SqlServerDbTestDataContextHelper.Instance.DbContext.Entry(data).Collection(x => x.Posts).Query();
 
         
         //EFTestDataContextHelper.Instance.DbContext.Entry(data).Collection(x => x.Addresses).Load();

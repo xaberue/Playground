@@ -5,8 +5,13 @@ using Xelit3.Tests.Model.Models;
 
 namespace Xelit3.Playground.SqlServer;
 
-public class EFTestDataContextHelper
+
+public class SqlServerDbTestDataContextHelper
 {
+
+    public const string TestDbConnectionString = "Data Source=localhost;Initial Catalog=Test;Integrated Security=True;TrustServerCertificate=True";
+
+
     public EFTestDataContext DbContext { get; private set; }
 
     public Person<Guid>? RandomPersonGuid { get; private set; }
@@ -33,19 +38,19 @@ public class EFTestDataContextHelper
     List<Post<Guid>> _testPersonsPosts = new List<Post<Guid>>();
 
     
-    private EFTestDataContextHelper()
+    private SqlServerDbTestDataContextHelper()
     {
-        DbContext = new EFTestDataContext("Data Source=localhost;Initial Catalog=Test;Integrated Security=True;TrustServerCertificate=True");
+        DbContext = new EFTestDataContext(TestDbConnectionString);
     }
 
-    private static EFTestDataContextHelper _instance = null;
-    public static EFTestDataContextHelper Instance => TryPrepareAndReturnInstance();
+    private static SqlServerDbTestDataContextHelper _instance = null;
+    public static SqlServerDbTestDataContextHelper Instance => TryPrepareAndReturnInstance();
 
 
-    private static EFTestDataContextHelper TryPrepareAndReturnInstance()
+    private static SqlServerDbTestDataContextHelper TryPrepareAndReturnInstance()
     {
         if (_instance == null)
-            _instance = new EFTestDataContextHelper();
+            _instance = new SqlServerDbTestDataContextHelper();
 
         return _instance;
     }

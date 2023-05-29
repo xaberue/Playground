@@ -17,13 +17,13 @@ while (!exit)
         case "1":
             //Prepare
             var personsCount = GetPersonsSizeCount();
-            EFTestDataContextHelper.Instance.InitializeAllKeyTypes(personsCount);
+            SqlServerDbTestDataContextHelper.Instance.InitializeAllKeyTypes(personsCount);
             
             //Run
             SqlServerEfCoreFetchingSamples.Run();
 
             //Clean
-            EFTestDataContextHelper.Instance.Finish();
+            SqlServerDbTestDataContextHelper.Instance.Finish();
             break;
 
         case "e":

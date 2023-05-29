@@ -13,7 +13,7 @@ public class SqlServerEfCoreFetchingDifferentPrimaryKeysBenchmarks
     [Benchmark]
     public async Task<bool> RetrieveSingleElementFromGuid()
     {
-        var element = EFTestDataContextHelper.Instance.DbContext.Persons.Find(EFTestDataContextHelper.Instance.RandomPersonGuid.Id);
+        var element = SqlServerDbTestDataContextHelper.Instance.DbContext.Persons.Find(SqlServerDbTestDataContextHelper.Instance.RandomPersonGuid.Id);
 
         return await Task.FromResult(true);
     }
@@ -21,7 +21,7 @@ public class SqlServerEfCoreFetchingDifferentPrimaryKeysBenchmarks
     [Benchmark]
     public async Task<bool> RetrieveSingleElementFromInt()
     {
-        var element = EFTestDataContextHelper.Instance.DbContext.Set<Person<int>>().Find(EFTestDataContextHelper.Instance.RandomPersonInt.Id);
+        var element = SqlServerDbTestDataContextHelper.Instance.DbContext.Set<Person<int>>().Find(SqlServerDbTestDataContextHelper.Instance.RandomPersonInt.Id);
 
         return await Task.FromResult(true);
     }
@@ -29,7 +29,7 @@ public class SqlServerEfCoreFetchingDifferentPrimaryKeysBenchmarks
     [Benchmark]
     public async Task<bool> RetrieveSingleElementFromLong()
     {
-        var element = EFTestDataContextHelper.Instance.DbContext.Set<Person<long>>().Find(EFTestDataContextHelper.Instance.RandomPersonLong.Id);
+        var element = SqlServerDbTestDataContextHelper.Instance.DbContext.Set<Person<long>>().Find(SqlServerDbTestDataContextHelper.Instance.RandomPersonLong.Id);
 
         return await Task.FromResult(true);
     }

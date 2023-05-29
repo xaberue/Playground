@@ -30,16 +30,16 @@ while (!exit)
 
         case "3":
             var personsCount1 = GetPersonsSizeCount();
-            EFTestDataContextHelper.Instance.InitializeAllKeyTypes(personsCount1);
+            SqlServerDbTestDataContextHelper.Instance.InitializeAllKeyTypes(personsCount1);
             summary = BenchmarkRunner.Run<SqlServerEfCoreFetchingDifferentPrimaryKeysBenchmarks>();
-            EFTestDataContextHelper.Instance.Finish();
+            SqlServerDbTestDataContextHelper.Instance.Finish();
             break;
 
         case "4":
             var personsCount2 = GetPersonsSizeCount();
-            EFTestDataContextHelper.Instance.InitializeDefault(personsCount2);
+            SqlServerDbTestDataContextHelper.Instance.InitializeDefault(personsCount2);
             summary = BenchmarkRunner.Run<SqlServerQueryBenchmarks>();
-            EFTestDataContextHelper.Instance.Finish();
+            SqlServerDbTestDataContextHelper.Instance.Finish();
             break;
 
         case "e":

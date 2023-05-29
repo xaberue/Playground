@@ -1,14 +1,5 @@
-﻿namespace Xelit3.Tests.Model.Views;
+﻿using Xelit3.Tests.Model.Dtos;
 
+namespace Xelit3.Tests.Model.Views;
 
-public class PersonSimpleView
-{
-    public Guid Id { get; set; }
-    public Guid OriginId { get; set; }
-    public string Name { get; set; } = string.Empty;
-    public string Surname { get; set; } = string.Empty;
-    public string Email { get; set; } = string.Empty;
-    public string PhoneNumber { get; set; } = string.Empty;
-    public string Bio { get; set; } = string.Empty;
-    public DateTime BirthDate { get; set; }
-}
+public class PersonSimpleView : PersonDto { }

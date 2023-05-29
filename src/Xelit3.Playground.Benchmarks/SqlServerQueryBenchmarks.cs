@@ -1,6 +1,10 @@
 ﻿using BenchmarkDotNet.Attributes;
+using Dapper;
 using Microsoft.EntityFrameworkCore;
+using System.Data.SqlClient;
 using Xelit3.Playground.SqlServer;
+using Xelit3.Tests.Model.Dtos;
+using Xelit3.Tests.Model.Views;
 
 namespace Xelit3.Playground.Benchmarks;
 
@@ -14,26 +18,41 @@ public class SqlServerQueryBenchmarks
     [Benchmark]
     public void RetrieveMultipleLimitedRowsWithTracking()
     {
-        var data = EFTestDataContextHelper.Instance.DbContext.Persons
-            .Take(EFTestDataContextHelper.Instance.RowsToRetrieve)
+        var data = SqlServerDbTestDataContextHelper.Instance.DbContext.Persons
+            .Take(SqlServerDbTestDataContextHelper.Instance.RowsToRetrieve)
             .ToList();
     }
 
     [Benchmark]
     public void RetrieveMultipleLimitedRowsWithoutTracking()
     {
-        var data = EFTestDataContextHelper.Instance.DbContext.Persons
+        var data = SqlServerDbTestDataContextHelper.Instance.DbContext.Persons
             .AsNoTracking()
-            .Take(EFTestDataContextHelper.Instance.RowsToRetrieve)
+            .Take(SqlServerDbTestDataContextHelper.Instance.RowsToRetrieve)
             .ToList();
     }
 
     [Benchmark]
     public void RetrieveLimitedRowsUsingViewFromEFCore()
     {
-        var data = EFTestDataContextHelper.Instance.DbContext.PersonSimpleQuery
-            .Take(EFTestDataContextHelper.Instance.RowsToRetrieve)
+        var data = SqlServerDbTestDataContextHelper.Instance.DbContext.PersonSimpleQuery
+            .Take(SqlServerDbTestDataContextHelper.Instance.RowsToRetrieve)
             .ToList();
+    }
+
+    [Benchmark]
+    public void RetrieveLimitedRowsUsingDapperQuery()
+    {
+        var sql = $@"
+            SELECT top ({SqlServerDbTestDataContextHelper.Instance.RowsToRetrieve})
+             [Id], [OriginId], [Name], [Surname], [BirthDate], [Bio], [Email], [PhoneNumber]
+            FROM [dbo].[Persons_Guid]
+            ";
+
+        using (var connection = new SqlConnection(SqlServerDbTestDataContextHelper.TestDbConnectionString))
+        {
+            var persons = connection.Query<PersonSimpleView>(sql).ToList();
+        }
     }
 
     #endregion
@@ -44,14 +63,14 @@ public class SqlServerQueryBenchmarks
     [Benchmark]
     public void RetrieveAllRowsUsingLinqWithTracking()
     {
-        var data = EFTestDataContextHelper.Instance.DbContext.Persons
+        var data = SqlServerDbTestDataContextHelper.Instance.DbContext.Persons
             .ToList();
     }
 
     [Benchmark]
     public void RetrieveAllRowsUsingLinqWithoutTracking()
     {
-        var data = EFTestDataContextHelper.Instance.DbContext.Persons
+        var data = SqlServerDbTestDataContextHelper.Instance.DbContext.Persons
             .AsNoTracking()
             .ToList();
     }
@@ -59,8 +78,23 @@ public class SqlServerQueryBenchmarks
     [Benchmark]
     public void RetrieveAllRowsUsingViewFromEFCore()
     {
-        var data = EFTestDataContextHelper.Instance.DbContext.PersonSimpleQuery
+        var data = SqlServerDbTestDataContextHelper.Instance.DbContext.PersonSimpleQuery
             .ToList();
+    }
+
+    [Benchmark]
+    public void RetrieveAllRowsUsingDapperQuery()
+    {
+        var sql = @"
+            SELECT
+             [Id], [OriginId], [Name], [Surname], [BirthDate], [Bio], [Email], [PhoneNumber]
+            FROM [dbo].[Persons_Guid]
+            ";
+
+        using (var connection = new SqlConnection(SqlServerDbTestDataContextHelper.TestDbConnectionString))
+        {
+            var persons = connection.Query<PersonSimpleView>(sql).ToList();
+        }
     }
 
     #endregion
@@ -71,7 +105,7 @@ public class SqlServerQueryBenchmarks
     [Benchmark]
     public void RetrieveLimitedRowsWithNestedEntitiesUsingLinqWithTracking()
     {
-        var data = EFTestDataContextHelper.Instance.DbContext.Persons
+        var data = SqlServerDbTestDataContextHelper.Instance.DbContext.Persons
             .Include(x => x.Addresses)
             .Include(x => x.Posts)
             .ToList();
@@ -80,7 +114,7 @@ public class SqlServerQueryBenchmarks
     [Benchmark]
     public void RetrieveLimitedRowsWithNestedEntitiesUsingLinqWithoutTracking()
     {
-        var data = EFTestDataContextHelper.Instance.DbContext.Persons
+        var data = SqlServerDbTestDataContextHelper.Instance.DbContext.Persons
             .Include(x => x.Addresses)
             .Include(x => x.Posts)
             .AsNoTracking()
@@ -90,7 +124,7 @@ public class SqlServerQueryBenchmarks
     [Benchmark]
     public void RetrieveLimitedRowsWithNestedEntitiesUsingLinqAndSplitQuery()
     {
-        var data = EFTestDataContextHelper.Instance.DbContext.Persons
+        var data = SqlServerDbTestDataContextHelper.Instance.DbContext.Persons
             .Include(x => x.Addresses)
             .Include(x => x.Posts)
             .AsSplitQuery()
@@ -98,11 +132,30 @@ public class SqlServerQueryBenchmarks
     }
 
     [Benchmark]
-    public void RetrieveLimitedRowsWithNestedEntitiesUsingViewFromEFCore()
+    public void RetrieveLimitedRowsWithJoinedEntitiesUsingViewFromEFCore()
     {
-        var data = EFTestDataContextHelper.Instance.DbContext.PersonFullQuery
-            .Take(EFTestDataContextHelper.Instance.RowsToRetrieve)
+        var data = SqlServerDbTestDataContextHelper.Instance.DbContext.PersonFullQuery
+            .Take(SqlServerDbTestDataContextHelper.Instance.RowsToRetrieve)
             .ToList();
+    }
+
+    [Benchmark]
+    public void RetrieveLimitedRowsWithJoinedEntitiesUsingDapperQuery()
+    {
+        var sql = $@"
+            SELECT top ({SqlServerDbTestDataContextHelper.Instance.RowsToRetrieve})
+                persons.[Id] as [PersonId], persons.[OriginId], persons.[Name], persons.[Surname], persons.[BirthDate], persons.[Bio], persons.[Email], persons.[PhoneNumber],
+                addresses.[Id] as [AddressId], addresses.[CityId], addresses.[Line], addresses.[Sequence],
+                posts.[Id] as [PostId], posts.[Text], posts.[Title]
+            FROM [dbo].[Persons_Guid] persons
+                join [dbo].[Addresses_Guid] addresses on persons.Id = addresses.PersonId
+                join [dbo].[Posts_Guid] posts on persons.Id = posts.AuthorId
+            ";
+
+        using (var connection = new SqlConnection(SqlServerDbTestDataContextHelper.TestDbConnectionString))
+        {
+            var persons = connection.Query<PersonFullView>(sql).ToList();
+        }
     }
 
     #endregion
@@ -113,7 +166,7 @@ public class SqlServerQueryBenchmarks
     [Benchmark]
     public void RetrieveAllWithNestedEntitiesRowsUsingLinqWithTracking()
     {
-        var data = EFTestDataContextHelper.Instance.DbContext.Persons
+        var data = SqlServerDbTestDataContextHelper.Instance.DbContext.Persons
             .Include(x => x.Addresses)
             .Include(x => x.Posts)
             .ToList();
@@ -122,7 +175,7 @@ public class SqlServerQueryBenchmarks
     [Benchmark]
     public void RetrieveAllWithNestedEntitiesRowsUsingLinqWithoutTracking()
     {
-        var data = EFTestDataContextHelper.Instance.DbContext.Persons
+        var data = SqlServerDbTestDataContextHelper.Instance.DbContext.Persons
             .Include(x => x.Addresses)
             .Include(x => x.Posts)
             .AsNoTracking()
@@ -132,7 +185,7 @@ public class SqlServerQueryBenchmarks
     [Benchmark]
     public void RetrieveAllWithNestedEntitiesRowsUsingLinqAndSplitQuery()
     {
-        var data = EFTestDataContextHelper.Instance.DbContext.Persons
+        var data = SqlServerDbTestDataContextHelper.Instance.DbContext.Persons
             .Include(x => x.Addresses)
             .Include(x => x.Posts)
             .AsSplitQuery()
@@ -142,7 +195,7 @@ public class SqlServerQueryBenchmarks
     [Benchmark]
     public void RetrieveAllWithNestedEntitiesRowsUsingLinqAndSplitQueryWithoutTracking()
     {
-        var data = EFTestDataContextHelper.Instance.DbContext.Persons
+        var data = SqlServerDbTestDataContextHelper.Instance.DbContext.Persons
             .Include(x => x.Addresses)
             .Include(x => x.Posts)
             .AsNoTracking()
@@ -151,10 +204,29 @@ public class SqlServerQueryBenchmarks
     }
 
     [Benchmark]
-    public void RetrieveAllWithNestedEntitiesRowsUsingViewFromEFCore()
+    public void RetrieveAllWithJoinedEntitiesRowsUsingViewFromEFCore()
     {
-        var data = EFTestDataContextHelper.Instance.DbContext.PersonFullQuery            
+        var data = SqlServerDbTestDataContextHelper.Instance.DbContext.PersonFullQuery
             .ToList();
+    }
+
+    [Benchmark]
+    public void RetrieveAllRowsWithJoinedEntitiesUsingDapperQuery()
+    {
+        var sql = @"
+            SELECT 
+            	persons.[Id] as [PersonId], persons.[OriginId], persons.[Name], persons.[Surname], persons.[BirthDate], persons.[Bio], persons.[Email], persons.[PhoneNumber],
+             addresses.[Id] as [AddressId], addresses.[CityId], addresses.[Line], addresses.[Sequence],
+             posts.[Id] as [PostId], posts.[Text], posts.[Title]
+            FROM [dbo].[Persons_Guid] persons
+             join [dbo].[Addresses_Guid] addresses on persons.Id = addresses.PersonId
+             join [dbo].[Posts_Guid] posts on persons.Id = posts.AuthorId
+            ";
+
+        using (var connection = new SqlConnection(SqlServerDbTestDataContextHelper.TestDbConnectionString))
+        {
+            var persons = connection.Query<PersonFullView>(sql).ToList();
+        }
     }
 
     #endregion
@@ -165,7 +237,7 @@ public class SqlServerQueryBenchmarks
     [Benchmark]
     public void RetrieveFirstRowUsingLinq()
     {
-        var data = EFTestDataContextHelper.Instance.DbContext.Persons
+        var data = SqlServerDbTestDataContextHelper.Instance.DbContext.Persons
             .Include(x => x.Addresses)
             .Include(x => x.Posts)
             .First();
@@ -174,7 +246,7 @@ public class SqlServerQueryBenchmarks
     [Benchmark]
     public void RetrieveFirstRowUsingLinqAndSplitQueries()
     {
-        var data = EFTestDataContextHelper.Instance.DbContext.Persons
+        var data = SqlServerDbTestDataContextHelper.Instance.DbContext.Persons
             .Include(x => x.Addresses)
             .Include(x => x.Posts)
             .AsSplitQuery()
@@ -184,10 +256,36 @@ public class SqlServerQueryBenchmarks
     [Benchmark]
     public void RetrieveFirstRowUsingLinqAndExplicitLoading()
     {
-        var data = EFTestDataContextHelper.Instance.DbContext.Persons.First();
+        var data = SqlServerDbTestDataContextHelper.Instance.DbContext.Persons.First();
 
-        EFTestDataContextHelper.Instance.DbContext.Entry(data).Collection(x => x.Addresses).Load();
-        EFTestDataContextHelper.Instance.DbContext.Entry(data).Collection(x => x.Posts).Load();
+        SqlServerDbTestDataContextHelper.Instance.DbContext.Entry(data).Collection(x => x.Addresses).Load();
+        SqlServerDbTestDataContextHelper.Instance.DbContext.Entry(data).Collection(x => x.Posts).Load();
+    }
+
+    [Benchmark]
+    public async Task RetrieveFilteredIdRowWithJoinedEntitiesUsingDapperQuery()
+    {
+        var id = SqlServerDbTestDataContextHelper.Instance.RandomPersonGuid!.Id;
+        var sql = $@"
+            SELECT [Id], [OriginId], [Name], [Surname], [BirthDate], [Bio], [Email], [PhoneNumber] FROM [dbo].[Persons_Guid] WHERE Id = @PersonId;
+
+            SELECT [Id], [CityId], [Line], [Sequence] FROM [dbo].[Addresses_Guid] WHERE [PersonId] = @PersonId;
+
+            SELECT [Id], [Title], [Text] FROM [dbo].[Posts_Guid] WHERE [AuthorId] = @PersonId
+            ";
+
+        using (var connection = new SqlConnection(SqlServerDbTestDataContextHelper.TestDbConnectionString))
+        {
+            using (var multiQuery = await connection.QueryMultipleAsync(sql, new { PersonId = id }))
+            {
+                var person = (await multiQuery.ReadAsync<PersonDto>()).First();
+                var addresses = (await multiQuery.ReadAsync<AddressDto>()).ToList();
+                var posts = (await multiQuery.ReadAsync<PostDto>()).ToList();
+
+                person.Posts = posts;
+                person.Addresses = addresses;
+            }
+        }
     }
 
     #endregion
