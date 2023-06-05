@@ -4,7 +4,6 @@ using Microsoft.EntityFrameworkCore;
 using System.Data.SqlClient;
 using Xelit3.Playground.SqlServer;
 using Xelit3.Tests.Model.Dtos;
-using Xelit3.Tests.Model.Models;
 using Xelit3.Tests.Model.Views;
 
 namespace Xelit3.Playground.Benchmarks;
