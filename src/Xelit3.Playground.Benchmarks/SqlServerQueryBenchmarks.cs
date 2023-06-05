@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Data.SqlClient;
 using Xelit3.Playground.SqlServer;
 using Xelit3.Tests.Model.Dtos;
+using Xelit3.Tests.Model.Models;
 using Xelit3.Tests.Model.Views;
 
 namespace Xelit3.Playground.Benchmarks;
@@ -13,6 +14,7 @@ namespace Xelit3.Playground.Benchmarks;
 [MemoryDiagnoser(false)]
 public class SqlServerQueryBenchmarks
 {
+
     #region Single entity, limited rows
 
     [Benchmark]
@@ -29,6 +31,36 @@ public class SqlServerQueryBenchmarks
         var data = SqlServerDbTestDataContextHelper.Instance.DbContext.Persons
             .AsNoTracking()
             .Take(SqlServerDbTestDataContextHelper.Instance.RowsToRetrieve)
+            .ToList();
+    }
+
+    [Benchmark]
+    public void RetrieveLimitedRowsUsingProjectionFromEFCore()
+    {
+        var data = SqlServerDbTestDataContextHelper.Instance.DbContext.Persons
+            .Select(x => new PersonDto
+            {
+                Id = x.Id,
+                OriginId = x.OriginId,
+                Name = x.Name,
+                Surname = x.Surname,
+                Email = x.Email,
+                PhoneNumber = x.PhoneNumber,
+                BirthDate = x.BirthDate,
+                Bio = x.Bio
+            })
+            .Take(SqlServerDbTestDataContextHelper.Instance.RowsToRetrieve)
+            .ToList();
+    }
+
+    [Benchmark]
+    public void RetrieveLimitedRowsUsingFromSqlInterpolatedFromEFCore()
+    {
+        var data = SqlServerDbTestDataContextHelper.Instance.DbContext.Persons
+            .FromSqlInterpolated
+            (
+                $"SELECT TOP ({SqlServerDbTestDataContextHelper.Instance.RowsToRetrieve}) [Id],[OriginId],[Name],[Surname],[BirthDate],[Bio],[Email],[PhoneNumber] FROM [dbo].[Persons_Guid]"
+            )
             .ToList();
     }
 
@@ -76,6 +108,35 @@ public class SqlServerQueryBenchmarks
     }
 
     [Benchmark]
+    public void RetrieveAllRowsUsingProjectionFromEFCore()
+    {
+        var data = SqlServerDbTestDataContextHelper.Instance.DbContext.Persons
+            .Select(x => new PersonDto
+            {
+                Id = x.Id,
+                OriginId = x.OriginId,
+                Name = x.Name,
+                Surname = x.Surname,
+                Email = x.Email,
+                PhoneNumber = x.PhoneNumber,
+                BirthDate = x.BirthDate,
+                Bio = x.Bio
+            })
+            .ToList();
+    }
+
+    [Benchmark]
+    public void RetrieveAllRowsUsingFromSqlInterpolatedFromEFCore()
+    {
+        var data = SqlServerDbTestDataContextHelper.Instance.DbContext.Persons
+            .FromSqlRaw
+            (
+                $"SELECT [Id],[OriginId],[Name],[Surname],[BirthDate],[Bio],[Email],[PhoneNumber] FROM [dbo].[Persons_Guid]"
+            )
+            .ToList();
+    }
+
+    [Benchmark]
     public void RetrieveAllRowsUsingViewFromEFCore()
     {
         var data = SqlServerDbTestDataContextHelper.Instance.DbContext.PersonSimpleQuery
@@ -108,6 +169,7 @@ public class SqlServerQueryBenchmarks
         var data = SqlServerDbTestDataContextHelper.Instance.DbContext.Persons
             .Include(x => x.Addresses)
             .Include(x => x.Posts)
+            .Take(SqlServerDbTestDataContextHelper.Instance.RowsToRetrieve)
             .ToList();
     }
 
@@ -118,6 +180,7 @@ public class SqlServerQueryBenchmarks
             .Include(x => x.Addresses)
             .Include(x => x.Posts)
             .AsNoTracking()
+            .Take(SqlServerDbTestDataContextHelper.Instance.RowsToRetrieve)
             .ToList();
     }
 
@@ -128,6 +191,30 @@ public class SqlServerQueryBenchmarks
             .Include(x => x.Addresses)
             .Include(x => x.Posts)
             .AsSplitQuery()
+            .Take(SqlServerDbTestDataContextHelper.Instance.RowsToRetrieve)
+            .ToList();
+    }
+
+    [Benchmark]
+    public void RetrieveLimitedRowsWithNestedEntitiesUsingProjectionFromEFCore()
+    {
+        var data = SqlServerDbTestDataContextHelper.Instance.DbContext.Persons
+            .Include(x => x.Addresses)
+            .Include(x => x.Posts)
+            .Select(x => new PersonDto
+            {
+                Id = x.Id,
+                OriginId = x.OriginId,
+                Name = x.Name,
+                Surname = x.Surname,
+                Email = x.Email,
+                PhoneNumber = x.PhoneNumber,
+                BirthDate = x.BirthDate,
+                Bio = x.Bio,
+                Addresses = x.Addresses.Select(y => new AddressDto { Id = y.Id, CityId = y.CityId, Line = y.Line, Sequence = y.Sequence }),
+                Posts = x.Posts.Select(y => new PostDto { Id = y.Id, Text = y.Text, Title = y.Title })
+            })
+            .Take(SqlServerDbTestDataContextHelper.Instance.RowsToRetrieve)
             .ToList();
     }
 
@@ -161,7 +248,7 @@ public class SqlServerQueryBenchmarks
     #endregion
 
 
-    #region Joining tables, all data       
+    #region Joining tables, all data
 
     [Benchmark]
     public void RetrieveAllWithNestedEntitiesRowsUsingLinqWithTracking()
@@ -200,6 +287,28 @@ public class SqlServerQueryBenchmarks
             .Include(x => x.Posts)
             .AsNoTracking()
             .AsSplitQuery()
+            .ToList();
+    }
+
+    [Benchmark]
+    public void RetrieveAllRowsWithNestedEntitiesUsingProjectionFromEFCore()
+    {
+        var data = SqlServerDbTestDataContextHelper.Instance.DbContext.Persons
+            .Include(x => x.Addresses)
+            .Include(x => x.Posts)
+            .Select(x => new PersonDto
+            {
+                Id = x.Id,
+                OriginId = x.OriginId,
+                Name = x.Name,
+                Surname = x.Surname,
+                Email = x.Email,
+                PhoneNumber = x.PhoneNumber,
+                BirthDate = x.BirthDate,
+                Bio = x.Bio,
+                Addresses = x.Addresses.Select(y => new AddressDto { Id = y.Id, CityId = y.CityId, Line = y.Line, Sequence = y.Sequence }),
+                Posts = x.Posts.Select(y => new PostDto { Id = y.Id, Text = y.Text, Title = y.Title })
+            })
             .ToList();
     }
 
@@ -260,6 +369,29 @@ public class SqlServerQueryBenchmarks
 
         SqlServerDbTestDataContextHelper.Instance.DbContext.Entry(data).Collection(x => x.Addresses).Load();
         SqlServerDbTestDataContextHelper.Instance.DbContext.Entry(data).Collection(x => x.Posts).Load();
+    }
+
+    [Benchmark]
+    public void RetrieveFilteredIdRowWithJoinedEntitiesUsingProjectionFromEFCore()
+    {
+        var id = SqlServerDbTestDataContextHelper.Instance.RandomPersonGuid!.Id;
+        var data = SqlServerDbTestDataContextHelper.Instance.DbContext.Persons
+            .Include(x => x.Addresses)
+            .Include(x => x.Posts)
+            .Select(x => new PersonDto
+            {
+                Id = x.Id,
+                OriginId = x.OriginId,
+                Name = x.Name,
+                Surname = x.Surname,
+                Email = x.Email,
+                PhoneNumber = x.PhoneNumber,
+                BirthDate = x.BirthDate,
+                Bio = x.Bio,
+                Addresses = x.Addresses.Select(y => new AddressDto { Id = y.Id, CityId = y.CityId, Line = y.Line, Sequence = y.Sequence }),
+                Posts = x.Posts.Select(y => new PostDto { Id = y.Id, Text = y.Text, Title = y.Title })
+            })
+            .First(x => x.Id == id);
     }
 
     [Benchmark]
