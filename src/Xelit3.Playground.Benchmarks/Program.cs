@@ -37,9 +37,13 @@ while (!exit)
 
         case "4":
             var personsCount2 = GetPersonsSizeCount();
-            SqlServerDbTestDataContextHelper.Instance.InitializeDefault(personsCount2);
+            if(!(personsCount2 == 0))
+                SqlServerDbTestDataContextHelper.Instance.InitializeDefault(personsCount2);
+            else
+                SqlServerDbTestDataContextHelper.Instance.InitializeDefault();
             summary = BenchmarkRunner.Run<SqlServerQueryBenchmarks>();
-            SqlServerDbTestDataContextHelper.Instance.Finish();
+            if (!(personsCount2 == 0))
+                SqlServerDbTestDataContextHelper.Instance.Finish();
             break;
 
         case "e":

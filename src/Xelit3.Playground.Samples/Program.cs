@@ -5,7 +5,8 @@ var exit = false;
 
 while (!exit)
 {
-    Console.WriteLine("(1). Run EFCore Cartesian scenario ");
+    Console.WriteLine("(1). Run EFCore PK queries scenario");
+    Console.WriteLine("(2). Run EFCore Queries performance scenario ");
     Console.WriteLine("-----------------------------------------");
     Console.WriteLine("(e). EXIT ");
     Console.WriteLine("\nPlease write one option:");
@@ -24,6 +25,17 @@ while (!exit)
 
             //Clean
             SqlServerDbTestDataContextHelper.Instance.Finish();
+            break;
+
+        case "2":
+            //Prepare
+
+
+            //Run
+            await SqlServerQuerySamples.Run();
+
+            //Clean
+            
             break;
 
         case "e":

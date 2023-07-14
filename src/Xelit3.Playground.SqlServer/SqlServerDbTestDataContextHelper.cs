@@ -45,6 +45,7 @@ public class SqlServerDbTestDataContextHelper
 
     private static SqlServerDbTestDataContextHelper _instance = null;
     public static SqlServerDbTestDataContextHelper Instance => TryPrepareAndReturnInstance();
+    public static SqlServerDbTestDataContextHelper New => new SqlServerDbTestDataContextHelper();
 
 
     private static SqlServerDbTestDataContextHelper TryPrepareAndReturnInstance()
@@ -100,6 +101,14 @@ public class SqlServerDbTestDataContextHelper
         RandomPersonGuid = _testPersonsGuid.Skip(random).First();
         
         Console.WriteLine($"Prepared random person to find...");
+    }
+
+    public void InitializeDefault()
+    {
+        DbContext.Database.EnsureCreated();
+
+        var random = new Random().Next(100);
+        RandomPersonGuid = DbContext.Persons.Skip(random).First();
     }
 
     public void InitializeAllKeyTypes(int personsCount)
