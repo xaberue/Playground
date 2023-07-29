@@ -6,11 +6,10 @@ using Xelit3.Playground.SqlServer;
 using Xelit3.Tests.Model.Dtos;
 using Xelit3.Tests.Model.Views;
 
+
 namespace Xelit3.Playground.Benchmarks;
 
-
-[ShortRunJob]
-[Config(typeof(AntivirusFriendlyConfig))]
+[LongRunJob]
 [MemoryDiagnoser(false)]
 public class SqlServerQueryBenchmarks
 {
@@ -153,9 +152,7 @@ public class SqlServerQueryBenchmarks
     [Benchmark(Description = "EFCore - Retrieving paginated rows joining tables using SQL Select projection")]
     public void RetrievePaginatedRowsWithNestedEntitiesUsingProjectionFromEFCore()
     {
-        var data = SqlServerDbTestDataContextHelper.New.DbContext.Persons
-            .Include(x => x.Addresses)
-            .Include(x => x.Posts)
+        var data = SqlServerDbTestDataContextHelper.New.DbContext.Persons            
             .Select(x => new PersonDto
             {
                 Id = x.Id,
@@ -259,9 +256,7 @@ public class SqlServerQueryBenchmarks
     public async Task RetrieveFilteredIdRowWithJoinedEntitiesUsingProjectionFromEFCore()
     {
         var id = SqlServerDbTestDataContextHelper.Instance.RandomPersonGuid!.Id;
-        var data = await SqlServerDbTestDataContextHelper.New.DbContext.Persons
-            .Include(x => x.Addresses)
-            .Include(x => x.Posts)
+        var data = await SqlServerDbTestDataContextHelper.New.DbContext.Persons            
             .Select(x => new PersonDto
             {
                 Id = x.Id,

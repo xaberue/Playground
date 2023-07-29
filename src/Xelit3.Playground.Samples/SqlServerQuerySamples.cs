@@ -274,8 +274,6 @@ public class SqlServerQuerySamples
     public void RetrieveLimitedRowsWithNestedEntitiesUsingProjectionFromEFCore()
     {
         var data = SqlServerDbTestDataContextHelper.Instance.DbContext.Persons
-            .Include(x => x.Addresses)
-            .Include(x => x.Posts)
             .Select(x => new PersonDto
             {
                 Id = x.Id,
@@ -352,8 +350,6 @@ public class SqlServerQuerySamples
     {
         var id = SqlServerDbTestDataContextHelper.Instance.RandomPersonGuid!.Id;
         var data = SqlServerDbTestDataContextHelper.Instance.DbContext.Persons
-            .Include(x => x.Addresses)
-            .Include(x => x.Posts)
             .Select(x => new PersonDto
             {
                 Id = x.Id,

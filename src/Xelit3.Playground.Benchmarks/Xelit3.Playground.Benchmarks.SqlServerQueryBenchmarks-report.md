@@ -87,8 +87,61 @@ Intel Core i7-5930K CPU 3.50GHz (Broadwell), 1 CPU, 12 logical and 6 physical co
 |                     EFCore - Retrieving single element with joining tables using LINQ Select projection |  ShortRun |                  Default |              3 |           1 |           3 |     1000 |              NA |              NA |            NA |            - |
 |            Dapper - Retrieving single element with joining tables using raw SQL multi-query with Dapper |  ShortRun |                  Default |              3 |           1 |           3 |     1000 |              NA |              NA |            NA |            - |
 
-Benchmarks with issues:
+
+|                                                                                                Method | PageSize |          Mean |       Error |        StdDev |        Median |    Allocated |
+|------------------------------------------------------------------------------------------------------ |--------- |--------------:|------------:|--------------:|--------------:|-------------:|
+|                                                                    EFCore - Retrieving paginated rows |      100 |     52.798 ms |   0.1722 ms |     0.8788 ms |     52.667 ms |     773806 B |
+|                                                   EFCore - Retrieving paginated rows without tracking |      100 |      7.272 ms |   0.0182 ms |     0.0933 ms |      7.250 ms |     332441 B |
+|                                             EFCore - Retrieving paginated rows using a DTO projection |      100 |      7.423 ms |   0.0307 ms |     0.1552 ms |      7.405 ms |     333433 B |
+| EFCore - Retrieving paginated rows using FromSqlRaw/FromSqlInterpolated method to execute a SQL query |      100 |     52.643 ms |   0.1563 ms |     0.7992 ms |     52.614 ms |     776337 B |
+|                           EFCore - Retrieving paginated rows using a View mapped/executed from EFCore |      100 |     52.235 ms |   0.1548 ms |     0.7829 ms |     52.072 ms |     780110 B |
+|                                EFCore - Retrieving paginated rows using a Store Procedure from EFCore |      100 |     51.264 ms |   0.1034 ms |     0.5258 ms |     51.183 ms |     774105 B |
+|                                        Dapper - Retrieving paginated rows using SQL query with Dapper |      100 |      1.209 ms |   0.0035 ms |     0.0174 ms |      1.205 ms |     200594 B |
+|                                                     EFCore - Retrieving paginated rows joining tables |      100 |  5,349.422 ms |  21.7901 ms |   109.4352 ms |  5,321.303 ms |  267933728 B |
+|                                EFCore - Retrieving paginated rows joining tables using AsNoTracking() |      100 |  1,216.826 ms |   3.8252 ms |    19.7659 ms |  1,216.588 ms |  223674800 B |
+|                                EFCore - Retrieving paginated rows joining tables using AsSplitQuery() |      100 |  5,090.123 ms |   3.9417 ms |    19.9045 ms |  5,088.234 ms |   62882200 B |
+|             EFCore - Retrieving paginated rows joining tables using AsSplitQuery() and AsNoTracking() |      100 |     71.468 ms |   0.3090 ms |     1.6106 ms |     71.707 ms |   19096351 B |
+|                         EFCore - Retrieving paginated rows joining tables using SQL Select projection |      100 |  1,107.040 ms |   0.9021 ms |     4.5639 ms |  1,106.372 ms |  218027576 B |
+|            EFCore - Retrieving paginated rows joining tables using a View mapped/executed from EFCore |      100 |      7.209 ms |   0.0073 ms |     0.0371 ms |      7.208 ms |     501055 B |
+|                         Dapper - Retrieving paginated rows joining tables using SQL query with Dapper |      100 |      1.591 ms |   0.0034 ms |     0.0175 ms |      1.589 ms |     384082 B |
+|                           EFCore - Retrieving single entity with joining tables using LINQ FirstAsync |      100 |     64.341 ms |   0.1494 ms |     0.7680 ms |     64.315 ms |    5963060 B |
+|                           EFCore - Retrieving single element with joining tables using AsNoTracking() |      100 |     18.447 ms |   0.0858 ms |     0.4364 ms |     18.404 ms |    5530550 B |
+|                            EFCore - Retrieving single element with joining tables using AsSplitQuer() |      100 |     69.233 ms |   0.0800 ms |     0.4092 ms |     69.201 ms |     829491 B |
+|        EFCore - Retrieving single element with joining tables using AsNoTracking() and AsSplitQuery() |      100 |     19.805 ms |   0.0219 ms |     0.1094 ms |     19.786 ms |     401634 B |
+|                         EFCore - Retrieving single element with joining tables using explicit loading |      100 |     68.697 ms |   0.0669 ms |     0.3384 ms |     68.654 ms |     807602 B |
+|                   EFCore - Retrieving single element with joining tables using LINQ Select projection |      100 |            NA |          NA |            NA |            NA |            - |
+|          Dapper - Retrieving single element with joining tables using raw SQL multi-query with Dapper |      100 |            NA |          NA |            NA |            NA |            - |
+|                                                                    EFCore - Retrieving paginated rows |     1000 |    451.502 ms |   0.5387 ms |     2.7300 ms |    451.295 ms |    6671864 B |
+|                                                   EFCore - Retrieving paginated rows without tracking |     1000 |      7.491 ms |   0.0158 ms |     0.0810 ms |      7.483 ms |    2249257 B |
+|                                             EFCore - Retrieving paginated rows using a DTO projection |     1000 |      7.473 ms |   0.0157 ms |     0.0790 ms |      7.462 ms |    2214099 B |
+| EFCore - Retrieving paginated rows using FromSqlRaw/FromSqlInterpolated method to execute a SQL query |     1000 |    452.549 ms |   0.5712 ms |     2.9210 ms |    452.333 ms |    6677800 B |
+|                           EFCore - Retrieving paginated rows using a View mapped/executed from EFCore |     1000 |    453.826 ms |   0.6013 ms |     3.0143 ms |    453.439 ms |    6735768 B |
+|                                EFCore - Retrieving paginated rows using a Store Procedure from EFCore |     1000 |    451.572 ms |   0.6116 ms |     3.0605 ms |    451.370 ms |    6675552 B |
+|                                        Dapper - Retrieving paginated rows using SQL query with Dapper |     1000 |      5.435 ms |   0.0080 ms |     0.0409 ms |      5.436 ms |    1993855 B |
+|                                                     EFCore - Retrieving paginated rows joining tables |     1000 | 51,241.157 ms | 227.9647 ms | 1,173.8699 ms | 50,915.957 ms | 2714380688 B |
+|                                EFCore - Retrieving paginated rows joining tables using AsNoTracking() |     1000 | 10,410.449 ms |  73.4045 ms |   374.0152 ms | 10,310.052 ms | 2274208432 B |
+|                                EFCore - Retrieving paginated rows joining tables using AsSplitQuery() |     1000 |            NA |          NA |            NA |            NA |            - |
+|             EFCore - Retrieving paginated rows joining tables using AsSplitQuery() and AsNoTracking() |     1000 |    641.110 ms |   3.3914 ms |    17.2183 ms |    639.633 ms |  186564240 B |
+|                         EFCore - Retrieving paginated rows joining tables using SQL Select projection |     1000 |  9,861.984 ms |  59.6107 ms |   308.0236 ms |  9,891.380 ms | 2217681608 B |
+|            EFCore - Retrieving paginated rows joining tables using a View mapped/executed from EFCore |     1000 |     14.292 ms |   0.0861 ms |     0.4282 ms |     14.232 ms |    3913365 B |
+|                         Dapper - Retrieving paginated rows joining tables using SQL query with Dapper |     1000 |     11.204 ms |   0.0355 ms |     0.1806 ms |     11.185 ms |    3815847 B |
+|                           EFCore - Retrieving single entity with joining tables using LINQ FirstAsync |     1000 |     64.411 ms |   0.1508 ms |     0.7655 ms |     64.330 ms |    5963016 B |
+|                           EFCore - Retrieving single element with joining tables using AsNoTracking() |     1000 |     18.499 ms |   0.0929 ms |     0.4806 ms |     18.470 ms |    5530550 B |
+|                            EFCore - Retrieving single element with joining tables using AsSplitQuer() |     1000 |     69.935 ms |   0.2172 ms |     1.0667 ms |     69.661 ms |     829586 B |
+|        EFCore - Retrieving single element with joining tables using AsNoTracking() and AsSplitQuery() |     1000 |     20.140 ms |   0.0387 ms |     0.1954 ms |     20.109 ms |     401642 B |
+|                         EFCore - Retrieving single element with joining tables using explicit loading |     1000 |     69.083 ms |   0.1026 ms |     0.5151 ms |     69.025 ms |     807160 B |
+|                   EFCore - Retrieving single element with joining tables using LINQ Select projection |     1000 |            NA |          NA |            NA |            NA |            - |
+|          Dapper - Retrieving single element with joining tables using raw SQL multi-query with Dapper |     1000 |            NA |          NA |            NA |            NA |            - |
+
+
+
+**Benchmarks with issues:**
   SqlServerQueryBenchmarks.'EFCore - Retrieving single element with joining tables using LINQ Select projection': ShortRun(IterationCount=3, LaunchCount=1, WarmupCount=3) [PageSize=100]
   SqlServerQueryBenchmarks.'Dapper - Retrieving single element with joining tables using raw SQL multi-query with Dapper': ShortRun(IterationCount=3, LaunchCount=1, WarmupCount=3) [PageSize=100]
   SqlServerQueryBenchmarks.'EFCore - Retrieving single element with joining tables using LINQ Select projection': ShortRun(IterationCount=3, LaunchCount=1, WarmupCount=3) [PageSize=1000]
   SqlServerQueryBenchmarks.'Dapper - Retrieving single element with joining tables using raw SQL multi-query with Dapper': ShortRun(IterationCount=3, LaunchCount=1, WarmupCount=3) [PageSize=1000]
+  SqlServerQueryBenchmarks.'EFCore - Retrieving single element with joining tables using LINQ Select projection': LongRun(IterationCount=100, LaunchCount=3, WarmupCount=15) [PageSize=100]
+  SqlServerQueryBenchmarks.'Dapper - Retrieving single element with joining tables using raw SQL multi-query with Dapper': LongRun(IterationCount=100, LaunchCount=3, WarmupCount=15) [PageSize=100]
+  SqlServerQueryBenchmarks.'EFCore - Retrieving paginated rows joining tables using AsSplitQuery()': LongRun(IterationCount=100, LaunchCount=3, WarmupCount=15) [PageSize=1000]
+  SqlServerQueryBenchmarks.'EFCore - Retrieving single element with joining tables using LINQ Select projection': LongRun(IterationCount=100, LaunchCount=3, WarmupCount=15) [PageSize=1000]
+  SqlServerQueryBenchmarks.'Dapper - Retrieving single element with joining tables using raw SQL multi-query with Dapper': LongRun(IterationCount=100, LaunchCount=3, WarmupCount=15) [PageSize=1000]
