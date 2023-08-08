@@ -9,13 +9,13 @@ namespace Xelit3.Playground.BlazorWasm.Server.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class UsersController : ControllerBase
+public class UserController : ControllerBase
 {
 
     private readonly EFTestDataContext _dbContext;
 
 
-    public UsersController(EFTestDataContext eFTestDataContext)
+    public UserController(EFTestDataContext eFTestDataContext)
     {
         _dbContext = eFTestDataContext;
     }

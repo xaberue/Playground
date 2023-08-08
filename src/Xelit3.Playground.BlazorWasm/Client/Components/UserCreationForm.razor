@@ -1,0 +1,61 @@
+﻿@using Xelit3.Playground.BlazorWasm.Shared
+@inject HttpClient Http
+
+
+<h3>Add new user</h3>
+
+
+<div class="modal" tabindex="-1" style="display:block" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Create new user</h3>                
+                <button type="button" class="close"
+                @onclick="OnCloseAsync">
+                    <span aria-hidden="true">X</span>
+                </button>
+            </div>
+            
+            <div class="modal-body">
+                <select class="form-control" @bind="userCreationDto.OriginId">
+                    @if (Countries != null)
+                    {
+                        @foreach (var cnt in Countries)
+                        {
+                            <option value="@cnt.Id">@cnt.Name</option>
+                        }
+                    }
+                </select>
+
+                <input class="form-control" type="text" placeholder="User name" @bind="userCreationDto.Name" />
+                <input class="form-control" type="text" placeholder="User surname" @bind="userCreationDto.Surname" />
+                <input class="form-control" type="date" placeholder="User name" @bind="userCreationDto.BirthDate" min="1900-01-01" />
+
+                <br />
+                <button class="btn btn-primary" @onclick="OnSaveAsync"> Save</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+@code {
+
+    [Parameter]
+    public CountryDto[]? Countries { get; set; }
+    private UserCreationDto userCreationDto = new();
+
+    [Parameter]
+    public EventCallback<(bool Success, UserCreationDto? User)> Close { get; set; }
+        
+    private async Task OnCloseAsync()
+    {
+        await this.Close.InvokeAsync((false, null));
+    }
+
+    private async Task OnSaveAsync()
+    {
+        await this.Close.InvokeAsync((true, userCreationDto));
+    }
+}

@@ -1,9 +1,9 @@
 ﻿@page "/users"
+@using Xelit3.Playground.BlazorWasm.Client.Components
 @using Xelit3.Playground.BlazorWasm.Shared
 @inject HttpClient Http
 
 <PageTitle>Users</PageTitle>
-
 
 
 <h1>Users</h1>
@@ -41,6 +41,10 @@ else
 <button class="btn btn-secondary" @onclick="NextPage" disabled=@nextDisabled>Next</button>
 <button class="btn btn-primary" @onclick="AddUser">Add</button>
 
+@if (addingUserOpened)
+{
+    <UserCreationForm Countries="countries" Close="OnCloseUserCreationForm"></UserCreationForm>
+}
 
 
 @code {
@@ -48,19 +52,23 @@ else
     private int page = 0;
     private int pageSize = 25;    
     private UserDto[]? users;
+    private CountryDto[]? countries;
     private bool prevDisabled = true;
     private bool nextDisabled = false;
+    private bool addingUserOpened = false;
 
 
     protected override async Task OnInitializedAsync()
     {
         await ChangePage(0);
+        await LoadCountries();
     }
 
 
     private void AddUser()
     {
-
+        //TODO: Open dialog for creating a new user
+        ChangeUserCreationFormVisibility();
     }
 
     private async Task PrevPage() => await ChangePage(-1);
@@ -70,12 +78,29 @@ else
     private async Task ChangePage(int pageDiff)
     {
         page += pageDiff;
-        users = await Http.GetFromJsonAsync<UserDto[]>($"users/paginated?page={page}&size={pageSize}");
+        users = await Http.GetFromJsonAsync<UserDto[]>($"user/paginated?page={page}&size={pageSize}");
 
         prevDisabled = (page == 0);
         nextDisabled = (users?.Count() < pageSize);
     }
 
+    private async Task LoadCountries()
+    {
+        countries = await Http.GetFromJsonAsync<CountryDto[]>($"country");
+    }
 
+    private async Task OnCloseUserCreationForm((bool Success, UserCreationDto? User) args)
+    {
+        ChangeUserCreationFormVisibility();
+
+        await Http.PostAsJsonAsync<UserCreationDto>($"user", args.User!);
+
+        ChangePage(0);
+    }
+
+    private void ChangeUserCreationFormVisibility()
+    {
+        addingUserOpened = !addingUserOpened;
+    }
 
 }
