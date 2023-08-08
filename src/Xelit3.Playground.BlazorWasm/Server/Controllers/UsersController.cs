@@ -22,27 +22,25 @@ public class UsersController : ControllerBase
 
 
     [HttpGet]
-    public IActionResult GetAll()
+    public ActionResult<IAsyncEnumerable<UserDto>> GetAll()
     {
         var users = _dbContext.Persons
-            .Include(x => x.Origin)
-            .ToList();
+            .Select(x => new UserDto(x.Id, $"{x.Name} {x.Surname}", x.Origin.Name ?? "Unknown", x.BirthDate))
+            .AsAsyncEnumerable();
 
-        return Ok(users
-            .Select(x => new UserDto(x.Id, $"{x.Name} {x.Surname}", x.Origin?.Name ?? "Unknown", x.BirthDate)));
+        return Ok(users);
     }
 
     [HttpGet("paginated")]
-    public IActionResult GetAll(int page, int size)
+    public ActionResult<IAsyncEnumerable<UserDto>> GetAll(int page, int size)
     {
         var users = _dbContext.Persons
-            .Include(x => x.Origin)
             .OrderBy(x => x.Name)
             .Skip(size * page).Take(size)
-            .ToList();
+            .Select(x => new UserDto(x.Id, $"{x.Name} {x.Surname}", x.Origin.Name ?? "Unknown", x.BirthDate))
+            .AsAsyncEnumerable();
 
-        return Ok(users
-            .Select(x => new UserDto(x.Id, $"{x.Name} {x.Surname}", x.Origin?.Name ?? "Unknown", x.BirthDate)));
+        return Ok(users);
     }
 
 
