@@ -1,0 +1,57 @@
+﻿@page "/students-simple"
+
+@using Microsoft.AspNetCore.Components.QuickGrid
+@using Xelit3.Playground.Blazor.QuickGrid.Models;
+@using Xelit3.Playground.Blazor.QuickGrid.Services;
+
+
+@inject StudentService studentService;
+
+<h2>QuickGrid Simple sample</h2>
+
+@if (!initialLoad)
+{
+    <select @onchange="@OnStudentSelected">
+        @foreach (var student in students)
+        {
+            <option value="@student.Id">@student.Name</option>
+        }
+    </select>
+
+    @if (!gridLoad)
+    {
+        <QuickGrid Items="@subjects">
+            <PropertyColumn Property="@(s => s.Name)" Sortable="true" />
+            <PropertyColumn Property="@(s => s.Teacher)" Sortable="true" />
+            <PropertyColumn Property="@(s => s.QualificationAverage)" Sortable="true" />
+        </QuickGrid>
+    }
+}
+
+
+@code {
+
+    private bool initialLoad = true;
+    private bool gridLoad = true;
+    private IEnumerable<Student> students = Enumerable.Empty<Student>();
+    private IQueryable<Subject> subjects = Enumerable.Empty<Subject>().AsQueryable();
+
+    
+
+
+    protected override void OnInitialized()
+    {
+        students = studentService.GetAll();
+        initialLoad = false;
+    }
+
+    public void OnStudentSelected(ChangeEventArgs args)
+    {
+        gridLoad = true;
+        var selectedStudentId = int.Parse(args.Value.ToString());
+
+        subjects = students.First(x => x.Id == selectedStudentId).Subjects.AsQueryable();
+        gridLoad = false;
+    }
+
+}

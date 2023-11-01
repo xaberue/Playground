@@ -1,0 +1,63 @@
+﻿@page "/students-dynamic-columns"
+
+@using Microsoft.AspNetCore.Components.QuickGrid
+@using Xelit3.Playground.Blazor.QuickGrid.Models;
+@using Xelit3.Playground.Blazor.QuickGrid.Services;
+
+
+@inject StudentService studentService;
+
+<h2>QuickGrid sample with dynamic columns</h2>
+
+@if (!initialLoad)
+{
+    <select @onchange="@OnSubjectSelected">
+        @foreach (var subject in subjects)
+        {
+            <option value="@subject.Id">@subject.Name</option>
+        }
+    </select>
+
+    @if (!gridLoad)
+    {
+        <QuickGrid Items="@Students">
+            @Columns()
+        </QuickGrid>
+    }
+}
+
+
+@code {
+
+    private bool initialLoad = true;
+    private bool gridLoad = true;
+    private IEnumerable<Student> students = Enumerable.Empty<Student>();
+    private IEnumerable<Subject> subjects = Enumerable.Empty<Subject>();
+
+    private IQueryable<Student> Students => students.AsQueryable();
+
+
+    protected override void OnInitialized()
+    {
+        students = studentService.GetAll();
+        subjects = students.SelectMany(x => x.Subjects).Distinct(SubjectComparer.Create()).ToList();
+        initialLoad = false;
+    }
+
+    public void OnSubjectSelected(ChangeEventArgs args)
+    {
+        gridLoad = true;
+        // var selectedStudentId = int.Parse(args.Value.ToString());
+
+        gridLoad = false;
+    }
+
+    private RenderFragment Columns() =>
+    @<text>
+        @if (students.Any())
+        {
+            <PropertyColumn TGridItem="Student" TProp="string" Property="@(f => f.Name)" Sortable="true" />
+        }
+    </text>;
+
+}
