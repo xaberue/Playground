@@ -20,7 +20,7 @@
 
     @if (!gridLoad)
     {
-        <QuickGrid Items="@Students">
+        <QuickGrid Items="@StudentsSubjectQualifications">
             @Columns()
         </QuickGrid>
     }
@@ -31,10 +31,12 @@
 
     private bool initialLoad = true;
     private bool gridLoad = true;
+    private IEnumerable<DateTime> examDates = Enumerable.Empty<DateTime>();
     private IEnumerable<Student> students = Enumerable.Empty<Student>();
     private IEnumerable<Subject> subjects = Enumerable.Empty<Subject>();
+    private IEnumerable<StudentSubjectQualifications> studentsSubjectQualifications = Enumerable.Empty<StudentSubjectQualifications>();
 
-    private IQueryable<Student> Students => students.AsQueryable();
+    private IQueryable<StudentSubjectQualifications> StudentsSubjectQualifications => studentsSubjectQualifications.AsQueryable();
 
 
     protected override void OnInitialized()
@@ -47,17 +49,30 @@
     public void OnSubjectSelected(ChangeEventArgs args)
     {
         gridLoad = true;
-        // var selectedStudentId = int.Parse(args.Value.ToString());
+
+        var subjectId = int.Parse(args.Value.ToString());
+        var test = students.Select(x =>
+        {
+            var subject = x.Subjects.First(y => y.Id == subjectId);
+            examDates = subject.Exams.Select(y => y.Date);
+
+            return new StudentSubjectQualifications(x.Name, subject.QualificationAverage, subject.Exams);
+        });
 
         gridLoad = false;
     }
 
+    //TODO: Dynamic columns based on the qualifications. Each subject can have 'n' examns, so then columns must be dynamics
     private RenderFragment Columns() =>
-    @<text>
-        @if (students.Any())
-        {
-            <PropertyColumn TGridItem="Student" TProp="string" Property="@(f => f.Name)" Sortable="true" />
-        }
-    </text>;
+        @<text>
+            @if (studentsSubjectQualifications.Any())
+            {
+                <PropertyColumn TGridItem="StudentSubjectQualifications" TProp="string" Property="@(f => f.Name)" Sortable="true" />
+                @foreach(var examDate in examDates)
+                {
+                    <PropertyColumn TGridItem="StudentSubjectQualifications" TProp="double" Property="@(f => f.Exams!.First(x => x.Date == examDate).Qualification)" Sortable="true" />
+                }
+            }
+        </text>;
 
 }

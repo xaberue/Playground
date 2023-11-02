@@ -13,6 +13,8 @@ public record Subject(int Id, string Name, string Teacher, IList<Exam> Exams)
     
 }
 
+public record StudentSubjectQualifications(string Name, double Average, IList<Exam> Exams);
+
 public class SubjectComparer : IEqualityComparer<Subject>
 {
     public bool Equals(Subject? x, Subject? y)
