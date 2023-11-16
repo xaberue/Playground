@@ -1,4 +1,4 @@
-﻿using Xelit3.Playground.Users.WebApi.Enums;
+﻿using Xelit3.Playground.Users.Shared.Enums;
 
 namespace Xelit3.Playground.Users.WebApi.Models;
 

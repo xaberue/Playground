@@ -13,4 +13,8 @@
 		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <ProjectReference Include="..\Xelit3.Playground.Users.Shared\Xelit3.Playground.Users.Shared.csproj" />
+	</ItemGroup>
+
 </Project>

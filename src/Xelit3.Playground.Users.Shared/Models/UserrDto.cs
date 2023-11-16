@@ -1,6 +1,6 @@
-﻿using Xelit3.Playground.Users.WebApi.Enums;
+﻿using Xelit3.Playground.Users.Shared.Enums;
 
-namespace Xelit3.Playground.Users.WebApi.Models;
+namespace Xelit3.Playground.Users.Shared.Models;
 
 
 public record UserDto(int Id, string Name, string Surname, string Email, DateTime BirthDate, RoleType Role);
