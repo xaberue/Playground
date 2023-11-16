@@ -39,9 +39,12 @@ public class User
         BirthDate = birthDate;
     }
 
-    public void UpdatePassword(string password)
+    public void UpdatePassword(string password, string confirmPassword)
     {
         Password = password;
     }
+
+    public bool IsUnder18() => BirthDate > DateTime.Now.AddYears(-18);
+
 
 }
