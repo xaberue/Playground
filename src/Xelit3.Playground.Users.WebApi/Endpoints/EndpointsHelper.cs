@@ -10,15 +10,15 @@ public static class EndpointsHelper
 {
     internal static void SetupEndpoints(this WebApplication app)
     {
-        app.MapGet("/users", (UsersDbContext dbContext) =>
+        app.MapGet("/users", async (UsersDbContext dbContext) =>
         {
-            var users = dbContext.Users
+            var users = await dbContext.Users
                 .Select(x => new UserDto(x.Id, x.Name, x.Surname, x.Email, x.BirthDate, x.Role))
                 .ToListAsync();
 
             return Results.Ok(users);
         })
-        .WithName("GetUsers")
+        .WithName("GetUsers")        
         .WithOpenApi();
 
         app.MapGet("/users/{id}", async (int id, UsersDbContext dbContext) =>
@@ -36,12 +36,12 @@ public static class EndpointsHelper
         .WithName("GetUser")
         .WithOpenApi();
 
-        app.MapPost("/users", (CreateUserDto userDto, UsersDbContext dbContext) =>
+        app.MapPost("/users", async (CreateUserDto userDto, UsersDbContext dbContext) =>
         {
             var user = new User(userDto.Name, userDto.Surname, userDto.Email, userDto.Password, userDto.BirthDate);
 
-            dbContext.Users.Add(user);
-            dbContext.SaveChanges();
+            await dbContext.Users.AddAsync(user);
+            await dbContext.SaveChangesAsync();
 
             return Results.Created();
         })
@@ -60,7 +60,7 @@ public static class EndpointsHelper
             user.Update(userDto.Name, userDto.Surname, userDto.Email, userDto.BirthDate);
 
             dbContext.Users.Update(user);
-            dbContext.SaveChanges();
+            await dbContext.SaveChangesAsync();
 
             return Results.Ok();
         })
@@ -77,7 +77,7 @@ public static class EndpointsHelper
             }
 
             dbContext.Users.Remove(user);
-            dbContext.SaveChanges();
+            await dbContext.SaveChangesAsync();
 
             return Results.NoContent();
         })
