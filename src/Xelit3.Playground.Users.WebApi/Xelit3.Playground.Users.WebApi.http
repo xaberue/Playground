@@ -1,0 +1,42 @@
+@Xelit3.Playground.Users.WebApi_HostAddress = http://localhost:5041
+
+GET {{Xelit3.Playground.Users.WebApi_HostAddress}}/users/
+Accept: application/json
+
+###
+
+GET {{Xelit3.Playground.Users.WebApi_HostAddress}}/users/1
+Accept: application/json
+
+###
+
+POST {{Xelit3.Playground.Users.WebApi_HostAddress}}/users/
+Content-Type: application/json
+
+{
+  "name": "John",
+  "surname": "Doe",
+  "email": "john.doe@email.com",
+  "password": "Test.1234!",
+  "birthDate": "1980-01-01"
+}
+
+###
+
+PUT {{Xelit3.Playground.Users.WebApi_HostAddress}}/users/
+Content-Type: application/json
+
+{
+  "id": 2,
+  "name": "Xavier",
+  "surname": "Abelaira",
+  "email": "xavier.abelaira@email.com",
+  "birthDate": "1987-09-10"
+}
+
+###
+
+DELETE {{Xelit3.Playground.Users.WebApi_HostAddress}}/users/3
+Accept: application/json
+
+###
