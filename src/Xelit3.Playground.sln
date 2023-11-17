@@ -54,9 +54,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4. Testing Strategy", "4. T
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xelit3.Playground.Users.WebApi", "Xelit3.Playground.Users.WebApi\Xelit3.Playground.Users.WebApi.csproj", "{E3A1391B-9021-41EC-A773-5A031A1D3AB2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xelit3.Playground.Users.WebUI", "Xelit3.Playground.Users.WebUI\Xelit3.Playground.Users.WebUI.csproj", "{8B9C87A1-0572-48E4-A4DE-CC87B861C35A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xelit3.Playground.Users.WebUI", "Xelit3.Playground.Users.WebUI\Xelit3.Playground.Users.WebUI.csproj", "{8B9C87A1-0572-48E4-A4DE-CC87B861C35A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xelit3.Playground.Users.Shared", "Xelit3.Playground.Users.Shared\Xelit3.Playground.Users.Shared.csproj", "{F6E9EF93-449A-45A8-AD9E-BC00DB7E77E0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xelit3.Playground.Users.Shared", "Xelit3.Playground.Users.Shared\Xelit3.Playground.Users.Shared.csproj", "{F6E9EF93-449A-45A8-AD9E-BC00DB7E77E0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

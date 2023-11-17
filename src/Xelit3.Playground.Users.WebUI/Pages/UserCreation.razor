@@ -1,6 +1,7 @@
 ﻿@page "/new-user"
 
 <h3>New User</h3>
+
 <div>
     <button class="btn btn-secondary" @onclick="Back">Back</button>
 </div>
@@ -35,6 +36,7 @@
     private HttpClient ApiClient { get; set; }
 
     private CreateUserDto Model = new CreateUserDto();
+
 
     private async Task SubmitAsync()
     {

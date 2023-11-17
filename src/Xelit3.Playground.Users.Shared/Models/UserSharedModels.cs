@@ -24,4 +24,3 @@ public record CreateUserDto
 
 
 public record UpdateUserDto(int Id, string Name, string Surname, string Email, DateTime BirthDate);
-
