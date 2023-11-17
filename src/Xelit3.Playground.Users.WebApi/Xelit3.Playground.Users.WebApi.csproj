@@ -14,7 +14,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\Xelit3.Playground.Users.Shared\Xelit3.Playground.Users.Shared.csproj" />
+		<ProjectReference Include="..\Xelit3.Playground.Users.Shared\Xelit3.Playground.Users.Shared.csproj" />
 	</ItemGroup>
 
 </Project>
