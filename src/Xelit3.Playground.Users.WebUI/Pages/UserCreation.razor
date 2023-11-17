@@ -1,0 +1,49 @@
+﻿@page "/new-user"
+
+<h3>New User</h3>
+<div>
+    <button class="btn btn-secondary" @onclick="Back">Back</button>
+</div>
+<div>
+    <EditForm class="form-container" Model="@Model" OnValidSubmit="@SubmitAsync">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <label for="Name">Name</label>
+        <InputText @bind-Value="Model!.Name" />
+        <label for="Name">Surname</label>
+        <InputText @bind-Value="Model!.Surname" />
+        <label for="Name">Email</label>
+        <InputText type="email" @bind-Value="Model!.Email" />
+        <label for="Name">Password</label>
+        <InputText type="password" @bind-Value="Model!.Password" />
+        <label for="Name">BirthDate</label>
+        <InputDate @bind-Value="Model!.BirthDate" />
+
+        <button class="btn btn-primary" type="submit">Submit</button>
+    </EditForm>
+</div>
+
+
+
+@code {
+
+    [Inject]
+    private NavigationManager Navigation { get; set; }
+
+    [Inject]
+    private HttpClient ApiClient { get; set; }
+
+    private CreateUserDto Model = new CreateUserDto();
+
+    private async Task SubmitAsync()
+    {
+        await ApiClient.PostAsJsonAsync<CreateUserDto>("users", Model);
+    }
+
+    private void Back()
+    {
+        Navigation.NavigateTo("users");
+    }
+
+}
