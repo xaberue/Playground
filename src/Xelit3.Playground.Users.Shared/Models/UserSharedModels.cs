@@ -23,4 +23,13 @@ public record CreateUserDto
 }
 
 
-public record UpdateUserDto(int Id, string Name, string Surname, string Email, DateTime BirthDate);
+public record UpdateUserDto
+{
+    [Required]
+    public int Id { get; set; }
+    [Required]
+    public string Name { get; set; } = null!;
+    public string Surname { get; set; } = null!;
+    public string Email { get; set; } = null!;
+    public DateTime BirthDate { get; set; }
+}
