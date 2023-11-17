@@ -41,6 +41,8 @@
     private async Task SubmitAsync()
     {
         await ApiClient.PostAsJsonAsync<CreateUserDto>("users", Model);
+
+        Back();
     }
 
     private void Back()

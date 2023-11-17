@@ -21,7 +21,8 @@ else
         <PropertyColumn Property="@(p => p.Name)" Sortable="true" />
         <PropertyColumn Property="@(p => p.Surname)" Sortable="true" />
         <PropertyColumn Property="@(p => p.Email)" Sortable="true" />
-        <PropertyColumn Property="@(p => p.BirthDate)" Format="yyyy-MM-dd" Sortable="true" />
+        <PropertyColumn Property="@(p => p.BirthDate)" Title="Date of Birth" Format="yyyy-MM-dd" Sortable="true" />
+        <PropertyColumn Property="@(p => p.IsAdult)" Title="Is Adult" />
         <TemplateColumn Title="Actions">
             <button class="btn btn-secondary" @onclick="@(() => Edit(context))">Edit</button>
             <button class="btn btn-danger" @onclick="@(() => DeleteAsync(context))">Delete</button>
@@ -66,7 +67,9 @@ else
 
     private async Task DeleteAsync(UserDto user)
     {
-        await ApiClient.DeleteAsync($"users{user.Id}");
+        await ApiClient.DeleteAsync($"users/{user.Id}");
+
+        await RefreshAsync();
     }
 
     private async Task RefreshAsync()

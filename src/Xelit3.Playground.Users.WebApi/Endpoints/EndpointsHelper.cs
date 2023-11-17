@@ -13,7 +13,7 @@ public static class EndpointsHelper
         app.MapGet("/users", async (UsersDbContext dbContext) =>
         {
             var users = await dbContext.Users
-                .Select(x => new UserDto(x.Id, x.Name, x.Surname, x.Email, x.BirthDate, x.Role))
+                .Select(x => new UserDto(x.Id, x.Name, x.Surname, x.Email, x.BirthDate, !x.IsUnder18(), x.Role))
                 .ToListAsync();
 
             return Results.Ok(users);
@@ -29,7 +29,7 @@ public static class EndpointsHelper
             {
                 return Results.NotFound();
             }
-            var dto = new UserDto(entity.Id, entity.Name, entity.Surname, entity.Email, entity.BirthDate, entity.Role);
+            var dto = new UserDto(entity.Id, entity.Name, entity.Surname, entity.Email, entity.BirthDate, !entity.IsUnder18(), entity.Role);
 
             return Results.Ok(dto);
         })

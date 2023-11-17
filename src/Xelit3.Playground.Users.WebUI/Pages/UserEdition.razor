@@ -56,6 +56,8 @@
     private async Task SubmitAsync()
     {
         await ApiClient.PutAsJsonAsync<UpdateUserDto>("users", Model);
+
+        Back();
     }
 
     private void Back()

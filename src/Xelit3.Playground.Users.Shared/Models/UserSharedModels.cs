@@ -4,7 +4,7 @@ using Xelit3.Playground.Users.Shared.Enums;
 namespace Xelit3.Playground.Users.Shared.Models;
 
 
-public record UserDto(int Id, string Name, string Surname, string Email, DateTime BirthDate, RoleType Role);
+public record UserDto(int Id, string Name, string Surname, string Email, DateTime BirthDate, bool IsAdult, RoleType Role);
 
 
 public record CreateUserDto 
