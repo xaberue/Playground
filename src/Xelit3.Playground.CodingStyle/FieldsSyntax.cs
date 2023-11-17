@@ -16,16 +16,25 @@ public interface IUserService
 public class UserController
 {
 
+    /*
+     * Option 1: Using underscore
+     * Option 2: Using this
+     * Option 3: Using a property
+     */
+
     private readonly IUserService _userService;
 
     private readonly IUserService userService;
-
-    private object? UserSomething;
+    private IUserService UserService { get; set; }
 
 
     public UserController(IUserService userService)
     {
-        this.userService = userService;
+        _userService = userService;
+
+        this.userService = userService;        
+        
+        UserService = userService;
     }
 
 
