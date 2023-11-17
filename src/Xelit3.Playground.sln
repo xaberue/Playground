@@ -21,6 +21,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xelit3.Playground.AspNetCor
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5. Documentation", "5. Documentation", "{50E4A80A-FAB5-497D-9E54-047417409F96}"
 	ProjectSection(SolutionItems) = preProject
+		.editorConfig = .editorConfig
 		..\README.md = ..\README.md
 	EndProjectSection
 EndProject
