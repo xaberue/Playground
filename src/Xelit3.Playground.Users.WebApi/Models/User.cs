@@ -41,6 +41,9 @@ public class User
 
     public void UpdatePassword(string password, string confirmPassword)
     {
+        if(password != confirmPassword)
+            throw new ArgumentException("Password and confirmation password must be equals");
+
         Password = password;
     }
 

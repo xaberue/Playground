@@ -59,6 +59,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xelit3.Playground.Users.Web
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xelit3.Playground.Users.Shared", "Xelit3.Playground.Users.Shared\Xelit3.Playground.Users.Shared.csproj", "{F6E9EF93-449A-45A8-AD9E-BC00DB7E77E0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xelit3.Playground.Users.Tests", "Xelit3.Playground.Users.Tests\Xelit3.Playground.Users.Tests.csproj", "{D5946A0D-1048-4B01-8A8C-9572423A8EDF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -129,6 +131,10 @@ Global
 		{F6E9EF93-449A-45A8-AD9E-BC00DB7E77E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F6E9EF93-449A-45A8-AD9E-BC00DB7E77E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F6E9EF93-449A-45A8-AD9E-BC00DB7E77E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5946A0D-1048-4B01-8A8C-9572423A8EDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5946A0D-1048-4B01-8A8C-9572423A8EDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5946A0D-1048-4B01-8A8C-9572423A8EDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5946A0D-1048-4B01-8A8C-9572423A8EDF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -155,6 +161,7 @@ Global
 		{E3A1391B-9021-41EC-A773-5A031A1D3AB2} = {3EFBA585-5B3B-4508-901C-4E0E359FAE10}
 		{8B9C87A1-0572-48E4-A4DE-CC87B861C35A} = {3EFBA585-5B3B-4508-901C-4E0E359FAE10}
 		{F6E9EF93-449A-45A8-AD9E-BC00DB7E77E0} = {3EFBA585-5B3B-4508-901C-4E0E359FAE10}
+		{D5946A0D-1048-4B01-8A8C-9572423A8EDF} = {3EFBA585-5B3B-4508-901C-4E0E359FAE10}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3BAB64C1-7ACD-4E62-99E7-A6BA6608F82C}
