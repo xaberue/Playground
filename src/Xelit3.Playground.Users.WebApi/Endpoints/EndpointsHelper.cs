@@ -38,31 +38,34 @@ public static class EndpointsHelper
 
         app.MapPost("/users", async (CreateUserDto userDto, UsersDbContext dbContext) =>
         {
-            var user = new User(userDto.Name, userDto.Surname, userDto.Email, userDto.Password, userDto.BirthDate);
+            var entity = new User(userDto.Name, userDto.Surname, userDto.Email, userDto.Password, userDto.BirthDate);
 
-            await dbContext.Users.AddAsync(user);
+            await dbContext.Users.AddAsync(entity);
             await dbContext.SaveChangesAsync();
 
-            return Results.Created();
+            var dto = new UserDto(entity.Id, entity.Name, entity.Surname, entity.Email, entity.BirthDate, !entity.IsUnder18(), entity.Role);
+
+            return Results.Created("CreateUser", dto);
         })
         .WithName("CreateUser")
         .WithOpenApi();
 
         app.MapPut("/users", async (UpdateUserDto userDto, UsersDbContext dbContext) =>
         {
-            var user = await dbContext.Users.FindAsync(userDto.Id);
+            var entity = await dbContext.Users.FindAsync(userDto.Id);
 
-            if (user is null)
+            if (entity is null)
             {
                 return Results.NotFound();
             }
 
-            user.Update(userDto.Name, userDto.Surname, userDto.Email, userDto.BirthDate);
+            entity.Update(userDto.Name, userDto.Surname, userDto.Email, userDto.BirthDate);
 
-            dbContext.Users.Update(user);
             await dbContext.SaveChangesAsync();
 
-            return Results.Ok();
+            var dto = new UserDto(entity.Id, entity.Name, entity.Surname, entity.Email, entity.BirthDate, !entity.IsUnder18(), entity.Role);
+
+            return Results.Ok(dto);
         })
         .WithName("ModifyUser")
         .WithOpenApi();
