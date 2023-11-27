@@ -10,8 +10,8 @@
         <DataAnnotationsValidator />
         <ValidationSummary />
 
-        <label for="Name">Name</label>
-        <InputText @bind-Value="Model!.Name" />
+        <label for="name">Name</label>
+        <InputText id="form-input-name" name="name" @bind-Value="Model!.Name" />
         <label for="Name">Surname</label>
         <InputText @bind-Value="Model!.Surname" />
         <label for="Name">Email</label>
