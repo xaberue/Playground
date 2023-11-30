@@ -36,11 +36,11 @@ public class Tests : PageTest
         
         await addUserButton.ClickAsync();
 
-        var nameInput = Page.GetByRole(AriaRole.Textbox, new() { Name = "Name" }).FillAsync("John");
-        var surnameInput = Page.GetByRole(AriaRole.Textbox, new() { Name = "Surname" }).FillAsync("Doe");
-        var emailInput = Page.GetByRole(AriaRole.Textbox, new() { Name = "Email" }).FillAsync("john.doe@email.com");
-        var passwordInput = Page.GetByRole(AriaRole.Textbox, new() { Name = "Password" }).FillAsync("123456");
-        var birthdateInput = Page.GetByRole(AriaRole.Textbox, new() { Name = "BirthDate" }).FillAsync("02/02/2001");
+        await Page.Locator("#form-input-name").FillAsync("John");
+        await Page.Locator("#form-input-surname").FillAsync("asdasd");
+        await Page.Locator("#form-input-email").FillAsync("john.doe@email.com");
+        await Page.Locator("#form-input-password").FillAsync("Pwd1234!");
+        await Page.Locator("#form-input-birthdate").FillAsync("2001-01-01");
 
         var submitUser = Page.GetByRole(AriaRole.Button, new() { Name = "Submit" });
 
