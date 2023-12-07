@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xelit3.Playground.Blazor.BZ
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xelit3.Playground.Blazor.BZorise.Tailwind", "src\Xelit3.Playground.Blazor.BZorise.Tailwind\Xelit3.Playground.Blazor.BZorise.Tailwind.csproj", "{D4E67DCF-C5E5-4C83-94EF-2B0E617CFE44}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xelit3.Playground.Blazor.MDBlazor", "src\Xelit3.Playground.Blazor.MDBlazor\Xelit3.Playground.Blazor.MDBlazor.csproj", "{36B902DB-421E-48A3-902E-44A0C82136FE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{D4E67DCF-C5E5-4C83-94EF-2B0E617CFE44}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D4E67DCF-C5E5-4C83-94EF-2B0E617CFE44}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D4E67DCF-C5E5-4C83-94EF-2B0E617CFE44}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36B902DB-421E-48A3-902E-44A0C82136FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36B902DB-421E-48A3-902E-44A0C82136FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36B902DB-421E-48A3-902E-44A0C82136FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36B902DB-421E-48A3-902E-44A0C82136FE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
