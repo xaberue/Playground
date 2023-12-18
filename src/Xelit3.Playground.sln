@@ -19,7 +19,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2. Benchmarks", "2. Benchma
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xelit3.Playground.AspNetCore.AppSettings", "Xelit3.Playground.AspNetCore.AppSettings\Xelit3.Playground.AspNetCore.AppSettings.csproj", "{3CBED3E3-1844-4323-96FF-37B79F27A255}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6. Documentation", "6. Documentation", "{50E4A80A-FAB5-497D-9E54-047417409F96}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5. Documentation", "5. Documentation", "{50E4A80A-FAB5-497D-9E54-047417409F96}"
 	ProjectSection(SolutionItems) = preProject
 		.editorConfig = .editorConfig
 		..\README.md = ..\README.md
@@ -61,7 +61,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xelit3.Playground.Users.Sha
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xelit3.Playground.Users.Tests", "Xelit3.Playground.Users.Tests\Xelit3.Playground.Users.Tests.csproj", "{D5946A0D-1048-4B01-8A8C-9572423A8EDF}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5. APIs", "5. APIs", "{D6750043-FF2C-4A4A-A83F-D22B0C2F1FA7}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6. APIs", "6. APIs", "{D6750043-FF2C-4A4A-A83F-D22B0C2F1FA7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xelit3.Playground.API.Grpc", "Xelit3.Playground.API.Grpc\Xelit3.Playground.API.Grpc.csproj", "{57DF47B1-D4DC-4BB0-9C26-F6783A7D12BE}"
 EndProject
@@ -170,6 +170,7 @@ Global
 		{8B9C87A1-0572-48E4-A4DE-CC87B861C35A} = {3EFBA585-5B3B-4508-901C-4E0E359FAE10}
 		{F6E9EF93-449A-45A8-AD9E-BC00DB7E77E0} = {3EFBA585-5B3B-4508-901C-4E0E359FAE10}
 		{D5946A0D-1048-4B01-8A8C-9572423A8EDF} = {3EFBA585-5B3B-4508-901C-4E0E359FAE10}
+		{D6750043-FF2C-4A4A-A83F-D22B0C2F1FA7} = {974129EE-4601-4759-82B9-8A8C345D05D1}
 		{57DF47B1-D4DC-4BB0-9C26-F6783A7D12BE} = {D6750043-FF2C-4A4A-A83F-D22B0C2F1FA7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
