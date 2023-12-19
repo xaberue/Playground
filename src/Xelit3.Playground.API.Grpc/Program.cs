@@ -9,7 +9,7 @@ builder.Services.AddDbContext<ToDoDataContext>(opt => {
     opt.UseSqlite("Data Source=ToDoDatabase.db");
 });
 
-builder.Services.AddGrpc();
+builder.Services.AddGrpc().AddJsonTranscoding();
 
 
 var app = builder.Build();
