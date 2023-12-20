@@ -10,10 +10,12 @@ builder.Services.AddDbContext<ToDoDataContext>(opt => {
 });
 
 builder.Services.AddGrpc().AddJsonTranscoding();
+builder.Services.AddGrpcReflection();
 
 
 var app = builder.Build();
 
 app.MapGrpcService<TodoService>();
+app.MapGrpcReflectionService();
 
 app.Run();
