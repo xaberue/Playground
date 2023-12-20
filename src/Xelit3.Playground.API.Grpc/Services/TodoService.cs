@@ -1,5 +1,4 @@
-﻿using Google.Protobuf.WellKnownTypes;
-using Grpc.Core;
+﻿using Grpc.Core;
 using Microsoft.EntityFrameworkCore;
 using Xelit3.Playground.API.Grpc.Data;
 using Xelit3.Playground.API.Grpc.Models;
@@ -20,14 +19,14 @@ public class TodoService : ToDo.ToDoBase
     }
 
 
-    public override async Task<GetMultipleToDoResponse> GetAllToDo(GetAllToDoRequest request, ServerCallContext context)
+    public override async Task GetAllToDo(GetAllToDoRequest request, IServerStreamWriter<ToDoResponse> responseStream, ServerCallContext context)
     {
         var items = await _context.ToDoItems.ToListAsync();
-        var response = new GetMultipleToDoResponse();
+        var response = new ToDoCollectionResponse();
 
         foreach (var item in items)
         {
-            response.ToDos.Add(new GetSingleToDoResponse
+            await responseStream.WriteAsync(new ToDoResponse
             {
                 Id = item.Id,
                 Title = item.Title,
@@ -35,15 +34,13 @@ public class TodoService : ToDo.ToDoBase
                 ToDoStatus = item.Status.ToString()
             });
         }
-
-        return response;
     }
 
-    public override async Task<GetSingleToDoResponse> GetSingleToDo(GetSingleToDoRequest request, ServerCallContext context)
+    public override async Task<ToDoResponse> GetSingleToDo(GetSingleToDoRequest request, ServerCallContext context)
     {
         var item = await _context.ToDoItems.FindAsync(request.Id) ?? throw new RpcException(new Status(StatusCode.NotFound, $"ToDoItem with id {request.Id} not found"));
 
-        return new GetSingleToDoResponse { Id = item.Id, Title = item.Title, Description = item.Description, ToDoStatus = item.Status.ToString() };
+        return new ToDoResponse { Id = item.Id, Title = item.Title, Description = item.Description, ToDoStatus = item.Status.ToString() };
     }
 
     public override async Task<CreateToDoResponse> CreateToDo(CreateToDoRequest request, ServerCallContext context)
@@ -78,4 +75,5 @@ public class TodoService : ToDo.ToDoBase
 
         return await Task.FromResult(new DeleteToDoResponse { Id = request.Id });
     }
+
 }

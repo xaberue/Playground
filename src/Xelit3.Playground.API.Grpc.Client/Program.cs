@@ -16,11 +16,15 @@ var newToDo = new CreateToDoRequest
 var replyCreate = await client.CreateToDoAsync(newToDo);
 
 
-//Get All ToDo
+////Get All ToDo
 
-var allReply = await client.GetAllToDoAsync(
-     new GetAllToDoRequest { }
-     );
+var allTodosStreamResponse = client.GetAllToDo(new GetAllToDoRequest { });
+
+while (await allTodosStreamResponse.ResponseStream.MoveNext(CancellationToken.None))
+{
+    var value = allTodosStreamResponse.ResponseStream.Current;
+    Console.WriteLine($"Id: {value.Id} - Title: {value.Title} - Description: {value.Description} - Status: {value.ToDoStatus}");
+}
 
 
 //Get ToDo by Id
@@ -45,6 +49,7 @@ var removeReply = await client.DeleteToDoAsync(
     new DeleteToDoRequest { Id = replyCreate.Id }
 );
 
+await channel.ShutdownAsync();
 
 Console.WriteLine("Press any key to exit...");
 Console.ReadKey();
