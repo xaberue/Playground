@@ -21,13 +21,21 @@ builder.Services.AddSwaggerGen(x =>
 
 var app = builder.Build();
 
-app.UseSwagger();
-app.UseSwaggerUI(x =>
+if (app.Environment.IsDevelopment())
 {
-    x.SwaggerEndpoint("/swagger/v1/swagger.json", "ToDo API v1");
-});
+    app.UseSwagger();
+
+    app.UseSwaggerUI(x =>
+    {
+        x.SwaggerEndpoint("/swagger/v1/swagger.json", "ToDo API v1");
+    });
+}
 
 app.MapGrpcService<TodoService>();
-app.MapGrpcReflectionService();
+
+if (app.Environment.IsDevelopment())
+{
+    app.MapGrpcReflectionService();
+}
 
 app.Run();
