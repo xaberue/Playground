@@ -21,8 +21,11 @@
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.0">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-		</PackageReference>
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.0" />
+		</PackageReference>		
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\Xelit3.Playground.API.Shared\Xelit3.Playground.API.Shared.csproj" />
 	</ItemGroup>
 
 </Project>

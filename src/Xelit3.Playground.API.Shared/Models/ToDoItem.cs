@@ -25,7 +25,7 @@ public class ToDoItem
     }
 
 
-    internal void Update(string title, string description)
+    public void Update(string title, string description)
     {
         Title = title;
         Description = description;

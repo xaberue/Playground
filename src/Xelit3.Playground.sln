@@ -63,7 +63,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xelit3.Playground.Users.Tes
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6. APIs", "6. APIs", "{D6750043-FF2C-4A4A-A83F-D22B0C2F1FA7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xelit3.Playground.API.Grpc", "Xelit3.Playground.API.Grpc\Xelit3.Playground.API.Grpc.csproj", "{57DF47B1-D4DC-4BB0-9C26-F6783A7D12BE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xelit3.Playground.API.Grpc", "Xelit3.Playground.API.Grpc\Xelit3.Playground.API.Grpc.csproj", "{57DF47B1-D4DC-4BB0-9C26-F6783A7D12BE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xelit3.Playground.API.Shared", "Xelit3.Playground.API.Shared\Xelit3.Playground.API.Shared.csproj", "{99FB3E82-196E-4770-A0B3-860B0D7E7A51}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -143,6 +145,10 @@ Global
 		{57DF47B1-D4DC-4BB0-9C26-F6783A7D12BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{57DF47B1-D4DC-4BB0-9C26-F6783A7D12BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{57DF47B1-D4DC-4BB0-9C26-F6783A7D12BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99FB3E82-196E-4770-A0B3-860B0D7E7A51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99FB3E82-196E-4770-A0B3-860B0D7E7A51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99FB3E82-196E-4770-A0B3-860B0D7E7A51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99FB3E82-196E-4770-A0B3-860B0D7E7A51}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -172,6 +178,7 @@ Global
 		{D5946A0D-1048-4B01-8A8C-9572423A8EDF} = {3EFBA585-5B3B-4508-901C-4E0E359FAE10}
 		{D6750043-FF2C-4A4A-A83F-D22B0C2F1FA7} = {974129EE-4601-4759-82B9-8A8C345D05D1}
 		{57DF47B1-D4DC-4BB0-9C26-F6783A7D12BE} = {D6750043-FF2C-4A4A-A83F-D22B0C2F1FA7}
+		{99FB3E82-196E-4770-A0B3-860B0D7E7A51} = {D6750043-FF2C-4A4A-A83F-D22B0C2F1FA7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3BAB64C1-7ACD-4E62-99E7-A6BA6608F82C}
