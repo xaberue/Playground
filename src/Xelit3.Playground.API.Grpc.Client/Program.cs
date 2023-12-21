@@ -18,7 +18,14 @@ var replyCreate = await client.CreateToDoAsync(newToDo);
 
 ////Get All ToDo
 
-var allTodosStreamResponse = client.GetAllToDo(new GetAllToDoRequest { });
+//Basic
+var allToDosResponse = await client.GetAllToDoAsync(
+     new GetAllToDoRequest { }
+     );
+
+//Stream
+
+var allTodosStreamResponse = client.GetAllToDoStream(new GetAllToDoRequest { });
 
 while (await allTodosStreamResponse.ResponseStream.MoveNext(CancellationToken.None))
 {

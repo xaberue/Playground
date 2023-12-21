@@ -7,18 +7,21 @@ package todo;
 
 service ToDo{
 
-	//Read
+	////Read
 	rpc GetSingleToDo(GetSingleToDoRequest) returns (ToDoResponse) { }
 
-	rpc GetAllToDo(GetAllToDoRequest) returns (stream ToDoResponse) { }
+	rpc GetAllToDo(GetAllToDoRequest) returns (ToDoCollectionResponse) { }
 
-	//Create
+	//Server stream response
+	rpc GetAllToDoStream(GetAllToDoRequest) returns (stream ToDoResponse) { }
+
+	////Create
 	rpc CreateToDo(CreateToDoRequest) returns (CreateToDoResponse) { }
 
-	//Update
+	////Update
 	rpc UpdateToDo(UpdateToDoRequest) returns (UpdateToDoResponse) { }
 
-	//Delete
+	////Delete
 	rpc DeleteToDo(DeleteToDoRequest) returns (DeleteToDoResponse) { }
 
 }

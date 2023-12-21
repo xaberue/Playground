@@ -19,7 +19,33 @@ public class TodoService : ToDo.ToDoBase
     }
 
 
-    public override async Task GetAllToDo(GetAllToDoRequest request, IServerStreamWriter<ToDoResponse> responseStream, ServerCallContext context)
+    public override async Task<ToDoResponse> GetSingleToDo(GetSingleToDoRequest request, ServerCallContext context)
+    {
+        var item = await _context.ToDoItems.FindAsync(request.Id) ?? throw new RpcException(new Status(StatusCode.NotFound, $"ToDoItem with id {request.Id} not found"));
+
+        return new ToDoResponse { Id = item.Id, Title = item.Title, Description = item.Description, ToDoStatus = item.Status.ToString() };
+    }
+
+    public override async Task<ToDoCollectionResponse> GetAllToDo(GetAllToDoRequest request, ServerCallContext context)
+    {
+        var items = await _context.ToDoItems.ToListAsync();
+        var response = new ToDoCollectionResponse();
+
+        foreach (var item in items)
+        {
+            response.ToDos.Add(new ToDoResponse
+            {
+                Id = item.Id,
+                Title = item.Title,
+                Description = item.Description,
+                ToDoStatus = item.Status.ToString()
+            });
+        }
+
+        return response;
+    }
+
+    public override async Task GetAllToDoStream(GetAllToDoRequest request, IServerStreamWriter<ToDoResponse> responseStream, ServerCallContext context)
     {
         var items = await _context.ToDoItems.ToListAsync();
         var response = new ToDoCollectionResponse();
@@ -34,13 +60,6 @@ public class TodoService : ToDo.ToDoBase
                 ToDoStatus = item.Status.ToString()
             });
         }
-    }
-
-    public override async Task<ToDoResponse> GetSingleToDo(GetSingleToDoRequest request, ServerCallContext context)
-    {
-        var item = await _context.ToDoItems.FindAsync(request.Id) ?? throw new RpcException(new Status(StatusCode.NotFound, $"ToDoItem with id {request.Id} not found"));
-
-        return new ToDoResponse { Id = item.Id, Title = item.Title, Description = item.Description, ToDoStatus = item.Status.ToString() };
     }
 
     public override async Task<CreateToDoResponse> CreateToDo(CreateToDoRequest request, ServerCallContext context)

@@ -9,20 +9,27 @@ package todo;
 
 service ToDo{
 
-	//Read
+	////Read
 	rpc GetSingleToDo(GetSingleToDoRequest) returns (ToDoResponse) {
 		option (google.api.http) = {
 			get: "/v1/todo/{id}"
 		};
 	}
 
-	rpc GetAllToDo(GetAllToDoRequest) returns (stream ToDoResponse) {
+	rpc GetAllToDo(GetAllToDoRequest) returns (ToDoCollectionResponse) {
 		option (google.api.http) = {
 			get: "/v1/todo/all"
 		};
 	}
 
-	//Create
+	//Server stream response
+	rpc GetAllToDoStream(GetAllToDoRequest) returns (stream ToDoResponse) {
+		option (google.api.http) = {
+			get: "/v1/todo/all"
+		};
+	}
+
+	////Create
 	rpc CreateToDo(CreateToDoRequest) returns (CreateToDoResponse) {
 		option (google.api.http) = {
 			post: "/v1/todo",
@@ -30,7 +37,7 @@ service ToDo{
 		};
 	}
 
-	//Update
+	////Update
 	rpc UpdateToDo(UpdateToDoRequest) returns (UpdateToDoResponse) { 
 		option (google.api.http) = {
 			put: "/v1/todo",
@@ -38,7 +45,7 @@ service ToDo{
 		};
 	}
 
-	//Delete
+	////Delete
 	rpc DeleteToDo(DeleteToDoRequest) returns (DeleteToDoResponse) { 
 		option (google.api.http) = {
 			delete: "/v1/todo/{id}"			
