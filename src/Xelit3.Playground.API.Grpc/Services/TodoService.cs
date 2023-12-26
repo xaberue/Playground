@@ -48,8 +48,7 @@ public class TodoService : ToDo.ToDoBase
     public override async Task GetAllToDoStream(GetAllToDoRequest request, IServerStreamWriter<ToDoResponse> responseStream, ServerCallContext context)
     {
         var items = await _context.ToDoItems.ToListAsync();
-        var response = new ToDoCollectionResponse();
-
+        
         foreach (var item in items)
         {
             await responseStream.WriteAsync(new ToDoResponse
@@ -60,6 +59,26 @@ public class TodoService : ToDo.ToDoBase
                 ToDoStatus = item.Status.ToString()
             });
         }
+    }
+
+    public override async Task<ToDoCollectionResponse> GetMultipleToDoStream(IAsyncStreamReader<GetSingleToDoRequest> requestStream, ServerCallContext context)
+    {
+        var response = new ToDoCollectionResponse();
+
+        while (await requestStream.MoveNext())
+        {
+            var item = await _context.ToDoItems.FindAsync(requestStream.Current.Id) ?? throw new RpcException(new Status(StatusCode.NotFound, $"ToDoItem with id {requestStream.Current.Id} not found"));
+
+            response.ToDos.Add(new ToDoResponse
+            {
+                Id = item.Id,
+                Title = item.Title,
+                Description = item.Description,
+                ToDoStatus = item.Status.ToString()
+            });
+        }
+
+        return response;
     }
 
     public override async Task<CreateToDoResponse> CreateToDo(CreateToDoRequest request, ServerCallContext context)

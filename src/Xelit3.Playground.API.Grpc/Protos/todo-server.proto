@@ -29,6 +29,12 @@ service ToDo{
 		};
 	}
 
+	rpc GetMultipleToDoStream(stream GetSingleToDoRequest) returns (ToDoCollectionResponse){
+		option (google.api.http) = {
+			get: "/v1/todo/multiple/{ids}"
+		};
+	}
+
 	////Create
 	rpc CreateToDo(CreateToDoRequest) returns (CreateToDoResponse) {
 		option (google.api.http) = {
@@ -66,7 +72,9 @@ message ToDoResponse {
 	string to_do_status = 4;
 }
 
-message GetMultipleToDoRequest { }
+message GetMultipleToDoRequest {
+	repeated int32 ids = 1;
+}
 
 message GetAllToDoRequest { }
 

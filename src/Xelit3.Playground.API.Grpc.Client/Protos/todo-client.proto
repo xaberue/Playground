@@ -15,6 +15,8 @@ service ToDo{
 	//Server stream response
 	rpc GetAllToDoStream(GetAllToDoRequest) returns (stream ToDoResponse) { }
 
+	rpc GetMultipleToDoStream(stream GetSingleToDoRequest) returns (ToDoCollectionResponse){ }
+
 	////Create
 	rpc CreateToDo(CreateToDoRequest) returns (CreateToDoResponse) { }
 

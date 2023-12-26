@@ -33,6 +33,22 @@ while (await allTodosStreamResponse.ResponseStream.MoveNext(CancellationToken.No
     Console.WriteLine($"Id: {value.Id} - Title: {value.Title} - Description: {value.Description} - Status: {value.ToDoStatus}");
 }
 
+var multipleTodosStream = client.GetMultipleToDoStream();
+
+for (var i = 1; i <= 3; i++)
+{
+    await multipleTodosStream.RequestStream.WriteAsync(new GetSingleToDoRequest { Id = i });
+}
+
+await multipleTodosStream.RequestStream.CompleteAsync();
+
+await multipleTodosStream;
+
+foreach (var item in (await multipleTodosStream.ResponseAsync).ToDos)
+{
+    Console.WriteLine($"Id: {item.Id} - Title: {item.Title} - Description: {item.Description} - Status: {item.ToDoStatus}");
+}
+
 
 //Get ToDo by Id
 var singleReply = await client.GetSingleToDoAsync(
