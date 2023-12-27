@@ -49,6 +49,31 @@ foreach (var item in (await multipleTodosStream.ResponseAsync).ToDos)
     Console.WriteLine($"Id: {item.Id} - Title: {item.Title} - Description: {item.Description} - Status: {item.ToDoStatus}");
 }
 
+var streamBidirectional = client.GetMultipleToDoBidirectionalStream();
+
+var requestBidirectionalTask = Task.Run(async () => 
+{
+    for (int i = 1; i <= 3; i++)
+    {
+        await streamBidirectional.RequestStream.WriteAsync(new GetSingleToDoRequest { Id = i });
+    }
+
+    await streamBidirectional.RequestStream.CompleteAsync();
+    await Console.Out.WriteLineAsync("Request stream to server completed");
+});
+
+var responseBidirectionalTask = Task.Run(async () =>
+{
+    while (await streamBidirectional.ResponseStream.MoveNext(CancellationToken.None))
+    {
+        Console.WriteLine(streamBidirectional.ResponseStream.Current);
+    }
+
+    await Console.Out.WriteLineAsync("Response stream from server completed");
+});
+
+await Task.WhenAll(requestBidirectionalTask, responseBidirectionalTask);
+
 
 //Get ToDo by Id
 var singleReply = await client.GetSingleToDoAsync(

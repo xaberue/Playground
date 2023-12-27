@@ -81,6 +81,21 @@ public class TodoService : ToDo.ToDoBase
         return response;
     }
 
+    public override async Task GetMultipleToDoBidirectionalStream(IAsyncStreamReader<GetSingleToDoRequest> requestStream, IServerStreamWriter<ToDoResponse> responseStream, ServerCallContext context)
+    {
+        while (await requestStream.MoveNext())
+        {
+            var todo = await _context.ToDoItems.FindAsync(requestStream.Current.Id) ?? throw new RpcException(new Status(StatusCode.NotFound, $"ToDoItem with id {requestStream.Current.Id} not found"));
+            await responseStream.WriteAsync(new ToDoResponse
+            {
+                Id = todo.Id,
+                Title = todo.Title,
+                Description = todo.Description,
+                ToDoStatus = todo.Status.ToString()
+            });
+        }
+    }
+
     public override async Task<CreateToDoResponse> CreateToDo(CreateToDoRequest request, ServerCallContext context)
     {
         if(string.IsNullOrWhiteSpace(request.Title) || string.IsNullOrWhiteSpace(request.Description))

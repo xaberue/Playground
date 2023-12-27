@@ -23,17 +23,12 @@ service ToDo{
 	}
 
 	//Server stream response
-	rpc GetAllToDoStream(GetAllToDoRequest) returns (stream ToDoResponse) {
-		option (google.api.http) = {
-			get: "/v1/todo/all"
-		};
-	}
+	rpc GetAllToDoStream(GetAllToDoRequest) returns (stream ToDoResponse) { }
 
-	rpc GetMultipleToDoStream(stream GetSingleToDoRequest) returns (ToDoCollectionResponse){
-		option (google.api.http) = {
-			get: "/v1/todo/multiple/{ids}"
-		};
-	}
+	rpc GetMultipleToDoStream(stream GetSingleToDoRequest) returns (ToDoCollectionResponse){ }
+
+	rpc GetMultipleToDoBidirectionalStream(stream GetSingleToDoRequest) returns (stream ToDoResponse){ }
+
 
 	////Create
 	rpc CreateToDo(CreateToDoRequest) returns (CreateToDoResponse) {
@@ -43,6 +38,7 @@ service ToDo{
 		};
 	}
 
+
 	////Update
 	rpc UpdateToDo(UpdateToDoRequest) returns (UpdateToDoResponse) { 
 		option (google.api.http) = {
@@ -50,6 +46,7 @@ service ToDo{
 			body: "*"
 		};
 	}
+
 
 	////Delete
 	rpc DeleteToDo(DeleteToDoRequest) returns (DeleteToDoResponse) { 

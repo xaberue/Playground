@@ -17,11 +17,16 @@ service ToDo{
 
 	rpc GetMultipleToDoStream(stream GetSingleToDoRequest) returns (ToDoCollectionResponse){ }
 
+	rpc GetMultipleToDoBidirectionalStream(stream GetSingleToDoRequest) returns (stream ToDoResponse){ }
+
+
 	////Create
 	rpc CreateToDo(CreateToDoRequest) returns (CreateToDoResponse) { }
 
+
 	////Update
 	rpc UpdateToDo(UpdateToDoRequest) returns (UpdateToDoResponse) { }
+
 
 	////Delete
 	rpc DeleteToDo(DeleteToDoRequest) returns (DeleteToDoResponse) { }
