@@ -1,0 +1,6 @@
+@Xelit3.Playground.Identity_HostAddress = http://localhost:5176
+
+GET {{Xelit3.Playground.Identity_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
