@@ -8,6 +8,10 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<Protobuf Include="Protos\auth-server.proto" GrpcServices="Server" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<Protobuf Include="Protos\todo-server.proto" GrpcServices="Server" />
 	</ItemGroup>
 
@@ -23,11 +27,11 @@
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.0">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-		</PackageReference>		
+		</PackageReference>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\Xelit3.Playground.API.Shared\Xelit3.Playground.API.Shared.csproj" />
+		<ProjectReference Include="..\Xelit3.Playground.API.Shared\Xelit3.Playground.API.Shared.csproj" />
 	</ItemGroup>
 
 </Project>

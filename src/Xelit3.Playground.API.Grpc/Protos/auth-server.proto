@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+option csharp_namespace = "Xelit3.Playground.API.Grpc";
+
+import "google/api/annotations.proto";
+
+package auth;
+
+
+service Auth{
+	
+	rpc Authenticate(AuthenticationRequest) returns (AuthenticationResponse) {
+		option (google.api.http) = {
+			post: "/api/auth"
+			body: "*"
+		};
+	}
+
+}
+
+
+message AuthenticationRequest {
+	string username = 1;
+	string password = 2;
+}
+
+message AuthenticationResponse {
+	string access_token = 1;
+	int32 expires_in = 2;
+}
