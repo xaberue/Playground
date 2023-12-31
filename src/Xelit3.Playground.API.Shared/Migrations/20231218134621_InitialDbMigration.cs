@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace Xelit3.Playground.API.Grpc.Migrations
+namespace Xelit3.Playground.API.Shared.Migrations
 {
     /// <inheritdoc />
     public partial class InitialDbMigration : Migration

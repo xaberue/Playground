@@ -2,11 +2,12 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Xelit3.Playground.API.Grpc.Data;
+using Xelit3.Playground.API.Shared.Data;
+
 
 #nullable disable
 
-namespace Xelit3.Playground.API.Grpc.Migrations
+namespace Xelit3.Playground.API.Shared.Migrations
 {
     [DbContext(typeof(ToDoDataContext))]
     partial class ToDoDataContextModelSnapshot : ModelSnapshot

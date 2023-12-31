@@ -1,14 +1,27 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
-using Xelit3.Playground.API.Grpc.Data;
 using Xelit3.Playground.API.Grpc.Services;
+using Xelit3.Playground.API.Shared.Data;
+using Xelit3.Playground.API.Shared.Models;
 
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddAuthentication().AddBearerToken(IdentityConstants.BearerScheme);
+builder.Services.AddAuthorizationBuilder();
+
 builder.Services.AddDbContext<ToDoDataContext>(opt => {
     opt.UseSqlite("Data Source=ToDoDatabase.db");
 });
+builder.Services.AddDbContext<AppIdentityDbContext>(opt => {
+    opt.UseSqlite("Data Source=ToDoDatabase.db");
+});
+
+builder.Services
+    .AddIdentityCore<AppUser>()
+    .AddEntityFrameworkStores<AppIdentityDbContext>()
+    .AddApiEndpoints();
 
 builder.Services.AddGrpc().AddJsonTranscoding();
 builder.Services.AddGrpcReflection();
@@ -30,6 +43,8 @@ if (app.Environment.IsDevelopment())
         x.SwaggerEndpoint("/swagger/v1/swagger.json", "ToDo API v1");
     });
 }
+
+app.MapIdentityApi<AppUser>();
 
 app.MapGrpcService<TodoService>();
 

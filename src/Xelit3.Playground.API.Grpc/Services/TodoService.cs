@@ -1,7 +1,7 @@
 ﻿using Grpc.Core;
 using Microsoft.EntityFrameworkCore;
-using Xelit3.Playground.API.Grpc.Data;
 using Xelit3.Playground.API.Grpc.Models;
+using Xelit3.Playground.API.Shared.Data;
 
 namespace Xelit3.Playground.API.Grpc.Services;
 
