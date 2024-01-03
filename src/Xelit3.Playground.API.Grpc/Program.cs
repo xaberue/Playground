@@ -92,6 +92,7 @@ app.UseAuthorization();
 
 app.MapGrpcService<TodoService>();
 app.MapGrpcService<AuthService>();
+app.MapGrpcService<UserService>();
 
 
 if (app.Environment.IsDevelopment())

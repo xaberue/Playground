@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+option csharp_namespace = "Xelit3.Playground.API.Grpc.Client";
+
+package user;
+
+
+service User {
+	
+	rpc SayHello(HelloUserRequest) returns (HelloUserResponse) { }
+
+}
+
+
+message HelloUserRequest {
+	string name = 1;
+}
+
+message HelloUserResponse {
+	string message = 1;
+}

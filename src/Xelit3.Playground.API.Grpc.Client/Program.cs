@@ -1,4 +1,5 @@
 ﻿// The port number must match the port of the gRPC server.
+using Grpc.Core;
 using Grpc.Net.Client;
 using Xelit3.Playground.API.Grpc.Client;
 
@@ -96,6 +97,20 @@ var replyUpdate = await client.UpdateToDoAsync(updateToDo);
 var removeReply = await client.DeleteToDoAsync(
     new DeleteToDoRequest { Id = replyCreate.Id }
 );
+
+//Auth example
+var authClient = new Auth.AuthClient(channel);
+
+var authResponse = await authClient.AuthenticateAsync(new AuthenticationRequest { Username = "Xelit3", Password = "Test.1234!" });
+
+var headers = new Metadata();
+headers.Add("Authorization", $"Bearer {authResponse.AccessToken}");
+
+var usersClient = new User.UserClient(channel);
+
+var userHelloResponse = await usersClient.SayHelloAsync(new HelloUserRequest { Name = "Xelit3" }, headers);
+
+//If the user isn't valid, the server will return an Grpc.Core.RpcException
 
 await channel.ShutdownAsync();
 
