@@ -28,14 +28,11 @@ public class AuthService : Auth.AuthBase
     {
         var user = await _userManager.FindByNameAsync(request.Username);
         var result = await _signInManager.CheckPasswordSignInAsync(user, request.Password, false);
-        if (result.Succeeded)
-        {
-            var token = _tokenHelper.Generate(user, new[] { "Admin" }, new[] { new Claim("Admin", "true") });
-            return new AuthenticationResponse { Result = true, AccessToken = token.Token, ExpiresIn = (int)_authSettings.MinutesToExpire };
-        }
-        else
-        {
-            return new AuthenticationResponse { Result = false };
-        }
+
+        if (!result.Succeeded)
+            throw new RpcException(new Status(StatusCode.Unauthenticated, "Invalid username or password"));
+
+        var token = _tokenHelper.Generate(user, new[] { "Admin" }, new[] { new Claim("Admin", "true") });
+        return new AuthenticationResponse { AccessToken = token.Token, ExpiresIn = (int)_authSettings.MinutesToExpire };
     }
 }

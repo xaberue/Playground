@@ -25,7 +25,6 @@ message AuthenticationRequest {
 }
 
 message AuthenticationResponse {
-	bool result = 1;
-	string access_token = 2;
-	int32 expires_in = 3;
+	string access_token = 1;
+	int32 expires_in = 2;
 }
