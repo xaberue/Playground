@@ -26,21 +26,16 @@ public class AuthService : Auth.AuthBase
 
     public override async Task<AuthenticationResponse> Authenticate(AuthenticationRequest request, ServerCallContext context)
     {
-        /* TODO:
-         * [X] 1. Implement new mechanism for Identity in .NET8
-         * [X] 2. Implement new mechanism for JWT Auth in .NET
-         * https://www.youtube.com/watch?v=mgeuh8k3I4g&list=WL&index=7
-         * https://www.youtube.com/watch?v=sZnu-TyaGNk&list=WL&index=9&t=11s
-         * [X] 3. Move if needed implementation for JWT Auth from ChustaSoft
-         * https://github.com/ChustaSoft/Authorization/blob/main/NuGet/ChustaSoft.Tools.Authorization.JWTBearer/Helpers/TokenHelper.cs
-         * [ ] 4. Finnish impl here
-         */
         var user = await _userManager.FindByNameAsync(request.Username);
-
         var result = await _signInManager.CheckPasswordSignInAsync(user, request.Password, false);
-
-        var token = _tokenHelper.Generate(user, new[] { "Admin" }, new[] { new Claim("Admin", "true") });
-
-        return new AuthenticationResponse { AccessToken = token.Token, ExpiresIn = (int)_authSettings.MinutesToExpire };
+        if (result.Succeeded)
+        {
+            var token = _tokenHelper.Generate(user, new[] { "Admin" }, new[] { new Claim("Admin", "true") });
+            return new AuthenticationResponse { Result = true, AccessToken = token.Token, ExpiresIn = (int)_authSettings.MinutesToExpire };
+        }
+        else
+        {
+            return new AuthenticationResponse { Result = false };
+        }
     }
 }
