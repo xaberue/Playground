@@ -1,4 +1,4 @@
-﻿namespace Xelit3.Playground.API.Grpc.Models;
+﻿namespace Xelit3.Playground.API.Shared.Models;
 
 public class ToDoItem
 {
