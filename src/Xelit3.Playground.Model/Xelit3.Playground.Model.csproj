@@ -9,7 +9,7 @@
 
 
 	<ItemGroup>
-		<PackageReference Include="Bogus" Version="35.2.0" />
+		<PackageReference Include="Bogus" Version="35.3.0" />
 	</ItemGroup>
 
 </Project>
