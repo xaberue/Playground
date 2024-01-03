@@ -73,7 +73,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "7. Auth", "7. Auth", "{8764
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xelit3.Playground.Identity", "Xelit3.Playground.Identity\Xelit3.Playground.Identity.csproj", "{CC187873-181D-4FF5-B708-10A0E29E30EF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xelit3.Playground.JWT", "Xelit3.Playground.JWT\Xelit3.Playground.JWT.csproj", "{DFF23B5C-2CB3-4AC1-ABC4-CEBFB78876B4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xelit3.Playground.JWT", "Xelit3.Playground.JWT\Xelit3.Playground.JWT.csproj", "{DFF23B5C-2CB3-4AC1-ABC4-CEBFB78876B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xelit3.Playground.BlazorServer", "Xelit3.Playground.BlazorServer\Xelit3.Playground.BlazorServer.csproj", "{5490B01A-1A99-4F61-8821-4D80E4B9801B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -169,6 +171,10 @@ Global
 		{DFF23B5C-2CB3-4AC1-ABC4-CEBFB78876B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DFF23B5C-2CB3-4AC1-ABC4-CEBFB78876B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DFF23B5C-2CB3-4AC1-ABC4-CEBFB78876B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5490B01A-1A99-4F61-8821-4D80E4B9801B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5490B01A-1A99-4F61-8821-4D80E4B9801B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5490B01A-1A99-4F61-8821-4D80E4B9801B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5490B01A-1A99-4F61-8821-4D80E4B9801B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -203,6 +209,7 @@ Global
 		{8764D644-DDE8-4E91-941B-6BC7A541A6AD} = {974129EE-4601-4759-82B9-8A8C345D05D1}
 		{CC187873-181D-4FF5-B708-10A0E29E30EF} = {8764D644-DDE8-4E91-941B-6BC7A541A6AD}
 		{DFF23B5C-2CB3-4AC1-ABC4-CEBFB78876B4} = {8764D644-DDE8-4E91-941B-6BC7A541A6AD}
+		{5490B01A-1A99-4F61-8821-4D80E4B9801B} = {FF11A4E5-C071-4E3E-A5D4-47719A079F7D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3BAB64C1-7ACD-4E62-99E7-A6BA6608F82C}
