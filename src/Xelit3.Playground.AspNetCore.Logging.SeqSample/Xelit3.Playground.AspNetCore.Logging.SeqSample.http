@@ -1,0 +1,6 @@
+@Xelit3.Playground.AspNetCore.Logging.SeqSample_HostAddress = http://localhost:5084
+
+GET {{Xelit3.Playground.AspNetCore.Logging.SeqSample_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
