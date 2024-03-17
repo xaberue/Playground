@@ -81,9 +81,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xelit3.Playground.API.Graph
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "8. Logging", "8. Logging", "{8FD027C5-C153-4638-BA0A-FE2CB5FC43C4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xelit3.Playground.AspNetCore.Logging.SeqSample", "Xelit3.Playground.AspNetCore.Logging.SeqSample\Xelit3.Playground.AspNetCore.Logging.SeqSample.csproj", "{F30965C5-ABE3-40DE-86AB-8ED496792B54}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xelit3.Playground.AspNetCore.Logging.SeqSample", "Xelit3.Playground.AspNetCore.Logging.SeqSample\Xelit3.Playground.AspNetCore.Logging.SeqSample.csproj", "{F30965C5-ABE3-40DE-86AB-8ED496792B54}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xelit3.Playground.Dumbain", "Xelit3.Playground.Dumbain\Xelit3.Playground.Dumbain.csproj", "{1CEEF131-E360-4E9F-9E27-3BA6FEA601B4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xelit3.Playground.Dumbain", "Xelit3.Playground.Dumbain\Xelit3.Playground.Dumbain.csproj", "{1CEEF131-E360-4E9F-9E27-3BA6FEA601B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xelit3.Playground.Blazor.Web.Server.Auth", "Xelit3.Playground.Blazor.Web.Server.Auth\Xelit3.Playground.Blazor.Web.Server.Auth.csproj", "{2DDDD1D8-BE05-4BE9-ABEF-1B69175B9E59}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -187,14 +189,18 @@ Global
 		{C3A758B7-5636-40A8-8759-D44BDDE75DFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C3A758B7-5636-40A8-8759-D44BDDE75DFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C3A758B7-5636-40A8-8759-D44BDDE75DFA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1CEEF131-E360-4E9F-9E27-3BA6FEA601B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1CEEF131-E360-4E9F-9E27-3BA6FEA601B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1CEEF131-E360-4E9F-9E27-3BA6FEA601B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1CEEF131-E360-4E9F-9E27-3BA6FEA601B4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F30965C5-ABE3-40DE-86AB-8ED496792B54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F30965C5-ABE3-40DE-86AB-8ED496792B54}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F30965C5-ABE3-40DE-86AB-8ED496792B54}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F30965C5-ABE3-40DE-86AB-8ED496792B54}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CEEF131-E360-4E9F-9E27-3BA6FEA601B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CEEF131-E360-4E9F-9E27-3BA6FEA601B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CEEF131-E360-4E9F-9E27-3BA6FEA601B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CEEF131-E360-4E9F-9E27-3BA6FEA601B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DDDD1D8-BE05-4BE9-ABEF-1B69175B9E59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DDDD1D8-BE05-4BE9-ABEF-1B69175B9E59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DDDD1D8-BE05-4BE9-ABEF-1B69175B9E59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DDDD1D8-BE05-4BE9-ABEF-1B69175B9E59}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -231,9 +237,10 @@ Global
 		{DFF23B5C-2CB3-4AC1-ABC4-CEBFB78876B4} = {8764D644-DDE8-4E91-941B-6BC7A541A6AD}
 		{5490B01A-1A99-4F61-8821-4D80E4B9801B} = {FF11A4E5-C071-4E3E-A5D4-47719A079F7D}
 		{C3A758B7-5636-40A8-8759-D44BDDE75DFA} = {D6750043-FF2C-4A4A-A83F-D22B0C2F1FA7}
-		{1CEEF131-E360-4E9F-9E27-3BA6FEA601B4} = {7FD31CE0-795C-4686-8CD7-80C9841C4C9A}
 		{8FD027C5-C153-4638-BA0A-FE2CB5FC43C4} = {974129EE-4601-4759-82B9-8A8C345D05D1}
 		{F30965C5-ABE3-40DE-86AB-8ED496792B54} = {8FD027C5-C153-4638-BA0A-FE2CB5FC43C4}
+		{1CEEF131-E360-4E9F-9E27-3BA6FEA601B4} = {7FD31CE0-795C-4686-8CD7-80C9841C4C9A}
+		{2DDDD1D8-BE05-4BE9-ABEF-1B69175B9E59} = {FF11A4E5-C071-4E3E-A5D4-47719A079F7D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3BAB64C1-7ACD-4E62-99E7-A6BA6608F82C}
