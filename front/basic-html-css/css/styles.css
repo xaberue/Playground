@@ -1,4 +1,46 @@
+/* Universal selector */
+* {
+    font-family: monospace;
+}
+
+body {
+    font-size: 32px;
+    border: 3px solid black;
+}
+
+/* Example of how to inherit font from the parent element to the given html elements */
+button,
+input,
+textarea,
+select {
+    font: inherit;
+}
+
+h1,
+h2 {
+    color: blue;
+}
+
 p {
-    font-size: 64px;
     color: purple;
+}
+
+/* Avoid using important, can override more than you expect */
+/* p {
+    color: purple !important;
+} */
+
+
+/* This can be done as well by using an specific class instead */
+p span {
+    text-transform: uppercase;
+    background-color: gold;
+}
+
+.gray {
+    color: gray;
+}
+
+#second {
+    font-style: italic;
 }
