@@ -53,6 +53,7 @@ public class UserCreationComponentTests : TestContext
         Services.AddScoped<IUserService>(x => userService);
 
         //Act
+        var nav = Services.GetRequiredService<FakeNavigationManager>();
         var cut = RenderComponent<UserCreation>();
 
         cut.Find("#form-input-name").Change("Test");
@@ -67,7 +68,7 @@ public class UserCreationComponentTests : TestContext
         //Assert
         cut.Find("h3").MarkupMatches("<h3>New User</h3>");
         Assert.DoesNotContain("validation-message", cut.Markup);
-
+        Assert.Equal("http://localhost/users", nav.Uri);
     }
 
 }
