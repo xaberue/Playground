@@ -48,3 +48,19 @@ p span {
 #second {
     font-style: italic;
 }
+
+.units p {
+    /* Don't use it since this then doesn't allow to change font size from browser's configuration */
+    /* font-size: 32px; */
+    /* This will take into consideration the setting configured */
+    font-size: 2rem;
+}
+
+.units h2{
+    border: 2px dashed red;
+    /* This percentage is always relative to the space that the parent takes */
+    width: 50%;
+    font-size: 3rem;
+    padding: 0.5em;
+    /* vw doesn0t take into consideration the space of a scrollbar when it's required, adding an extra horizontal bar */
+}
