@@ -1,5 +1,8 @@
 ﻿@page "/edit-user/{id:int}"
 
+@using Xelit3.Playground.Users.WebUI.Services
+
+
 <h3>Edit User</h3>
 
 <div>
@@ -24,14 +27,14 @@
 </div>
 
 
-
 @code {
 
     [Inject]
     private NavigationManager Navigation { get; set; }
 
     [Inject]
-    private HttpClient ApiClient { get; set; }
+    private IUserService UserService { get; set; }
+
 
     [Parameter]
     public int Id { get; set; }
@@ -41,7 +44,7 @@
 
     protected async override Task OnInitializedAsync()
     {
-        var user = await ApiClient.GetFromJsonAsync<UserDto>($"users/{Id}");
+        var user = await UserService.GetAsync(Id);
 
         Model = new UpdateUserDto
             {
@@ -55,7 +58,7 @@
 
     private async Task SubmitAsync()
     {
-        await ApiClient.PutAsJsonAsync<UpdateUserDto>("users", Model);
+        await UserService.UpdateAsync(Model);
 
         Back();
     }
