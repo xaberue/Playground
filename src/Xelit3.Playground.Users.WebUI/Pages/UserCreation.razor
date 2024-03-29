@@ -37,7 +37,7 @@
     [Inject]
     private IUserService UserService { get; set; }
 
-    private CreateUserDto Model = new CreateUserDto();
+    internal CreateUserDto Model = new CreateUserDto();
 
 
     private async Task SubmitAsync()
