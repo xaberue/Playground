@@ -1,6 +1,11 @@
 /* Universal selector */
 * {
     font-family: monospace;
+    /* This resets to nothing browser's defaults */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* content-box and border-box */
 }
 
 body {
@@ -56,11 +61,40 @@ p span {
     font-size: 2rem;
 }
 
-.units h2{
+.units h2 {
     border: 2px dashed red;
     /* This percentage is always relative to the space that the parent takes */
     width: 50%;
     font-size: 3rem;
     padding: 0.5em;
     /* vw doesn0t take into consideration the space of a scrollbar when it's required, adding an extra horizontal bar */
+}
+
+.boxes h2 {
+    /* solid dashed double dotted outset */
+    border: 2px double red;
+    width: 400px;
+    font-size: 3rem;
+    /* top left-rigt bottom */
+    margin: 1.5em 2em 2em 2em;
+    /* top rigt bottom left*/
+    margin: 1.5em 2em 2em;
+    /* margin-top: 1.5em;
+    margin-right: 2em;
+    margin-bottom: 2em;
+    margin-left: 2em; */
+    padding: 1.5rem;
+    /* This outline is a border out of the box, you can move it even far, or into with negative offset (outline-offset -10px) */
+    outline: 5px solid purple;
+}
+
+.circle{
+    margin: 3rem auto;
+    background-color: gold;
+    width: 100px;
+    height: 100px;
+    border: 2px solid black;
+     border-radius: 50px;  /* Half of the with */
+    outline: 2px solid red;
+    outline-offset: 0.25rem;
 }
