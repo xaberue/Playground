@@ -59,7 +59,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xelit3.Playground.Users.Web
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xelit3.Playground.Users.Shared", "Xelit3.Playground.Users.Shared\Xelit3.Playground.Users.Shared.csproj", "{F6E9EF93-449A-45A8-AD9E-BC00DB7E77E0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xelit3.Playground.Users.Tests", "Xelit3.Playground.Users.Tests\Xelit3.Playground.Users.Tests.csproj", "{D5946A0D-1048-4B01-8A8C-9572423A8EDF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xelit3.Playground.Users.WebApi.Tests", "Xelit3.Playground.Users.WebApi.Tests\Xelit3.Playground.Users.WebApi.Tests.csproj", "{D5946A0D-1048-4B01-8A8C-9572423A8EDF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6. APIs", "6. APIs", "{D6750043-FF2C-4A4A-A83F-D22B0C2F1FA7}"
 EndProject
@@ -84,6 +84,18 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xelit3.Playground.AspNetCore.Logging.SeqSample", "Xelit3.Playground.AspNetCore.Logging.SeqSample\Xelit3.Playground.AspNetCore.Logging.SeqSample.csproj", "{F30965C5-ABE3-40DE-86AB-8ED496792B54}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xelit3.Playground.Dumbain", "Xelit3.Playground.Dumbain\Xelit3.Playground.Dumbain.csproj", "{1CEEF131-E360-4E9F-9E27-3BA6FEA601B4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "9. OpenTelemetry", "9. OpenTelemetry", "{B172AB15-D045-4DB2-BA99-3880D532CCA8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xelit3.Playground.AspireStarter.AppHost", "Xelit3.Playground.AspireStarter\Xelit3.Playground.AspireStarter.AppHost\Xelit3.Playground.AspireStarter.AppHost.csproj", "{05DEC74C-9A66-4057-8BA4-B730A07DC2A5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xelit3.Playground.AspireStarter.ServiceDefaults", "Xelit3.Playground.AspireStarter\Xelit3.Playground.AspireStarter.ServiceDefaults\Xelit3.Playground.AspireStarter.ServiceDefaults.csproj", "{9DF230C1-1183-4D34-9679-2B65F7608A52}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xelit3.Playground.AspireStarter.ApiService", "Xelit3.Playground.AspireStarter\Xelit3.Playground.AspireStarter.ApiService\Xelit3.Playground.AspireStarter.ApiService.csproj", "{3A474F0F-05F6-4011-99AD-AD238288B877}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xelit3.Playground.AspireStarter.Web", "Xelit3.Playground.AspireStarter\Xelit3.Playground.AspireStarter.Web\Xelit3.Playground.AspireStarter.Web.csproj", "{E2D108D8-00A3-4422-A914-78BA2AFA108B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xelit3.Playground.Users.WebUI.Tests", "Xelit3.Playground.Users.WebUI.Tests\Xelit3.Playground.Users.WebUI.Tests.csproj", "{D558B350-52D0-4D9B-928B-99ED011FCC88}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -195,6 +207,26 @@ Global
 		{1CEEF131-E360-4E9F-9E27-3BA6FEA601B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1CEEF131-E360-4E9F-9E27-3BA6FEA601B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1CEEF131-E360-4E9F-9E27-3BA6FEA601B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05DEC74C-9A66-4057-8BA4-B730A07DC2A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05DEC74C-9A66-4057-8BA4-B730A07DC2A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05DEC74C-9A66-4057-8BA4-B730A07DC2A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05DEC74C-9A66-4057-8BA4-B730A07DC2A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DF230C1-1183-4D34-9679-2B65F7608A52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DF230C1-1183-4D34-9679-2B65F7608A52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DF230C1-1183-4D34-9679-2B65F7608A52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DF230C1-1183-4D34-9679-2B65F7608A52}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A474F0F-05F6-4011-99AD-AD238288B877}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A474F0F-05F6-4011-99AD-AD238288B877}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A474F0F-05F6-4011-99AD-AD238288B877}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A474F0F-05F6-4011-99AD-AD238288B877}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2D108D8-00A3-4422-A914-78BA2AFA108B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2D108D8-00A3-4422-A914-78BA2AFA108B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2D108D8-00A3-4422-A914-78BA2AFA108B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2D108D8-00A3-4422-A914-78BA2AFA108B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D558B350-52D0-4D9B-928B-99ED011FCC88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D558B350-52D0-4D9B-928B-99ED011FCC88}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D558B350-52D0-4D9B-928B-99ED011FCC88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D558B350-52D0-4D9B-928B-99ED011FCC88}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -234,6 +266,12 @@ Global
 		{8FD027C5-C153-4638-BA0A-FE2CB5FC43C4} = {974129EE-4601-4759-82B9-8A8C345D05D1}
 		{F30965C5-ABE3-40DE-86AB-8ED496792B54} = {8FD027C5-C153-4638-BA0A-FE2CB5FC43C4}
 		{1CEEF131-E360-4E9F-9E27-3BA6FEA601B4} = {7FD31CE0-795C-4686-8CD7-80C9841C4C9A}
+		{B172AB15-D045-4DB2-BA99-3880D532CCA8} = {974129EE-4601-4759-82B9-8A8C345D05D1}
+		{05DEC74C-9A66-4057-8BA4-B730A07DC2A5} = {B172AB15-D045-4DB2-BA99-3880D532CCA8}
+		{9DF230C1-1183-4D34-9679-2B65F7608A52} = {B172AB15-D045-4DB2-BA99-3880D532CCA8}
+		{3A474F0F-05F6-4011-99AD-AD238288B877} = {B172AB15-D045-4DB2-BA99-3880D532CCA8}
+		{E2D108D8-00A3-4422-A914-78BA2AFA108B} = {B172AB15-D045-4DB2-BA99-3880D532CCA8}
+		{D558B350-52D0-4D9B-928B-99ED011FCC88} = {3EFBA585-5B3B-4508-901C-4E0E359FAE10}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3BAB64C1-7ACD-4E62-99E7-A6BA6608F82C}

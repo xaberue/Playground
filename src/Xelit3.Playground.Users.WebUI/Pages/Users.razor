@@ -1,6 +1,7 @@
 ﻿@page "/"
 @page "/users"
 
+@using Xelit3.Playground.Users.WebUI.Services
 
 
 <h3>Users</h3>
@@ -39,7 +40,7 @@ else
     private NavigationManager Navigation { get; set; }
 
     [Inject]
-    private HttpClient ApiClient { get; set; }
+    private IUserService UserService { get; set; }
 
     private UserDto[] _users = [];
 
@@ -67,7 +68,7 @@ else
 
     private async Task DeleteAsync(UserDto user)
     {
-        await ApiClient.DeleteAsync($"users/{user.Id}");
+        await UserService.DeleteAsync(user.Id);
 
         await RefreshAsync();
     }
@@ -80,6 +81,6 @@ else
 
     private async Task LoadUsersAsync()
     {
-        _users = await ApiClient.GetFromJsonAsync<UserDto[]>("users") ?? [];
+        _users = await UserService.GetAllAsync();
     }
 }

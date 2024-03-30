@@ -1,5 +1,8 @@
 ﻿@page "/new-user"
 
+@using Xelit3.Playground.Users.WebUI.Services
+
+
 <h3>New User</h3>
 
 <div>
@@ -26,21 +29,20 @@
 </div>
 
 
-
 @code {
 
     [Inject]
     private NavigationManager Navigation { get; set; }
 
     [Inject]
-    private HttpClient ApiClient { get; set; }
+    private IUserService UserService { get; set; }
 
-    private CreateUserDto Model = new CreateUserDto();
+    internal CreateUserDto Model = new CreateUserDto();
 
 
     private async Task SubmitAsync()
     {
-        await ApiClient.PostAsJsonAsync<CreateUserDto>("users", Model);
+        await UserService.CreateAsync(Model);
 
         Back();
     }
