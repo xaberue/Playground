@@ -98,3 +98,22 @@ p span {
     outline: 2px solid red;
     outline-offset: 0.25rem;
 }
+
+.typography {
+    padding: 25%;
+    font-size: 2rem;
+    font-family: monospace;
+    /* strikethrough */
+    /* text-decoration: line-through; */
+    /* none, will remove things, like underline. More are capitalize, lowercase, uppercase */
+    /* text-decoration: none; */
+}
+
+.typography input, button{
+    font: inherit;
+}
+
+.typography p {
+    text-align: justify;
+    line-height: 1.5;
+}
