@@ -117,3 +117,22 @@ p span {
     text-align: justify;
     line-height: 1.5;
 }
+
+/* a:visited, a:hover, a:foucs, a:active Put in this order to apply it properly in cascade. Focus and hover can be the same, important for accessibility*/
+
+#links-customization{
+    margin-top: 1rem;
+}
+
+
+#links-customization a:visited{
+    cursor: pointer;
+}
+
+#links-customization a:visited{
+    color: rebeccapurple;
+}
+
+#links-customization a:hover, a:focus{
+    opacity: 0.75;
+}
