@@ -1,6 +1,40 @@
-@Xelit3.Playground.API.Minimal.Rest_HostAddress = http://localhost:5053
+@BaseAddress = http://localhost:5053
 
-GET {{Xelit3.Playground.API.Minimal.Rest_HostAddress}}/weatherforecast/
+GET {{BaseAddress}}/todos/
 Accept: application/json
 
 ###
+
+POST {{BaseAddress}}/todo/
+Content-Type: application/json
+
+{
+  "title": "Test Title",
+  "description": "Description of the task" 
+}
+
+###
+
+PUT {{BaseAddress}}/todo/
+Content-Type: application/json
+
+{
+  "id": 3,
+  "title": "Test Title updated",
+  "description": "Description of the task updated" 
+}
+
+###
+
+PATCH {{BaseAddress}}/todo/status
+Content-Type: application/json
+
+{
+  "id": 3,
+  "status": 1  
+}
+
+###
+
+DELETE {{BaseAddress}}/todo?id=4
+Content-Type: application/json
