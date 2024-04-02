@@ -136,3 +136,37 @@ p span {
 #links-customization a:hover, a:focus{
     opacity: 0.75;
 }
+
+#lists{
+    padding: 5% 10%;
+    font-size: 2rem;
+    font-family: "Roboto", sans-serif;
+}
+
+.list-container ol {
+    /* There are multiple options available */
+    list-style-type: lower-alpha;
+
+}
+
+.list-container ul {
+    list-style-type: square;
+    /* This align just the text and not the points */
+    /* text-align: center; */
+    /* With this, then the points are also centered */
+    /* list-style-position: inside; */
+    line-height: 1.5;
+    list-style-image: url("../img/green_check.png");
+}
+
+/* or even  */
+.list-container ul li:nth-child(odd){ 
+    color: red;
+
+}
+
+::marker {
+    color: green;
+    /* You can provide content as in the example below */
+    /* content: "Only 5€ >>"; */
+}
