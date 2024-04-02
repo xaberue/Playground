@@ -5,7 +5,7 @@ public class ToDoItem
     public int Id { get; init; }
     public string Title { get; private set; } = null!;
     public string Description { get; private set; } = null!;
-    public ToDoItemStatus Status { get; init; }
+    public ToDoItemStatus Status { get; private set; }
 
 
 
@@ -29,5 +29,10 @@ public class ToDoItem
     {
         Title = title;
         Description = description;
+    }
+
+    public void ChangeStatus(ToDoItemStatus newStatus)
+    {
+        Status = newStatus;
     }
 }

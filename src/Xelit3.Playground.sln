@@ -95,7 +95,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xelit3.Playground.AspireSta
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xelit3.Playground.AspireStarter.Web", "Xelit3.Playground.AspireStarter\Xelit3.Playground.AspireStarter.Web\Xelit3.Playground.AspireStarter.Web.csproj", "{E2D108D8-00A3-4422-A914-78BA2AFA108B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xelit3.Playground.Users.WebUI.Tests", "Xelit3.Playground.Users.WebUI.Tests\Xelit3.Playground.Users.WebUI.Tests.csproj", "{D558B350-52D0-4D9B-928B-99ED011FCC88}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xelit3.Playground.Users.WebUI.Tests", "Xelit3.Playground.Users.WebUI.Tests\Xelit3.Playground.Users.WebUI.Tests.csproj", "{D558B350-52D0-4D9B-928B-99ED011FCC88}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xelit3.Playground.API.Minimal.Rest", "Xelit3.Playground.API.Minimal.Rest\Xelit3.Playground.API.Minimal.Rest.csproj", "{FC8E557F-CD54-431B-852E-448E6AD001FD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -227,6 +229,10 @@ Global
 		{D558B350-52D0-4D9B-928B-99ED011FCC88}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D558B350-52D0-4D9B-928B-99ED011FCC88}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D558B350-52D0-4D9B-928B-99ED011FCC88}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC8E557F-CD54-431B-852E-448E6AD001FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC8E557F-CD54-431B-852E-448E6AD001FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC8E557F-CD54-431B-852E-448E6AD001FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC8E557F-CD54-431B-852E-448E6AD001FD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -272,6 +278,7 @@ Global
 		{3A474F0F-05F6-4011-99AD-AD238288B877} = {B172AB15-D045-4DB2-BA99-3880D532CCA8}
 		{E2D108D8-00A3-4422-A914-78BA2AFA108B} = {B172AB15-D045-4DB2-BA99-3880D532CCA8}
 		{D558B350-52D0-4D9B-928B-99ED011FCC88} = {3EFBA585-5B3B-4508-901C-4E0E359FAE10}
+		{FC8E557F-CD54-431B-852E-448E6AD001FD} = {D6750043-FF2C-4A4A-A83F-D22B0C2F1FA7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3BAB64C1-7ACD-4E62-99E7-A6BA6608F82C}

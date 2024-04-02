@@ -10,6 +10,5 @@ public class ToDoDataContext : DbContext
 
     public ToDoDataContext(DbContextOptions<ToDoDataContext> options) 
         : base(options)
-    {
-    }
+    { }
 }
