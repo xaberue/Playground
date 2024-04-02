@@ -65,7 +65,7 @@ internal static class Endpoints
         .WithName("ChangeToDoStatus")
         .WithOpenApi();
 
-        app.MapDelete("/todo/status", async (ToDoDataContext dbContext, int id) =>
+        app.MapDelete("/todo", async (ToDoDataContext dbContext, int id) =>
         {
             var entity = await dbContext.ToDoItems.FindAsync(id);
 
