@@ -1,0 +1,43 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+footer {
+    margin-top: 2rem;
+}
+
+
+.container {    
+    font-size: 2rem;
+    background-color: aqua;
+}
+
+
+.container p {
+    background-color: lightgray;
+    width: 50%;
+    margin:  100px 50px;
+}
+/* display: block -> elements stay in its oen line*/
+/* display: inline -> elements doesnt create a new line*/
+/* display: inline-block -> elements ¿?*/
+
+.container ul {
+    list-style-type: none;
+    text-align: right;
+    /* padding-left: 0; */
+    padding: 0.5rem;
+    background-color: lightgrey;
+    margin: 0;
+}
+
+.container li {
+    border-top: none;
+    display: inline-block;
+    margin-inline: 0.5rem;
+}
