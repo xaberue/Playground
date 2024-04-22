@@ -1,10 +1,14 @@
-﻿namespace Xelit3.Playground.MAUI
+﻿using Xelit3.Playground.MAUI.Pages;
+
+namespace Xelit3.Playground.MAUI;
+
+
+public partial class AppShell : Shell
 {
-    public partial class AppShell : Shell
+    public AppShell()
     {
-        public AppShell()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
+
+        Routing.RegisterRoute(nameof(TodoDetail), typeof(TodoDetail));
     }
 }

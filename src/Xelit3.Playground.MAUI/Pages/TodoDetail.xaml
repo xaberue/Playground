@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Xelit3.Playground.MAUI.Pages"
+             x:Class="Xelit3.Playground.MAUI.Pages.TodoDetail"
+             x:DataType="local:TodoDetailViewModel"
+             Title="Todo Detail">
+    <VerticalStackLayout>
+        <Label Text="{Binding Text}" FontSize="25" VerticalOptions="Center" HorizontalOptions="Center" Margin="10" />
+
+        <Button Text="Go Back" Command="{Binding BackCommand}" Margin="10"/>
+    </VerticalStackLayout>
+</ContentPage>

@@ -37,4 +37,13 @@ public partial class TodoListViewModel : ObservableObject
         if(Items.Contains(itemStr))
             Items.Remove(itemStr);
     }
+
+    [RelayCommand]
+    async Task OnTap(string itemStr)
+    {
+        //Simple navigation
+        //await Shell.Current.GoToAsync(nameof(TodoDetail));
+
+        await Shell.Current.GoToAsync($"{nameof(TodoDetail)}?Text={itemStr}");
+    }
 }

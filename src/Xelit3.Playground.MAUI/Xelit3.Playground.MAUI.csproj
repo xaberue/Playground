@@ -65,6 +65,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<MauiXaml Update="Pages\TodoDetail.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
 		<MauiXaml Update="Pages\TodoList.xaml">
 			<Generator>MSBuild:Compile</Generator>
 		</MauiXaml>
@@ -73,6 +76,9 @@
 	<ItemGroup>
 		<Compile Update="Pages\TodoListViewModel.cs">
 			<DependentUpon>TodoList.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="Pages\TodoDetailViewModel.cs">
+			<DependentUpon>TodoDetail.xaml</DependentUpon>
 		</Compile>
 	</ItemGroup>
 

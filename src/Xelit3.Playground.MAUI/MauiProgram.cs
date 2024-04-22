@@ -22,6 +22,8 @@ public static class MauiProgram
         builder.Services.AddSingleton<TodoList>();
         builder.Services.AddSingleton<TodoListViewModel>();
 
+        builder.Services.AddTransient<TodoDetail>();
+        builder.Services.AddTransient<TodoDetailViewModel>();
 
 #if DEBUG
         builder.Logging.AddDebug();
