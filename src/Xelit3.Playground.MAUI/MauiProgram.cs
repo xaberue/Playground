@@ -19,6 +19,8 @@ public static class MauiProgram
                 fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
             });
 
+        builder.Services.AddSingleton(Connectivity.Current);
+
         builder.Services.AddSingleton<TodoList>();
         builder.Services.AddSingleton<TodoListViewModel>();
 

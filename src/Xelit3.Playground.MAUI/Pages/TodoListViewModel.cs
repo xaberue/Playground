@@ -8,8 +8,13 @@ namespace Xelit3.Playground.MAUI.Pages;
 public partial class TodoListViewModel : ObservableObject
 {
 
-    public TodoListViewModel()
+    private readonly IConnectivity _connectivity;
+
+
+    public TodoListViewModel(IConnectivity connectivity)
     {
+        _connectivity = connectivity;
+
         text = string.Empty;
         items = new ObservableCollection<string>();
     }
@@ -22,10 +27,16 @@ public partial class TodoListViewModel : ObservableObject
     ObservableCollection<string> items;
 
     [RelayCommand]
-    void OnAdd()
+    async void OnAdd()
     {
         if (string.IsNullOrWhiteSpace(Text))
             return;
+
+        if (_connectivity.NetworkAccess != NetworkAccess.Internet)
+        {
+            await Shell.Current.DisplayAlert("Uh oh!", "No internet access currently", "OK");
+            return;
+        }
 
         Items.Add(Text);
         Text = string.Empty;
