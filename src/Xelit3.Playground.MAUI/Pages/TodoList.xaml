@@ -22,15 +22,22 @@
 			</CollectionView.ItemsSource>
 			<CollectionView.ItemTemplate>
 				<DataTemplate>
-					<Grid Padding="0,5">
-						<Frame>
-							<Label Text="{Binding .}" FontSize="24" />
-						</Frame>
-					</Grid>
+					<SwipeView>
+						<SwipeView.RightItems>
+							<SwipeItems>
+								<SwipeItem Text="Delete" BackgroundColor="Red" />
+							</SwipeItems>
+						</SwipeView.RightItems>
+						<Grid Padding="0,5">
+							<Frame>
+								<Label Text="{Binding .}" FontSize="24" />
+							</Frame>
+						</Grid>
+					</SwipeView>
 				</DataTemplate>
 			</CollectionView.ItemTemplate>
 		</CollectionView>
-		
+
 	</Grid>
-	
+
 </ContentPage>
