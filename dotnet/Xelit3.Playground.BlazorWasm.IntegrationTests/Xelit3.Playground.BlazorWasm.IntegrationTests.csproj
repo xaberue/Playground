@@ -35,7 +35,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\..\src\Xelit3.Playground.BlazorWasm\Server\Xelit3.Playground.BlazorWasm.Server.csproj" />
+	  <ProjectReference Include="..\Xelit3.Playground.BlazorWasm\Server\Xelit3.Playground.BlazorWasm.Server.csproj" />
 	</ItemGroup>
 
 </Project>
