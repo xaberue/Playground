@@ -17,6 +17,7 @@ public class UserCounterHub : Hub
 
     public async Task NotifyClick(int userId)
     {
+        _userService.Click(userId);
         var viewModel = _userService.Get(userId);
 
         await Clients.All.SendAsync("UserClickReceived", viewModel);
