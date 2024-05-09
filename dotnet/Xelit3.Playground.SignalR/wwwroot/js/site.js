@@ -30,16 +30,17 @@ const initializeSignalRConnection = () => {
 const connection = initializeSignalRConnection();
 
 const clickAction = (userId) => {
-    //fetch("/users/" + userId + "/new-click", {
-    //    method: "POST",
-    //    headers: {
-    //        'Content-Type': 'application/json'
-    //    }
-    //});
+    fetch("/users/" + userId + "/new-click", {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
 
     //No longer required to reload the page since SignalR will refresh the data in a smoother way
     //location.reload();
 
-    connection.invoke("NotifyClick", userId);
+    //No longed need if we directly notify from the hub of the server when the POST is done
+    //connection.invoke("NotifyClick", userId);
 }
 

@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
+using Xelit3.Playground.SignalR.Hubs;
 using Xelit3.Playground.SignalR.Services;
 
 namespace Xelit3.Playground.SignalR.Controllers;
@@ -10,10 +12,12 @@ public class UsersController : ControllerBase
 {
 
     private readonly IUserService _userService;
+    private readonly IHubContext<UserCounterHub> _userHubContext;
 
-    public UsersController(IUserService userService)
+    public UsersController(IUserService userService, IHubContext<UserCounterHub> userHubContext)
     {
         _userService = userService;
+        _userHubContext = userHubContext;
     }
 
     [HttpGet]
@@ -25,9 +29,12 @@ public class UsersController : ControllerBase
     }
 
     [HttpPost("{userId}/new-click")]
-    public IActionResult Click(int userId)
+    public async Task<IActionResult> Click(int userId)
     {
         _userService.Click(userId);
+        var viewModel = _userService.Get(userId);
+
+        await _userHubContext.Clients.All.SendAsync("UserClickReceived", viewModel);
 
         return Ok();
     }
