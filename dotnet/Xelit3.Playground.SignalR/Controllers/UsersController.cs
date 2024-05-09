@@ -16,6 +16,13 @@ public class UsersController : ControllerBase
         _userService = userService;
     }
 
+    [HttpGet]
+    public IActionResult GetAll()
+    {
+        var users = _userService.GetAll();
+
+        return Ok(users);
+    }
 
     [HttpPost("{userId}/new-click")]
     public IActionResult Click(int userId)
