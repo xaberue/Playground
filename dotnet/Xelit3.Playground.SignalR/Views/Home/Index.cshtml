@@ -24,11 +24,11 @@
         <tbody>
             @foreach (var user in Model)
             {
-                <tr>
+                <tr id="@user.Id-row">
                     <td>@user.Id</td>
-                    <td id="@user.Id-email">@user.Email</td>
+                    <td>@user.Email</td>
                     <td><button class="btn btn-primary" type="button" onclick="clickAction(@user.Id)">Click</button></td>
-                    <td>@user.Counter</td>
+                    <td id="@user.Id-counter">@user.Counter</td>
                 </tr>
             }
         </tbody>

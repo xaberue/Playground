@@ -1,9 +1,11 @@
+using Xelit3.Playground.SignalR.Hubs;
 using Xelit3.Playground.SignalR.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddSignalR();
 
 builder.Services.AddSingleton<IUserService, UserService>();
 
@@ -27,5 +29,7 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+app.MapHub<UserCounterHub>("/user-counter");
 
 app.Run();

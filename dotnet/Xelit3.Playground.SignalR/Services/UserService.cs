@@ -6,6 +6,7 @@ namespace Xelit3.Playground.SignalR.Services;
 public interface IUserService
 {
     void Click(int userId);
+    UserViewModel Get(int userId);
     List<UserViewModel> GetAll();
 }
 
@@ -25,6 +26,11 @@ public class UserService : IUserService
     public void Click(int userId)
     {
         _users[userId].Counter++;
+    }
+
+    public UserViewModel Get(int userId)
+    {
+        return _users[userId];
     }
 
     public List<UserViewModel> GetAll()
