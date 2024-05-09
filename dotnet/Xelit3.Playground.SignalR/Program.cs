@@ -1,7 +1,11 @@
+using Xelit3.Playground.SignalR.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddSingleton<IUserService, UserService>();
 
 var app = builder.Build();
 

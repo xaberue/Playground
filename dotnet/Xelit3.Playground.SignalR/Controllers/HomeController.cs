@@ -1,22 +1,29 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using Xelit3.Playground.SignalR.Models;
+using Xelit3.Playground.SignalR.Services;
 
 namespace Xelit3.Playground.SignalR.Controllers;
 
 
 public class HomeController : Controller
 {
+    
     private readonly ILogger<HomeController> _logger;
+    private readonly IUserService _userService;
 
-    public HomeController(ILogger<HomeController> logger)
+
+    public HomeController(ILogger<HomeController> logger, IUserService userService)
     {
         _logger = logger;
+        _userService = userService;
     }
 
     public IActionResult Index()
     {
-        return View();
+        var users = _userService.GetAll();
+
+        return View(users);
     }
 
     public IActionResult Privacy()
