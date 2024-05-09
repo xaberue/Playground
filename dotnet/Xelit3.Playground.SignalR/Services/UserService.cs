@@ -5,25 +5,31 @@ namespace Xelit3.Playground.SignalR.Services;
 
 public interface IUserService
 {
-    List<User> GetAll();
+    void Click(int userId);
+    List<UserViewModel> GetAll();
 }
 
 
 public class UserService : IUserService
 {
 
-    private List<User> _users = 
-        [
-            new User(1, "email1@test.com"),
-            new User(2, "email2@test.com"),
-            new User(3, "email3@test.com"),
-            new User(4, "email4@test.com"),
-        ];
+    private Dictionary<int, UserViewModel> _users =
+        new Dictionary<int, UserViewModel>()
+        {
+            [1] = new UserViewModel(1, "email1@test.com"),
+            [2] = new UserViewModel(2, "email2@test.com"),
+            [3] = new UserViewModel(3, "email3@test.com"),
+            [4] = new UserViewModel(4, "email4@test.com")
+        };
 
-
-    public List<User> GetAll()
+    public void Click(int userId)
     {
-        return _users;
+        _users[userId].Counter++;
+    }
+
+    public List<UserViewModel> GetAll()
+    {
+        return [.. _users.Values];
     }
 
 }

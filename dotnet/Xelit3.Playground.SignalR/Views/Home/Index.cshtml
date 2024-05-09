@@ -1,4 +1,4 @@
-﻿@model IEnumerable<User>
+﻿@model IEnumerable<UserViewModel>
 
 @{
     ViewData["Title"] = "Home Page";
@@ -11,10 +11,27 @@
 
 <div>
     <h2>Users connected</h2>
-    <ul>
-        @foreach (var user in Model)
-        {
-            <li>@user.Email</li>
-        }
-    </ul>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Email</th>
+                <th>Click</th>
+                <th>Clicks</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <td>@user.Id</td>
+                    <td id="@user.Id-email">@user.Email</td>
+                    <td><button class="btn btn-primary" type="button" onclick="clickAction(@user.Id)">Click</button></td>
+                    <td>@user.Counter</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
 </div>

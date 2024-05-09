@@ -2,3 +2,14 @@
 // for details on configuring this project to bundle and minify static web assets.
 
 // Write your JavaScript code.
+
+const clickAction = (userId) => {
+    fetch("/users/" + userId + "/new-click", {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+
+    location.reload();
+}
