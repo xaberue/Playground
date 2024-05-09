@@ -4,7 +4,10 @@
 // Write your JavaScript code.
 const initializeSignalRConnection = () => {
     const connection = new signalR.HubConnectionBuilder()
-        .withUrl("/user-counter")
+        .withUrl("/user-counter", {
+            transport: signalR.HttpTransportType.WebSockets,
+            skipNegotiation: true
+            })
         .build();
 
     connection.on("UserClickReceived", ({ id, email, counter }) => {
