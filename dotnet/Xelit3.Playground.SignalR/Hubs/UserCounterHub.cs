@@ -20,6 +20,11 @@ public class UserCounterHub : Hub
         _userService.Click(userId);
         var viewModel = _userService.Get(userId);
 
+        var groupName = $"userId-{userId}";
+
+        await Groups.AddToGroupAsync(Context.ConnectionId, groupName);
+        await Clients.OthersInGroup(groupName).SendAsync("UserClickAlreadyReceived", viewModel);
+
         await Clients.All.SendAsync("UserClickReceived", viewModel);
     }
 }

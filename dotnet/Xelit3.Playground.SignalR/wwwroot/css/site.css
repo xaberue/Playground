@@ -21,13 +21,24 @@ body {
   margin-bottom: 60px;
 }
 
-@keyframes highlight {
+@keyframes highlight-yellow {
     50% {
         background-color: yellow;
     }
 }
 
+@keyframes highlight-red {
+    50% {
+        background-color: red;
+    }
+}
+
 .animate-highlight {
-    animation-name: highlight;
+    animation-name: highlight-yellow;
+    animation-duration: 2s;
+}
+
+.already-clicked {
+    animation-name: highlight-red;
     animation-duration: 2s;
 }

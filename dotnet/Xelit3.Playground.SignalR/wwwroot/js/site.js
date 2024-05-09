@@ -21,6 +21,13 @@ const initializeSignalRConnection = () => {
         currentCounter.innerHTML = counter;
     });
 
+    connection.on("UserClickAlreadyReceived", ({ id, email, counter }) => {
+        const tr = document.getElementById(id + "-row");
+
+        if (!tr.classList.contains("already-clicked"))
+            tr.classList.add("already-clicked");
+    });
+
 
     connection.start().catch(err => console.error(err.toString()));
 
@@ -30,17 +37,20 @@ const initializeSignalRConnection = () => {
 const connection = initializeSignalRConnection();
 
 const clickAction = (userId) => {
-    fetch("/users/" + userId + "/new-click", {
-        method: "POST",
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    });
+    const tr = document.getElementById(userId + "-row");
+    tr.classList.remove("already-clicked");
+
+    //fetch("/users/" + userId + "/new-click", {
+    //    method: "POST",
+    //    headers: {
+    //        'Content-Type': 'application/json'
+    //    }
+    //});
 
     //No longer required to reload the page since SignalR will refresh the data in a smoother way
     //location.reload();
 
     //No longed need if we directly notify from the hub of the server when the POST is done
-    //connection.invoke("NotifyClick", userId);
+    connection.invoke("NotifyClick", userId);
 }
 
