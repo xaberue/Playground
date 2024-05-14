@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Xelit3.Playground.SignalR.DataAccess;
 using Xelit3.Playground.SignalR.Shared.Models;
 
 namespace Xelit3.Playground.SignalR.Services;

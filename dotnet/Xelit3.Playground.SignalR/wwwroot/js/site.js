@@ -25,7 +25,7 @@ const initializeSignalRConnection = (accessToken) => {
     });
 
     connection.on("UserMessageReceived", (message) => {
-        debugger;
+        //This message is only received by the same user that clicked
         console.log(message);
     });
 
