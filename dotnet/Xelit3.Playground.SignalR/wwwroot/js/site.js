@@ -2,23 +2,31 @@
 // for details on configuring this project to bundle and minify static web assets.
 
 // Write your JavaScript code.
-const initializeSignalRConnection = () => {
+
+
+const initializeSignalRConnection = (accessToken) => {
     const connection = new signalR.HubConnectionBuilder()
         .withUrl("/user-counter", {
+            accessTokenFactory: () => accessToken,
             transport: signalR.HttpTransportType.WebSockets,
             skipNegotiation: true
-            })
+        })
         .build();
 
     connection.on("UserClickReceived", ({ id, email, counter }) => {
         const rowId = id + "-row";
         const tr = document.getElementById(rowId);
-        
+
         tr.classList.add("animate-highlight");
         setTimeout(() => tr.classList.remove("animate-highlight"), 2000);
 
         const currentCounter = document.getElementById(id + "-counter");
         currentCounter.innerHTML = counter;
+    });
+
+    connection.on("UserMessageReceived", (message) => {
+        debugger;
+        console.log(message);
     });
 
     connection.on("UserClickAlreadyReceived", ({ id, email, counter }) => {
@@ -28,13 +36,31 @@ const initializeSignalRConnection = () => {
             tr.classList.add("already-clicked");
     });
 
-
     connection.start().catch(err => console.error(err.toString()));
 
     return connection;
 }
 
-const connection = initializeSignalRConnection();
+var connection = null;
+
+const connectUser = async (userEmail) => {
+
+    const response = await fetch("/auth/token/", {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            userId: userEmail,
+            password: "Test.1234!"
+        })
+    });
+
+    const result = await response.json();
+    const accessToken = result.accessToken;
+    this.connection = initializeSignalRConnection(accessToken);
+}
+
 
 const clickAction = (userId) => {
     const tr = document.getElementById(userId + "-row");

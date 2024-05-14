@@ -14,6 +14,16 @@
 <div>
     <h2>Users connected</h2>
 
+    <div>
+        @foreach (var user in Model)
+        {
+            <div>
+                @user.Email
+                <button class="btn btn-primary" type="button" onclick="connectUser(@user.Id)"> Connect </button>
+            </div>
+        }
+    </div>
+
     <table>
         <thead>
             <tr>
