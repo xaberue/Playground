@@ -27,7 +27,7 @@ public partial class TodoListViewModel : ObservableObject
     ObservableCollection<string> items;
 
     [RelayCommand]
-    async void OnAdd()
+    async Task OnAdd()
     {
         if (string.IsNullOrWhiteSpace(Text))
             return;

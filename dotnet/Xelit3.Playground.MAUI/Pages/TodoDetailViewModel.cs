@@ -8,7 +8,7 @@ public partial class TodoDetailViewModel : ObservableObject
 {
 
     [ObservableProperty]
-    string text;
+    string text = string.Empty;
 
     [RelayCommand]
     async Task OnBack()
