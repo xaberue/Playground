@@ -30,6 +30,15 @@
                 SemanticProperties.Hint="Counts the number of times you click"
                 Clicked="OnCounterClicked"
                 HorizontalOptions="Fill" />
+
+            <Label Text="Samples" />
+            
+            <Button
+                    x:Name="openTasksPageBtn"
+                    Text="ToDo Sample" 
+                    Clicked="OnToDoNavigationClicked"
+                    HorizontalOptions="Fill" />
+            
         </VerticalStackLayout>
     </ScrollView>
 
