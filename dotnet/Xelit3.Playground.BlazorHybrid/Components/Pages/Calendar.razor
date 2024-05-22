@@ -1,0 +1,29 @@
+@page "/calendar"
+
+@using BlazorCalendar
+@using BlazorCalendar.Models
+@using Xelit3.Playground.BlazorHybrid.Models
+
+
+<p>
+    Hello Calendar!
+</p>
+
+<CalendarContainer DisplayedView="DisplayedView.Monthly" TasksList="TasksList.ToArray()">
+    <MonthlyView />
+</CalendarContainer>
+
+@code {
+    private List<Tasks> TasksList;
+
+    protected override void OnInitialized()
+    {
+        var today = DateTime.Now;
+
+        TasksList = new()
+        {
+            new Tasks { ID = 1, DateStart = today.AddDays(2), DateEnd = today.AddDays(2), Code = "Task 1", Color = "#19C319", Caption = "Lorem ipsum dolor sit amet" },
+            new Tasks { ID = 2, DateStart = today.AddDays(-12), DateEnd = today.AddDays(-11), Code = "Task 2", Color = "#19C319", Caption = "Lorem ipsum dolor sit amet" }
+        };
+    }
+}
