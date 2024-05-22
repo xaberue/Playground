@@ -11,5 +11,6 @@ public partial class AppShell : Shell
 
         Routing.RegisterRoute(nameof(TodoList), typeof(TodoList));
         Routing.RegisterRoute(nameof(TodoDetail), typeof(TodoDetail));
+        Routing.RegisterRoute(nameof(CalendarSample), typeof(CalendarSample));
     }
 }

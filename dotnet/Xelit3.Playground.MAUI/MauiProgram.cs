@@ -27,6 +27,9 @@ public static class MauiProgram
         builder.Services.AddTransient<TodoDetail>();
         builder.Services.AddTransient<TodoDetailViewModel>();
 
+        builder.Services.AddTransient<CalendarSample>();
+        builder.Services.AddTransient<CalendarSampleViewModel>();
+
 #if DEBUG
         builder.Logging.AddDebug();
 #endif

@@ -28,4 +28,9 @@ public partial class MainPage : ContentPage
     {
         Shell.Current.GoToAsync(nameof(TodoList));
     }
+
+    private void OnCalendarNavigationClicked(object sender, EventArgs e)
+    {
+        Shell.Current.GoToAsync(nameof(CalendarSample));
+    }
 }

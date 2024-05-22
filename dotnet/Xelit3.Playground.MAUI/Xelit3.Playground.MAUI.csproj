@@ -74,11 +74,17 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<Compile Update="Pages\CalendarSample.xaml.cs">
+		  <DependentUpon>CalendarSample.xaml</DependentUpon>
+		</Compile>
 		<Compile Update="Pages\TodoListViewModel.cs">
 			<DependentUpon>TodoList.xaml</DependentUpon>
 		</Compile>
 		<Compile Update="Pages\TodoDetailViewModel.cs">
 			<DependentUpon>TodoDetail.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="Pages\CalendarSampleViewModel.cs">
+			<DependentUpon>CalendarSample.xaml</DependentUpon>
 		</Compile>
 	</ItemGroup>
 

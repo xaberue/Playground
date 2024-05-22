@@ -32,13 +32,11 @@
                 HorizontalOptions="Fill" />
 
             <Label Text="Samples" />
-            
-            <Button
-                    x:Name="openTasksPageBtn"
-                    Text="ToDo Sample" 
-                    Clicked="OnToDoNavigationClicked"
-                    HorizontalOptions="Fill" />
-            
+
+            <Button x:Name="openTasksPageBtn" Text="ToDo Sample"  Clicked="OnToDoNavigationClicked" HorizontalOptions="Fill" />
+
+            <Button x:Name="openCalendarPageBtn" Text="Calendar Sample"  Clicked="OnCalendarNavigationClicked" HorizontalOptions="Fill" />
+
         </VerticalStackLayout>
     </ScrollView>
 
