@@ -3,13 +3,13 @@
     x:Class="Xelit3.Playground.MAUI.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:pages="clr-namespace:Xelit3.Playground.MAUI.Pages"
+    xmlns:local="clr-namespace:Xelit3.Playground.MAUI"
     Shell.FlyoutBehavior="Disabled"
     Title="Xelit3.Playground.MAUI">
 
     <ShellContent
         Title="Home"
-        ContentTemplate="{DataTemplate pages:TodoList}"
+        ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
 
 </Shell>
