@@ -83,14 +83,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xelit3.Playground.Dumbain",
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "10. OpenTelemetry", "10. OpenTelemetry", "{B172AB15-D045-4DB2-BA99-3880D532CCA8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xelit3.Playground.AspireStarter.AppHost", "Xelit3.Playground.AspireStarter\Xelit3.Playground.AspireStarter.AppHost\Xelit3.Playground.AspireStarter.AppHost.csproj", "{05DEC74C-9A66-4057-8BA4-B730A07DC2A5}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xelit3.Playground.AspireStarter.ServiceDefaults", "Xelit3.Playground.AspireStarter\Xelit3.Playground.AspireStarter.ServiceDefaults\Xelit3.Playground.AspireStarter.ServiceDefaults.csproj", "{9DF230C1-1183-4D34-9679-2B65F7608A52}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xelit3.Playground.AspireStarter.ApiService", "Xelit3.Playground.AspireStarter\Xelit3.Playground.AspireStarter.ApiService\Xelit3.Playground.AspireStarter.ApiService.csproj", "{3A474F0F-05F6-4011-99AD-AD238288B877}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xelit3.Playground.AspireStarter.Web", "Xelit3.Playground.AspireStarter\Xelit3.Playground.AspireStarter.Web\Xelit3.Playground.AspireStarter.Web.csproj", "{E2D108D8-00A3-4422-A914-78BA2AFA108B}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xelit3.Playground.Users.WebUI.Tests", "Xelit3.Playground.Users.WebUI.Tests\Xelit3.Playground.Users.WebUI.Tests.csproj", "{D558B350-52D0-4D9B-928B-99ED011FCC88}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xelit3.Playground.API.Minimal.Rest", "Xelit3.Playground.API.Minimal.Rest\Xelit3.Playground.API.Minimal.Rest.csproj", "{FC8E557F-CD54-431B-852E-448E6AD001FD}"
@@ -105,9 +97,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "09. SignalR", "09. SignalR"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xelit3.Playground.SignalR", "Xelit3.Playground.SignalR\Xelit3.Playground.SignalR.csproj", "{224B4E39-DFC8-41A1-BFA8-DC34FA0292E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xelit3.Playground.SignalR.Client", "Xelit3.Playground.SignalR.Client\Xelit3.Playground.SignalR.Client.csproj", "{C35B4EE9-C46D-415D-B55A-A29DB1C893DE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xelit3.Playground.SignalR.Client", "Xelit3.Playground.SignalR.Client\Xelit3.Playground.SignalR.Client.csproj", "{C35B4EE9-C46D-415D-B55A-A29DB1C893DE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xelit3.Playground.SignalR.Shared", "Xelit3.Playground.SignalR.Shared\Xelit3.Playground.SignalR.Shared.csproj", "{55F32852-1A99-430E-9C2A-D7B4DD0A42B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xelit3.Playground.SignalR.Shared", "Xelit3.Playground.SignalR.Shared\Xelit3.Playground.SignalR.Shared.csproj", "{55F32852-1A99-430E-9C2A-D7B4DD0A42B0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xelit3.Playground.AspireStarter.AppHost", "Xelit3.Playground.AspireStarter\Xelit3.Playground.AspireStarter.AppHost\Xelit3.Playground.AspireStarter.AppHost.csproj", "{E209CCCB-D167-4CDE-B3A6-4BE2BD545A6A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xelit3.Playground.AspireStarter.ServiceDefaults", "Xelit3.Playground.AspireStarter\Xelit3.Playground.AspireStarter.ServiceDefaults\Xelit3.Playground.AspireStarter.ServiceDefaults.csproj", "{C0330FCD-F9D2-4711-BDBF-6B0D57D68F53}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xelit3.Playground.AspireStarter.ApiService", "Xelit3.Playground.AspireStarter\Xelit3.Playground.AspireStarter.ApiService\Xelit3.Playground.AspireStarter.ApiService.csproj", "{964E3555-BB76-4DFF-B2EA-E89D48AC705D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xelit3.Playground.AspireStarter.Web", "Xelit3.Playground.AspireStarter\Xelit3.Playground.AspireStarter.Web\Xelit3.Playground.AspireStarter.Web.csproj", "{B318E64E-64B3-483C-9FA3-FBEFFDEDF2FF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xelit3.Playground.AspireStarter.Tests", "Xelit3.Playground.AspireStarter\Xelit3.Playground.AspireStarter.Tests\Xelit3.Playground.AspireStarter.Tests.csproj", "{E20EDD49-5618-4ECD-A57E-793224E8A272}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -211,22 +213,6 @@ Global
 		{1CEEF131-E360-4E9F-9E27-3BA6FEA601B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1CEEF131-E360-4E9F-9E27-3BA6FEA601B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1CEEF131-E360-4E9F-9E27-3BA6FEA601B4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{05DEC74C-9A66-4057-8BA4-B730A07DC2A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{05DEC74C-9A66-4057-8BA4-B730A07DC2A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{05DEC74C-9A66-4057-8BA4-B730A07DC2A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{05DEC74C-9A66-4057-8BA4-B730A07DC2A5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9DF230C1-1183-4D34-9679-2B65F7608A52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9DF230C1-1183-4D34-9679-2B65F7608A52}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9DF230C1-1183-4D34-9679-2B65F7608A52}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9DF230C1-1183-4D34-9679-2B65F7608A52}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3A474F0F-05F6-4011-99AD-AD238288B877}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3A474F0F-05F6-4011-99AD-AD238288B877}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3A474F0F-05F6-4011-99AD-AD238288B877}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3A474F0F-05F6-4011-99AD-AD238288B877}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E2D108D8-00A3-4422-A914-78BA2AFA108B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E2D108D8-00A3-4422-A914-78BA2AFA108B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E2D108D8-00A3-4422-A914-78BA2AFA108B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E2D108D8-00A3-4422-A914-78BA2AFA108B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D558B350-52D0-4D9B-928B-99ED011FCC88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D558B350-52D0-4D9B-928B-99ED011FCC88}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D558B350-52D0-4D9B-928B-99ED011FCC88}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -259,6 +245,26 @@ Global
 		{55F32852-1A99-430E-9C2A-D7B4DD0A42B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{55F32852-1A99-430E-9C2A-D7B4DD0A42B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{55F32852-1A99-430E-9C2A-D7B4DD0A42B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E209CCCB-D167-4CDE-B3A6-4BE2BD545A6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E209CCCB-D167-4CDE-B3A6-4BE2BD545A6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E209CCCB-D167-4CDE-B3A6-4BE2BD545A6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E209CCCB-D167-4CDE-B3A6-4BE2BD545A6A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0330FCD-F9D2-4711-BDBF-6B0D57D68F53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0330FCD-F9D2-4711-BDBF-6B0D57D68F53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0330FCD-F9D2-4711-BDBF-6B0D57D68F53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0330FCD-F9D2-4711-BDBF-6B0D57D68F53}.Release|Any CPU.Build.0 = Release|Any CPU
+		{964E3555-BB76-4DFF-B2EA-E89D48AC705D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{964E3555-BB76-4DFF-B2EA-E89D48AC705D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{964E3555-BB76-4DFF-B2EA-E89D48AC705D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{964E3555-BB76-4DFF-B2EA-E89D48AC705D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B318E64E-64B3-483C-9FA3-FBEFFDEDF2FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B318E64E-64B3-483C-9FA3-FBEFFDEDF2FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B318E64E-64B3-483C-9FA3-FBEFFDEDF2FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B318E64E-64B3-483C-9FA3-FBEFFDEDF2FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E20EDD49-5618-4ECD-A57E-793224E8A272}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E20EDD49-5618-4ECD-A57E-793224E8A272}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E20EDD49-5618-4ECD-A57E-793224E8A272}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E20EDD49-5618-4ECD-A57E-793224E8A272}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -297,10 +303,6 @@ Global
 		{F30965C5-ABE3-40DE-86AB-8ED496792B54} = {8FD027C5-C153-4638-BA0A-FE2CB5FC43C4}
 		{1CEEF131-E360-4E9F-9E27-3BA6FEA601B4} = {7FD31CE0-795C-4686-8CD7-80C9841C4C9A}
 		{B172AB15-D045-4DB2-BA99-3880D532CCA8} = {974129EE-4601-4759-82B9-8A8C345D05D1}
-		{05DEC74C-9A66-4057-8BA4-B730A07DC2A5} = {B172AB15-D045-4DB2-BA99-3880D532CCA8}
-		{9DF230C1-1183-4D34-9679-2B65F7608A52} = {B172AB15-D045-4DB2-BA99-3880D532CCA8}
-		{3A474F0F-05F6-4011-99AD-AD238288B877} = {B172AB15-D045-4DB2-BA99-3880D532CCA8}
-		{E2D108D8-00A3-4422-A914-78BA2AFA108B} = {B172AB15-D045-4DB2-BA99-3880D532CCA8}
 		{D558B350-52D0-4D9B-928B-99ED011FCC88} = {3EFBA585-5B3B-4508-901C-4E0E359FAE10}
 		{FC8E557F-CD54-431B-852E-448E6AD001FD} = {D6750043-FF2C-4A4A-A83F-D22B0C2F1FA7}
 		{530286E8-B643-474F-899F-282B2E3654FC} = {DBEE731C-7C6F-4C62-A0D6-B68D51AA4741}
@@ -310,6 +312,11 @@ Global
 		{224B4E39-DFC8-41A1-BFA8-DC34FA0292E8} = {94B7436B-EC8A-4EFC-B34C-D92F5E4A677D}
 		{C35B4EE9-C46D-415D-B55A-A29DB1C893DE} = {94B7436B-EC8A-4EFC-B34C-D92F5E4A677D}
 		{55F32852-1A99-430E-9C2A-D7B4DD0A42B0} = {94B7436B-EC8A-4EFC-B34C-D92F5E4A677D}
+		{E209CCCB-D167-4CDE-B3A6-4BE2BD545A6A} = {B172AB15-D045-4DB2-BA99-3880D532CCA8}
+		{C0330FCD-F9D2-4711-BDBF-6B0D57D68F53} = {B172AB15-D045-4DB2-BA99-3880D532CCA8}
+		{964E3555-BB76-4DFF-B2EA-E89D48AC705D} = {B172AB15-D045-4DB2-BA99-3880D532CCA8}
+		{B318E64E-64B3-483C-9FA3-FBEFFDEDF2FF} = {B172AB15-D045-4DB2-BA99-3880D532CCA8}
+		{E20EDD49-5618-4ECD-A57E-793224E8A272} = {B172AB15-D045-4DB2-BA99-3880D532CCA8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3BAB64C1-7ACD-4E62-99E7-A6BA6608F82C}
