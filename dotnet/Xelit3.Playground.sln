@@ -101,7 +101,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xelit3.Playground.SignalR.C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xelit3.Playground.SignalR.Shared", "Xelit3.Playground.SignalR.Shared\Xelit3.Playground.SignalR.Shared.csproj", "{55F32852-1A99-430E-9C2A-D7B4DD0A42B0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xelit3.Playground.AspireStarter.AppHost", "Xelit3.Playground.AspireStarter\Xelit3.Playground.AspireStarter.AppHost\Xelit3.Playground.AspireStarter.AppHost.csproj", "{E209CCCB-D167-4CDE-B3A6-4BE2BD545A6A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xelit3.Playground.AspireStarter.AppHost", "Xelit3.Playground.AspireStarter\Xelit3.Playground.AspireStarter.AppHost\Xelit3.Playground.AspireStarter.AppHost.csproj", "{E209CCCB-D167-4CDE-B3A6-4BE2BD545A6A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xelit3.Playground.AspireStarter.ServiceDefaults", "Xelit3.Playground.AspireStarter\Xelit3.Playground.AspireStarter.ServiceDefaults\Xelit3.Playground.AspireStarter.ServiceDefaults.csproj", "{C0330FCD-F9D2-4711-BDBF-6B0D57D68F53}"
 EndProject
@@ -110,6 +110,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xelit3.Playground.AspireStarter.Web", "Xelit3.Playground.AspireStarter\Xelit3.Playground.AspireStarter.Web\Xelit3.Playground.AspireStarter.Web.csproj", "{B318E64E-64B3-483C-9FA3-FBEFFDEDF2FF}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xelit3.Playground.AspireStarter.Tests", "Xelit3.Playground.AspireStarter\Xelit3.Playground.AspireStarter.Tests\Xelit3.Playground.AspireStarter.Tests.csproj", "{E20EDD49-5618-4ECD-A57E-793224E8A272}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xelit3.Playground.API.Resilience", "Xelit3.Playground.API.Resilience\Xelit3.Playground.API.Resilience.csproj", "{2AEB14C0-CCDE-411E-ACDA-378B3558CD16}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -265,6 +267,10 @@ Global
 		{E20EDD49-5618-4ECD-A57E-793224E8A272}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E20EDD49-5618-4ECD-A57E-793224E8A272}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E20EDD49-5618-4ECD-A57E-793224E8A272}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2AEB14C0-CCDE-411E-ACDA-378B3558CD16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2AEB14C0-CCDE-411E-ACDA-378B3558CD16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2AEB14C0-CCDE-411E-ACDA-378B3558CD16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2AEB14C0-CCDE-411E-ACDA-378B3558CD16}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -317,6 +323,7 @@ Global
 		{964E3555-BB76-4DFF-B2EA-E89D48AC705D} = {B172AB15-D045-4DB2-BA99-3880D532CCA8}
 		{B318E64E-64B3-483C-9FA3-FBEFFDEDF2FF} = {B172AB15-D045-4DB2-BA99-3880D532CCA8}
 		{E20EDD49-5618-4ECD-A57E-793224E8A272} = {B172AB15-D045-4DB2-BA99-3880D532CCA8}
+		{2AEB14C0-CCDE-411E-ACDA-378B3558CD16} = {D6750043-FF2C-4A4A-A83F-D22B0C2F1FA7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3BAB64C1-7ACD-4E62-99E7-A6BA6608F82C}
