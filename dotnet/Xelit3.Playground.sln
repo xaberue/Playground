@@ -113,6 +113,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xelit3.Playground.AspireSta
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xelit3.Playground.API.Resilience", "Xelit3.Playground.API.Resilience\Xelit3.Playground.API.Resilience.csproj", "{2AEB14C0-CCDE-411E-ACDA-378B3558CD16}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xelit3.Playground.API.FastEndpoints", "Xelit3.Playground.API.FastEndpoints\Xelit3.Playground.API.FastEndpoints.csproj", "{CCB1A484-E92F-4B6A-B1BE-5551E3B19B4D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -271,6 +273,10 @@ Global
 		{2AEB14C0-CCDE-411E-ACDA-378B3558CD16}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2AEB14C0-CCDE-411E-ACDA-378B3558CD16}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2AEB14C0-CCDE-411E-ACDA-378B3558CD16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCB1A484-E92F-4B6A-B1BE-5551E3B19B4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCB1A484-E92F-4B6A-B1BE-5551E3B19B4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCB1A484-E92F-4B6A-B1BE-5551E3B19B4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCB1A484-E92F-4B6A-B1BE-5551E3B19B4D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -324,6 +330,7 @@ Global
 		{B318E64E-64B3-483C-9FA3-FBEFFDEDF2FF} = {B172AB15-D045-4DB2-BA99-3880D532CCA8}
 		{E20EDD49-5618-4ECD-A57E-793224E8A272} = {B172AB15-D045-4DB2-BA99-3880D532CCA8}
 		{2AEB14C0-CCDE-411E-ACDA-378B3558CD16} = {D6750043-FF2C-4A4A-A83F-D22B0C2F1FA7}
+		{CCB1A484-E92F-4B6A-B1BE-5551E3B19B4D} = {D6750043-FF2C-4A4A-A83F-D22B0C2F1FA7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3BAB64C1-7ACD-4E62-99E7-A6BA6608F82C}

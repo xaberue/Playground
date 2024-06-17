@@ -1,0 +1,6 @@
+@Xelit3.Playground.API.FastEndpoints_HostAddress = http://localhost:5058
+
+GET {{Xelit3.Playground.API.FastEndpoints_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
