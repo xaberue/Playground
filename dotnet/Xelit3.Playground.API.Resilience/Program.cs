@@ -1,10 +1,24 @@
 using Polly;
+using Polly.Registry;
 using Polly.Retry;
 using Xelit3.Playground.API.Resilience;
 
 var builder = WebApplication.CreateBuilder(args);
 
 var openWeatherApiKey = builder.Configuration["OpenWeatherApiKey"];
+
+builder.Services.AddResiliencePipeline("OpenWeatherApiPipeline", x =>
+{
+    x.AddRetry(new RetryStrategyOptions
+    {
+        ShouldHandle = new PredicateBuilder().Handle<Exception>(),
+        Delay = TimeSpan.FromSeconds(2),
+        MaxRetryAttempts = 3,
+        BackoffType = DelayBackoffType.Exponential,
+        UseJitter = true
+    })
+    .AddTimeout(TimeSpan.FromSeconds(15));
+});
 
 builder.Services.AddHttpClient("OpenWeatherApi", opt =>
 {
@@ -25,20 +39,10 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.MapGet("/weather/{city}", async (IHttpClientFactory httpClientFactory, string city) =>
+app.MapGet("/weather/{city}", async (IHttpClientFactory httpClientFactory, ResiliencePipelineProvider<string> resiliencePipelineProvider, string city) =>
 {
     var client = httpClientFactory.CreateClient("OpenWeatherApi");
-    var pipeline = new ResiliencePipelineBuilder()
-        .AddRetry(new RetryStrategyOptions
-        {
-            ShouldHandle = new PredicateBuilder().Handle<Exception>(),
-            Delay = TimeSpan.FromSeconds(2),
-            MaxRetryAttempts = 3,
-            BackoffType = DelayBackoffType.Exponential,
-            UseJitter = true
-        })
-        .AddTimeout(TimeSpan.FromSeconds(15))
-        .Build();
+    var pipeline = resiliencePipelineProvider.GetPipeline("OpenWeatherApiPipeline");
 
     var response = await pipeline.ExecuteAsync(async ct => await client.GetAsync($"weather?q={city}&appid={openWeatherApiKey}", ct));
 
