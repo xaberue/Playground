@@ -1,3 +1,5 @@
+using Polly;
+using Polly.Retry;
 using Xelit3.Playground.API.Resilience;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -26,7 +28,19 @@ app.UseHttpsRedirection();
 app.MapGet("/weather/{city}", async (IHttpClientFactory httpClientFactory, string city) =>
 {
     var client = httpClientFactory.CreateClient("OpenWeatherApi");
-    var response = await client.GetAsync($"weather?q={city}&appid={openWeatherApiKey}");
+    var pipeline = new ResiliencePipelineBuilder()
+        .AddRetry(new RetryStrategyOptions
+        {
+            ShouldHandle = new PredicateBuilder().Handle<Exception>(),
+            Delay = TimeSpan.FromSeconds(2),
+            MaxRetryAttempts = 3,
+            BackoffType = DelayBackoffType.Exponential,
+            UseJitter = true
+        })
+        .AddTimeout(TimeSpan.FromSeconds(15))
+        .Build();
+
+    var response = await pipeline.ExecuteAsync(async ct => await client.GetAsync($"weather?q={city}&appid={openWeatherApiKey}", ct));
 
     return await response.Content.ReadFromJsonAsync<WeatherResponse>();
 })
