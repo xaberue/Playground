@@ -10,9 +10,14 @@ public class HelloWorldEndpoint : Endpoint<MyRequest, MyResponse>
         AllowAnonymous();
     }
 
-    public override async Task HandleAsync(MyRequest r, CancellationToken c)
+    //public override async Task HandleAsync(MyRequest r, CancellationToken c)
+    //{
+    //    await SendAsync(new($"{r.FirstName} {r.LastName}", "Welcome to FastEndpoints..."));
+    //}
+
+    public override Task<MyResponse> ExecuteAsync(MyRequest r, CancellationToken ct)
     {
-        await SendAsync(new($"{r.FirstName} {r.LastName}", "Welcome to FastEndpoints..."));
+        return Task.FromResult<MyResponse>(new($"{r.FirstName} {r.LastName}", "Welcome to FastEndpoints..."));
     }
 }
 
