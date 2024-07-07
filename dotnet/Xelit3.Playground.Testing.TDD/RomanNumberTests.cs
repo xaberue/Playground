@@ -4,11 +4,14 @@ namespace Xelit3.Playground.Testing.TDD;
 
 public class RomanNumberTests
 {
-    [Fact]
-    public void Given_1_When_ToRomanNumber_Then_IRetrieved()
+    [Theory]
+    [InlineData(1, "I")]
+    [InlineData(2, "II")]
+    [InlineData(3, "III")]
+    public void Given_DecimalNumber_When_ToRomanNumber_Then_CorrespondingRomanNumberRetrieved(int decimalNumber, string expectedRomanNumber)
     {
-        var romanNumberResult = 1.ToRomanNumber();
+        var romanNumberResult = decimalNumber.ToRomanNumber();
 
-        romanNumberResult.Should().Be("I");
+        romanNumberResult.Should().Be(expectedRomanNumber);
     }
 }

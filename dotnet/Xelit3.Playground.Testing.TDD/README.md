@@ -13,8 +13,8 @@ Process mapping Roman numbers by a given decimal number.
 ### Scenarios
 
 - [X]: 1 -> I
-- [ ]: 2 -> II
-- [ ]: 3 -> III
+- [X]: 2 -> II
+- [X]: 3 -> III
 
 
 ## Resources

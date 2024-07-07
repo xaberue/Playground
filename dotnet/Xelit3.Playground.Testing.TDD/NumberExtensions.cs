@@ -5,7 +5,12 @@ public static class NumberExtensions
 
     public static string ToRomanNumber(this int number)
     {
-        return "I";
+        if (number == 3)
+            return "III";
+        else if (number == 2)
+            return "II";
+        else
+            return "I";
     }
 
 }
