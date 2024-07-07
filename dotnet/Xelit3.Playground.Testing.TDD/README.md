@@ -12,9 +12,9 @@ Process mapping Roman numbers by a given decimal number.
 
 ### Scenarios
 
-- []: 1 -> I
-- []: 2 -> II
-- []: 3 -> III
+- [X]: 1 -> I
+- [ ]: 2 -> II
+- [ ]: 3 -> III
 
 
 ## Resources
