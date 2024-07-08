@@ -5,25 +5,25 @@ namespace Xelit3.Playground.Testing.TDD;
 public static class NumberExtensions
 {
 
+    private static List<(int Decimal, string Roman)> Equivalences = new List<(int Decimal, string Roman)>
+    {
+        (10, "X"),
+        (5, "V"),
+        (1, "I"),
+    };
+
+
     public static string ToRomanNumber(this int decimalNumber)
     {
         var romanNumberBuilder = new StringBuilder();
 
-        if (decimalNumber >= 10)
+        foreach (var equivalence in Equivalences)
         {
-            romanNumberBuilder.Append("X");
-            decimalNumber -= 10;
-        }
-
-        if (decimalNumber >= 5)
-        {
-            romanNumberBuilder.Append("V");
-            decimalNumber -= 5;
-        }
-
-        for (int i = 0; i < decimalNumber; i++) 
-        {
-            romanNumberBuilder.Append("I");
+            while (decimalNumber >= equivalence.Decimal)
+            {
+                romanNumberBuilder.Append(equivalence.Roman);
+                decimalNumber -= equivalence.Decimal;
+            }
         }
 
         return romanNumberBuilder.ToString();
