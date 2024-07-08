@@ -7,6 +7,10 @@ public static class NumberExtensions
 
     private static List<(int Decimal, string Roman)> Equivalences = new List<(int Decimal, string Roman)>
     {
+        (1000, "M"),
+        (500, "D"),
+        (100, "C"),
+        (50, "L"),
         (10, "X"),
         (5, "V"),
         (1, "I"),

@@ -16,6 +16,10 @@ public class RomanNumberTests
     [InlineData(11, "XI")]
     [InlineData(12, "XII")]
     [InlineData(13, "XIII")]
+    [InlineData(50, "L")]
+    [InlineData(100, "C")]
+    [InlineData(500, "D")]
+    [InlineData(1000, "M")]
     public void Given_DecimalNumber_When_ToRomanNumber_Then_CorrespondingRomanNumberRetrieved(int decimalNumber, string expectedRomanNumber)
     {
         var romanNumberResult = decimalNumber.ToRomanNumber();
