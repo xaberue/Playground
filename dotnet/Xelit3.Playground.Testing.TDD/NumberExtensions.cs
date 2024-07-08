@@ -9,6 +9,12 @@ public static class NumberExtensions
     {
         var romanNumberBuilder = new StringBuilder();
 
+        if (decimalNumber >= 10)
+        {
+            romanNumberBuilder.Append("X");
+            decimalNumber -= 10;
+        }
+
         if (decimalNumber >= 5)
         {
             romanNumberBuilder.Append("V");

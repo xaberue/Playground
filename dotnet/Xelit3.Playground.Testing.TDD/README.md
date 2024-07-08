@@ -21,7 +21,10 @@ Process mapping Roman numbers by a given decimal number.
 - [X]:  7 -> VII
 - [X]:  8 -> VIII
 - [ ]:  9 -> IX
-- [ ]: 10 -> X
+- [X]: 10 -> X
+- [X]: 11 -> XI
+- [X]: 12 -> XII
+- [X]: 13 -> XIII
 
 
 ## Resources
