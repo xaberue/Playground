@@ -25,9 +25,13 @@ Process mapping Roman numbers by a given decimal number.
 - [X]: 11   -> XI
 - [X]: 12   -> XII
 - [X]: 13   -> XIII
+- [ ]: 40   -> CD
 - [X]: 50   -> L
+- [ ]: 90   -> XC
 - [X]: 100  -> C
+- [ ]: 400  -> CD
 - [X]: 500  -> D
+- [ ]: 900  -> CM
 - [X]: 1000 -> M
 
 ## Resources
