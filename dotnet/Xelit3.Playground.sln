@@ -119,7 +119,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "11. Event Sourcing", "11. E
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xelit3.Playground.EventSourcing", "Xelit3.Playground.EventSourcing\Xelit3.Playground.EventSourcing.csproj", "{A02A9113-415B-4F2A-8361-D033D90DC61D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xelit3.Playground.Testing.TDD", "Xelit3.Playground.Testing.TDD\Xelit3.Playground.Testing.TDD.csproj", "{5D0D9701-F5C4-4E44-88BE-C109527E9AEF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xelit3.Playground.Testing.TDD", "Xelit3.Playground.Testing.TDD\Xelit3.Playground.Testing.TDD.csproj", "{5D0D9701-F5C4-4E44-88BE-C109527E9AEF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "12. MediatR", "12. MediatR", "{60D7833A-156E-4D0D-B2AF-810D417DDBDB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xelit3.Playground.MediatR", "Xelit3.Playground.MediatR\Xelit3.Playground.MediatR.csproj", "{249B52AF-5D6C-43E8-AEED-4CDF04B4066F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -291,6 +295,10 @@ Global
 		{5D0D9701-F5C4-4E44-88BE-C109527E9AEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5D0D9701-F5C4-4E44-88BE-C109527E9AEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5D0D9701-F5C4-4E44-88BE-C109527E9AEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{249B52AF-5D6C-43E8-AEED-4CDF04B4066F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{249B52AF-5D6C-43E8-AEED-4CDF04B4066F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{249B52AF-5D6C-43E8-AEED-4CDF04B4066F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{249B52AF-5D6C-43E8-AEED-4CDF04B4066F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -348,6 +356,8 @@ Global
 		{750D67FA-3295-487B-8634-D4620012DDAB} = {974129EE-4601-4759-82B9-8A8C345D05D1}
 		{A02A9113-415B-4F2A-8361-D033D90DC61D} = {750D67FA-3295-487B-8634-D4620012DDAB}
 		{5D0D9701-F5C4-4E44-88BE-C109527E9AEF} = {DBEE731C-7C6F-4C62-A0D6-B68D51AA4741}
+		{60D7833A-156E-4D0D-B2AF-810D417DDBDB} = {974129EE-4601-4759-82B9-8A8C345D05D1}
+		{249B52AF-5D6C-43E8-AEED-4CDF04B4066F} = {60D7833A-156E-4D0D-B2AF-810D417DDBDB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3BAB64C1-7ACD-4E62-99E7-A6BA6608F82C}
