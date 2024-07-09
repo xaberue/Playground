@@ -123,7 +123,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xelit3.Playground.Testing.T
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "12. MediatR", "12. MediatR", "{60D7833A-156E-4D0D-B2AF-810D417DDBDB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xelit3.Playground.MediatR", "Xelit3.Playground.MediatR\Xelit3.Playground.MediatR.csproj", "{249B52AF-5D6C-43E8-AEED-4CDF04B4066F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xelit3.Playground.MediatR", "Xelit3.Playground.MediatR\Xelit3.Playground.MediatR.csproj", "{249B52AF-5D6C-43E8-AEED-4CDF04B4066F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "13. DDD", "13. DDD", "{6E75E2A7-66C7-4A7A-8C90-32A7454CF768}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xelit3.Playground.Bookstore", "Xelit3.Playground.Bookstore\Xelit3.Playground.Bookstore.csproj", "{5E608C27-86EC-4B0F-ACD8-8948FF868679}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -299,6 +303,10 @@ Global
 		{249B52AF-5D6C-43E8-AEED-4CDF04B4066F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{249B52AF-5D6C-43E8-AEED-4CDF04B4066F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{249B52AF-5D6C-43E8-AEED-4CDF04B4066F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E608C27-86EC-4B0F-ACD8-8948FF868679}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E608C27-86EC-4B0F-ACD8-8948FF868679}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E608C27-86EC-4B0F-ACD8-8948FF868679}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E608C27-86EC-4B0F-ACD8-8948FF868679}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -358,6 +366,8 @@ Global
 		{5D0D9701-F5C4-4E44-88BE-C109527E9AEF} = {DBEE731C-7C6F-4C62-A0D6-B68D51AA4741}
 		{60D7833A-156E-4D0D-B2AF-810D417DDBDB} = {974129EE-4601-4759-82B9-8A8C345D05D1}
 		{249B52AF-5D6C-43E8-AEED-4CDF04B4066F} = {60D7833A-156E-4D0D-B2AF-810D417DDBDB}
+		{6E75E2A7-66C7-4A7A-8C90-32A7454CF768} = {974129EE-4601-4759-82B9-8A8C345D05D1}
+		{5E608C27-86EC-4B0F-ACD8-8948FF868679} = {6E75E2A7-66C7-4A7A-8C90-32A7454CF768}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3BAB64C1-7ACD-4E62-99E7-A6BA6608F82C}

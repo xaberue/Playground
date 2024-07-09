@@ -1,0 +1,6 @@
+@Xelit3.Playground.Bookstore_HostAddress = http://localhost:5092
+
+GET {{Xelit3.Playground.Bookstore_HostAddress}}/all/
+Accept: application/json
+
+###
