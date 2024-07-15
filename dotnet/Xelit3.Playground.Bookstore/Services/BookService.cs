@@ -11,6 +11,7 @@ public interface IBookService
     IAsyncEnumerable<BookDto> GetAllAsync();
     Task<Book> GetSingleAsync(Int32 id);
     Task<Book> CreateAsync(BookCreationDto bookCreationDto);
+    Task LoanAsync(BookLoanDto loanDto);
 }
 
 
@@ -55,5 +56,22 @@ public class BookService : IBookService
         await _dbContext.SaveChangesAsync();
 
         return book;
+    }
+
+    public async Task LoanAsync(BookLoanDto loanDto)
+    {
+        var books = await _dbContext.Books
+            .Where(x => loanDto.IsbnNumbers.Contains(x.Isbn))
+            .ToListAsync();
+
+        var client = await _dbContext.Clients.FindAsync(loanDto.ClientId);
+
+        var days = DateTime.Now.AddYears(-18) <= client.BirthDate ? 30 : 15;
+        var returnDate = DateTime.Now.AddDays(days);
+
+        var lend = new Lend { Books = books, Client = client, CreationDate = DateTime.Now, ReturnDate = returnDate };
+
+        await _dbContext.AddAsync(lend);
+        await _dbContext.SaveChangesAsync();
     }
 }

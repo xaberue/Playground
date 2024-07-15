@@ -17,7 +17,7 @@ namespace Xelit3.Playground.Bookstore.Infrastructure.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.7");
 
-            modelBuilder.Entity("BookLoan", b =>
+            modelBuilder.Entity("BookLend", b =>
                 {
                     b.Property<int>("BooksId")
                         .HasColumnType("INTEGER");
@@ -29,7 +29,7 @@ namespace Xelit3.Playground.Bookstore.Infrastructure.Migrations
 
                     b.HasIndex("LoansId");
 
-                    b.ToTable("BookLoan");
+                    b.ToTable("BookLend");
                 });
 
             modelBuilder.Entity("BookPurchase", b =>
@@ -97,6 +97,9 @@ namespace Xelit3.Playground.Bookstore.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<DateTime>("BirthDate")
+                        .HasColumnType("TEXT");
+
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("TEXT");
 
@@ -124,7 +127,7 @@ namespace Xelit3.Playground.Bookstore.Infrastructure.Migrations
                     b.ToTable("Clients");
                 });
 
-            modelBuilder.Entity("Xelit3.Playground.Bookstore.Domain.Models.Loan", b =>
+            modelBuilder.Entity("Xelit3.Playground.Bookstore.Domain.Models.Lend", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -190,7 +193,7 @@ namespace Xelit3.Playground.Bookstore.Infrastructure.Migrations
                     b.ToTable("Purchases");
                 });
 
-            modelBuilder.Entity("BookLoan", b =>
+            modelBuilder.Entity("BookLend", b =>
                 {
                     b.HasOne("Xelit3.Playground.Bookstore.Domain.Models.Book", null)
                         .WithMany()
@@ -198,7 +201,7 @@ namespace Xelit3.Playground.Bookstore.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Xelit3.Playground.Bookstore.Domain.Models.Loan", null)
+                    b.HasOne("Xelit3.Playground.Bookstore.Domain.Models.Lend", null)
                         .WithMany()
                         .HasForeignKey("LoansId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -220,7 +223,7 @@ namespace Xelit3.Playground.Bookstore.Infrastructure.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Xelit3.Playground.Bookstore.Domain.Models.Loan", b =>
+            modelBuilder.Entity("Xelit3.Playground.Bookstore.Domain.Models.Lend", b =>
                 {
                     b.HasOne("Xelit3.Playground.Bookstore.Domain.Models.Client", "Client")
                         .WithMany("Loans")

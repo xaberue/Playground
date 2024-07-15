@@ -8,7 +8,8 @@ public class Client : ModelBase
     public string Surname { get; set; }
     public string Address { get; set; }
     public DateTime RegistrationDate { get; set; }
+    public DateTime BirthDate { get; set; }
 
-    public ICollection<Loan> Loans { get; set; }
+    public ICollection<Lend> Loans { get; set; }
     public ICollection<Purchase> Purchases { get; set; }
 }

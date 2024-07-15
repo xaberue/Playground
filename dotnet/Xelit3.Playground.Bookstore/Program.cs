@@ -25,9 +25,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-
 app.MapGroup("books").MapBookEndpoints().WithOpenApi();
-
 
 
 app.Run();

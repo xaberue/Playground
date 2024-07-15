@@ -19,6 +19,10 @@ public static class BookEndpointsGroup
             .MapPost("/", CreateBook)
             .WithName("CreateBook");
 
+        group
+            .MapPost("/loan", LoanBooks)
+            .WithName("LoanBook");
+
         return group;
     }
 
@@ -45,6 +49,13 @@ public static class BookEndpointsGroup
         var book = bookService.CreateAsync(bookCreationDto);
 
         return TypedResults.Created($"{book.Id}", book);
+    }
+
+    public static async Task<IResult> LoanBooks(BookLoanDto loanDto, IBookService bookService)
+    {
+        var book = bookService.LoanAsync(loanDto);
+
+        return TypedResults.Ok();
     }
 
 }

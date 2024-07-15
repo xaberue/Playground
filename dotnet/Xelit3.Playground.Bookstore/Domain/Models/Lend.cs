@@ -2,7 +2,7 @@
 
 namespace Xelit3.Playground.Bookstore.Domain.Models;
 
-public class Loan : ModelBase
+public class Lend : ModelBase
 {
     public DateTime Date { get; set; }
     public DateTime ReturnDate { get; set; }
