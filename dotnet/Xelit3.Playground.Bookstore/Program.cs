@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Xelit3.Playground.Bookstore.Endpoints;
 using Xelit3.Playground.Bookstore.Infrastructure;
+using Xelit3.Playground.Bookstore.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +12,8 @@ builder.Services.AddDbContext<BookstoreDbContext>(opt =>
 {
     opt.UseSqlite("Data Source=BookstoreDb.db");
 });
+
+builder.Services.AddTransient<IBookService, BookService>();
 
 var app = builder.Build();
 

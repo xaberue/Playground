@@ -1,7 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Xelit3.Playground.Bookstore.Domain.Models;
-using Xelit3.Playground.Bookstore.Endpoints.Models;
-using Xelit3.Playground.Bookstore.Infrastructure;
+﻿using Xelit3.Playground.Bookstore.Endpoints.Models;
+using Xelit3.Playground.Bookstore.Services;
 
 namespace Xelit3.Playground.Bookstore.Endpoints;
 
@@ -25,9 +23,9 @@ public static class BookEndpointsGroup
     }
 
 
-    public static async Task<IResult> GetBookById(BookstoreDbContext dbContext, int id)
+    public static async Task<IResult> GetBookById(IBookService bookService, int id)
     {
-        var book = await dbContext.Books.FindAsync(id);
+        var book = await bookService.GetSingleAsync(id);
 
         if (book is not null)
             return TypedResults.Ok(book);
@@ -35,26 +33,16 @@ public static class BookEndpointsGroup
             return TypedResults.NotFound();
     }
 
-    public static IResult GetAllBooks(BookstoreDbContext dbContext)
+    public static IResult GetAllBooks(IBookService bookService)
     {
-        var all = dbContext.Books
-            .Select(x => new BookDto(x.Id, x.Isbn, x.Title, x.Author))
-            .AsAsyncEnumerable();
+       var all = bookService.GetAllAsync();
 
         return TypedResults.Ok(all);
     }
 
-    public static async Task<IResult> CreateBook(BookCreationDto bookCreationDto, BookstoreDbContext dbContext)
+    public static async Task<IResult> CreateBook(BookCreationDto bookCreationDto, IBookService bookService)
     {
-        var book = new Book
-        {
-            Isbn = bookCreationDto.Isbn,
-            Title = bookCreationDto.Title,
-            Author = bookCreationDto.Author
-        };
-
-        await dbContext.AddAsync(book);
-        await dbContext.SaveChangesAsync();
+        var book = bookService.CreateAsync(bookCreationDto);
 
         return TypedResults.Created($"{book.Id}", book);
     }
