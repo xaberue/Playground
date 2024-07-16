@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Xelit3.Playground.Bookstore.Domain.Models;
+using Xelit3.Playground.Bookstore.Domain.ValueObjects;
 
 namespace Xelit3.Playground.Bookstore.Infrastructure;
 
@@ -35,6 +36,8 @@ public class BookstoreDbContext : DbContext
 
             e.HasMany(p => p.Purchases).WithMany(p => p.Books);
             e.HasMany(p => p.Lends).WithMany(p => p.Books);
+
+            e.Property(p => p.Price).HasConversion(e => e.Amount, e => new Price(e));
         });
 
         modelBuilder.Entity<Lend>(e =>
