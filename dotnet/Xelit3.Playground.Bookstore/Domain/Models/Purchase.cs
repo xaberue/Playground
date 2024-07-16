@@ -4,9 +4,9 @@ namespace Xelit3.Playground.Bookstore.Domain.Models;
 
 public class Purchase : ModelBase
 {
-    public DateTime Date { get; set; }
-    public decimal Amount { get; set; }
+    public DateTime Date { get; init; }
+    public decimal Amount { get; init; }
 
-    public ICollection<Book> Books { get; set; }
-    public Client Client { get; set; }
+    public ICollection<Book> Books { get; init; }
+    public Client Client { get; init; }
 }

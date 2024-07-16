@@ -2,8 +2,22 @@
 
 public abstract class ModelBase
 {
-    public int Id { get; set; }
-    public DateTime CreationDate { get; set; }
-    public DateTime? LastModificationDate { get; set; }
-    public int IsDeleted { get; set; }
+    public int Id { get; init; }
+    public DateTime CreationDate { get; init; }
+    public DateTime? LastModificationDate { get; init; }
+    public bool IsDeleted { get; init; }
+
+
+    protected ModelBase()
+    {
+        CreationDate = DateTime.Now;
+    }
+
+    protected ModelBase(int id, DateTime creationDate, DateTime? lastModificationDate, bool isDeleted)
+    {
+        Id = id;
+        CreationDate = creationDate;
+        LastModificationDate = lastModificationDate;
+        IsDeleted = isDeleted;
+    }
 }

@@ -44,15 +44,10 @@ public class BookService : IBookService
         return all;
     }
 
-    public async Task<BookDto> CreateAsync(BookCreationDto bookCreationDto)
+    public async Task<BookDto> CreateAsync(BookCreationDto creationDto)
     {
-        var book = new Book
-        {
-            Isbn = bookCreationDto.Isbn,
-            Title = bookCreationDto.Title,
-            Author = bookCreationDto.Author
-        };
-
+        var book = new Book(creationDto.Isbn, creationDto.Title, creationDto.Author, creationDto.YearPublished, creationDto.Price);
+        
         await _dbContext.AddAsync(book);
         await _dbContext.SaveChangesAsync();
 

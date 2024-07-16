@@ -4,12 +4,12 @@ namespace Xelit3.Playground.Bookstore.Domain.Models;
 
 public class Client : ModelBase
 {
-    public string Name { get; set; }
-    public string Surname { get; set; }
-    public string Address { get; set; }
-    public DateTime RegistrationDate { get; set; }
-    public DateTime BirthDate { get; set; }
+    public string Name { get; init; }
+    public string Surname { get; init; }
+    public string Address { get; init; }
+    public DateTime RegistrationDate { get; init; }
+    public DateTime BirthDate { get; init; }
 
-    public ICollection<Lend> Lends { get; set; }
-    public ICollection<Purchase> Purchases { get; set; }
+    public ICollection<Lend> Lends { get; init; }
+    public ICollection<Purchase> Purchases { get; init; }
 }
