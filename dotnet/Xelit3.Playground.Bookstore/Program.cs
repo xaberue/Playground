@@ -5,6 +5,10 @@ using Xelit3.Playground.Bookstore.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddMediatR(cfg => {
+    cfg.RegisterServicesFromAssembly(typeof(Program).Assembly);
+});
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -13,7 +17,6 @@ builder.Services.AddDbContext<BookstoreDbContext>(opt =>
     opt.UseSqlite("Data Source=BookstoreDb.db");
 });
 
-builder.Services.AddTransient<IBookService, BookService>();
 builder.Services.AddTransient<IClientService, ClientService>();
 
 var app = builder.Build();

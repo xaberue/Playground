@@ -1,5 +1,5 @@
-﻿using Xelit3.Playground.Bookstore.Endpoints.Models;
-using Xelit3.Playground.Bookstore.Services;
+﻿using MediatR;
+using Xelit3.Playground.Bookstore.Endpoints.Models;
 
 namespace Xelit3.Playground.Bookstore.Endpoints;
 
@@ -27,9 +27,10 @@ public static class BookEndpointsGroup
     }
 
 
-    public static async Task<IResult> GetBookById(IBookService bookService, int id)
+    public static async Task<IResult> GetBookById(IMediator mediator, int id)
     {
-        var book = await bookService.GetSingleAsync(id);
+        var request = new GetBookByIdRequest(id);
+        var book = await mediator.Send(request);
 
         if (book is not null)
             return TypedResults.Ok(book);
@@ -37,23 +38,26 @@ public static class BookEndpointsGroup
             return TypedResults.NotFound();
     }
 
-    public static IResult GetAllBooks(IBookService bookService)
+    public static IResult GetAllBooks(IMediator mediator)
     {
-       var all = bookService.GetAllAsync();
+        var request = new GetAllBooksRequest();
+        var result = mediator.CreateStream(request);
 
-        return TypedResults.Ok(all);
+        return TypedResults.Ok(result);
     }
 
-    public static async Task<IResult> CreateBook(BookCreationDto bookCreationDto, IBookService bookService)
+    public static async Task<IResult> CreateBook(CreateBookDto bookCreationDto, IMediator mediator)
     {
-        var book = bookService.CreateAsync(bookCreationDto);
+        var request = bookCreationDto.ToRequest();
+        var book = mediator.Send(request);
 
         return TypedResults.Created($"{book.Id}", book);
     }
 
-    public static async Task<IResult> BooksLend(BookLendDto leanDto, IBookService bookService)
+    public static async Task<IResult> BooksLend(BooksLendDto leanDto, IMediator mediator)
     {
-        await bookService.LendAsync(leanDto);
+        var request = leanDto.ToRequest();
+        await mediator.Send(request);
 
         return TypedResults.Ok();
     }
