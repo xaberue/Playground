@@ -14,6 +14,7 @@ builder.Services.AddDbContext<BookstoreDbContext>(opt =>
 });
 
 builder.Services.AddTransient<IBookService, BookService>();
+builder.Services.AddTransient<IClientService, ClientService>();
 
 var app = builder.Build();
 
@@ -26,6 +27,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.MapGroup("books").MapBookEndpoints().WithOpenApi();
+app.MapGroup("clients").MapClientEndpoints().WithOpenApi();
 
 
 app.Run();
