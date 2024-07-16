@@ -20,8 +20,8 @@ public static class BookEndpointsGroup
             .WithName("CreateBook");
 
         group
-            .MapPost("/loan", LoanBooks)
-            .WithName("LoanBook");
+            .MapPost("/lend", BooksLend)
+            .WithName("BooksLend");
 
         return group;
     }
@@ -51,9 +51,9 @@ public static class BookEndpointsGroup
         return TypedResults.Created($"{book.Id}", book);
     }
 
-    public static async Task<IResult> LoanBooks(BookLoanDto loanDto, IBookService bookService)
+    public static async Task<IResult> BooksLend(BookLendDto leanDto, IBookService bookService)
     {
-        var book = bookService.LoanAsync(loanDto);
+        await bookService.LendAsync(leanDto);
 
         return TypedResults.Ok();
     }

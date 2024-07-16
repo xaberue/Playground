@@ -10,6 +10,6 @@ public class Client : ModelBase
     public DateTime RegistrationDate { get; set; }
     public DateTime BirthDate { get; set; }
 
-    public ICollection<Lend> Loans { get; set; }
+    public ICollection<Lend> Lends { get; set; }
     public ICollection<Purchase> Purchases { get; set; }
 }

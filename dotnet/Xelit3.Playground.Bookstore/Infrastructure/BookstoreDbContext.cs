@@ -8,7 +8,7 @@ public class BookstoreDbContext : DbContext
 
     public DbSet<Client> Clients { get; set; }
     public DbSet<Book> Books { get; set; }
-    public DbSet<Lend> Loans { get; set; }
+    public DbSet<Lend> Lends { get; set; }
     public DbSet<Purchase> Purchases { get; set; }
 
 
@@ -24,7 +24,7 @@ public class BookstoreDbContext : DbContext
             e.HasIndex(p => p.Id);
             e.Property(p => p.Id).ValueGeneratedOnAdd();
 
-            e.HasMany(p => p.Loans).WithOne(e => e.Client);
+            e.HasMany(p => p.Lends).WithOne(e => e.Client);
             e.HasMany(p => p.Purchases).WithOne(e => e.Client);
         });
 
@@ -34,7 +34,7 @@ public class BookstoreDbContext : DbContext
             e.Property(p => p.Id).ValueGeneratedOnAdd();
 
             e.HasMany(p => p.Purchases).WithMany(p => p.Books);
-            e.HasMany(p => p.Loans).WithMany(p => p.Books);
+            e.HasMany(p => p.Lends).WithMany(p => p.Books);
         });
 
         modelBuilder.Entity<Lend>(e =>

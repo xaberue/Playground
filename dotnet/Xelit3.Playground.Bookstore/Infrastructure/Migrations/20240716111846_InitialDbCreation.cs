@@ -52,7 +52,7 @@ namespace Xelit3.Playground.Bookstore.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Loans",
+                name: "Lends",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
@@ -66,9 +66,9 @@ namespace Xelit3.Playground.Bookstore.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Loans", x => x.Id);
+                    table.PrimaryKey("PK_Lends", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Loans_Clients_ClientId",
+                        name: "FK_Lends_Clients_ClientId",
                         column: x => x.ClientId,
                         principalTable: "Clients",
                         principalColumn: "Id",
@@ -104,11 +104,11 @@ namespace Xelit3.Playground.Bookstore.Infrastructure.Migrations
                 columns: table => new
                 {
                     BooksId = table.Column<int>(type: "INTEGER", nullable: false),
-                    LoansId = table.Column<int>(type: "INTEGER", nullable: false)
+                    LendsId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_BookLend", x => new { x.BooksId, x.LoansId });
+                    table.PrimaryKey("PK_BookLend", x => new { x.BooksId, x.LendsId });
                     table.ForeignKey(
                         name: "FK_BookLend_Books_BooksId",
                         column: x => x.BooksId,
@@ -116,9 +116,9 @@ namespace Xelit3.Playground.Bookstore.Infrastructure.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_BookLend_Loans_LoansId",
-                        column: x => x.LoansId,
-                        principalTable: "Loans",
+                        name: "FK_BookLend_Lends_LendsId",
+                        column: x => x.LendsId,
+                        principalTable: "Lends",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -148,9 +148,9 @@ namespace Xelit3.Playground.Bookstore.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_BookLend_LoansId",
+                name: "IX_BookLend_LendsId",
                 table: "BookLend",
-                column: "LoansId");
+                column: "LendsId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_BookPurchase_PurchasesId",
@@ -168,13 +168,13 @@ namespace Xelit3.Playground.Bookstore.Infrastructure.Migrations
                 column: "Id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Loans_ClientId",
-                table: "Loans",
+                name: "IX_Lends_ClientId",
+                table: "Lends",
                 column: "ClientId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Loans_Id",
-                table: "Loans",
+                name: "IX_Lends_Id",
+                table: "Lends",
                 column: "Id");
 
             migrationBuilder.CreateIndex(
@@ -198,7 +198,7 @@ namespace Xelit3.Playground.Bookstore.Infrastructure.Migrations
                 name: "BookPurchase");
 
             migrationBuilder.DropTable(
-                name: "Loans");
+                name: "Lends");
 
             migrationBuilder.DropTable(
                 name: "Books");

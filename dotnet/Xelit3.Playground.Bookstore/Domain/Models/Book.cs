@@ -10,6 +10,6 @@ public class Book : ModelBase
     public int YearPublished { get; set; }
     public decimal Price { get; set; }
 
-    public ICollection<Lend> Loans { get; set; }
+    public ICollection<Lend> Lends { get; set; }
     public ICollection<Purchase> Purchases { get; set; }
 }
