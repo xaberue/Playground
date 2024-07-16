@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Xelit3.Playground.Bookstore.Domain.Models;
+using Xelit3.Playground.Bookstore.Endpoints;
 using Xelit3.Playground.Bookstore.Endpoints.Models;
 using Xelit3.Playground.Bookstore.Infrastructure;
 
@@ -9,8 +10,8 @@ namespace Xelit3.Playground.Bookstore.Services;
 public interface IBookService
 {
     IAsyncEnumerable<BookDto> GetAllAsync();
-    Task<Book> GetSingleAsync(Int32 id);
-    Task<Book> CreateAsync(BookCreationDto bookCreationDto);
+    Task<BookDto?> GetSingleAsync(Int32 id);
+    Task<BookDto> CreateAsync(BookCreationDto bookCreationDto);
     Task LendAsync(BookLendDto lendDto);
 }
 
@@ -27,23 +28,23 @@ public class BookService : IBookService
     }
 
 
-    public async Task<Book> GetSingleAsync(int id)
+    public async Task<BookDto?> GetSingleAsync(int id)
     {
         var book = await _dbContext.Books.FindAsync(id);
 
-        return book;
+        return book?.ToDto();
     }
 
     public IAsyncEnumerable<BookDto> GetAllAsync()
     {
         var all = _dbContext.Books
-           .Select(x => new BookDto(x.Id, x.Isbn, x.Title, x.Author))
+           .Select(x => x.ToDto())
            .AsAsyncEnumerable();
 
         return all;
     }
 
-    public async Task<Book> CreateAsync(BookCreationDto bookCreationDto)
+    public async Task<BookDto> CreateAsync(BookCreationDto bookCreationDto)
     {
         var book = new Book
         {
@@ -55,7 +56,7 @@ public class BookService : IBookService
         await _dbContext.AddAsync(book);
         await _dbContext.SaveChangesAsync();
 
-        return book;
+        return book.ToDto();
     }
 
     public async Task LendAsync(BookLendDto lendDto)
