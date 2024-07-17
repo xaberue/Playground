@@ -20,12 +20,8 @@ public class BooksLendRequestHandler : RequestHandlerBase, IRequestHandler<Books
            .Where(x => request.IsbnNumbers.Contains(x.Isbn))
            .ToListAsync();
 
-        var client = await _dbContext.Clients.FindAsync(request.ClientId);
-
-        var days = DateTime.Now.AddYears(-18) <= client.BirthDate ? 30 : 15;
-        var returnDate = DateTime.Now.AddDays(days);
-
-        var lend = new Lend { Books = books, Client = client, CreationDate = DateTime.Now, ReturnDate = returnDate };
+        var client = await _dbContext.Clients.FindAsync(request.ClientId) ?? throw new ArgumentException("Client not found");
+        var lend = new Lend(books, client);
 
         await _dbContext.AddAsync(lend);
         await _dbContext.SaveChangesAsync();

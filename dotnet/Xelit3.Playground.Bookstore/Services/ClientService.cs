@@ -33,14 +33,7 @@ public class ClientService : IClientService
 
     public async Task<ClientDto> CreateAsync(ClientCreationDto creationDto)
     {
-        var client = new Client
-        {
-            Name = creationDto.Name,
-            Surname = creationDto.Surname,
-            Address = creationDto.Address,
-            BirthDate = creationDto.BirthDate,
-            RegistrationDate = DateTime.Now
-        };
+        var client = new Client(creationDto.Name, creationDto.Surname, creationDto.Address, creationDto.BirthDate);
 
         await _dbContext.AddAsync(client);
         await _dbContext.SaveChangesAsync();
