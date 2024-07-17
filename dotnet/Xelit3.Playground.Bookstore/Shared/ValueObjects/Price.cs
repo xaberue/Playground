@@ -1,4 +1,4 @@
-﻿namespace Xelit3.Playground.Bookstore.Domain.ValueObjects;
+﻿namespace Xelit3.Playground.Bookstore.Shared.ValueObjects;
 
 public class Price
 {

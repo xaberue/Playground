@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Xelit3.Playground.Bookstore.Endpoints.Models;
+namespace Xelit3.Playground.Bookstore.Books;
 
 public record GetAllBooksRequest : IStreamRequest<BookDto> { }
 

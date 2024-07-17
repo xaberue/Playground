@@ -1,11 +1,12 @@
 using Microsoft.EntityFrameworkCore;
-using Xelit3.Playground.Bookstore.Endpoints;
+using Xelit3.Playground.Bookstore.Books;
+using Xelit3.Playground.Bookstore.Clients;
 using Xelit3.Playground.Bookstore.Infrastructure;
-using Xelit3.Playground.Bookstore.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddMediatR(cfg => {
+builder.Services.AddMediatR(cfg =>
+{
     cfg.RegisterServicesFromAssembly(typeof(Program).Assembly);
 });
 
@@ -16,8 +17,6 @@ builder.Services.AddDbContext<BookstoreDbContext>(opt =>
 {
     opt.UseSqlite("Data Source=BookstoreDb.db");
 });
-
-builder.Services.AddTransient<IClientService, ClientService>();
 
 var app = builder.Build();
 

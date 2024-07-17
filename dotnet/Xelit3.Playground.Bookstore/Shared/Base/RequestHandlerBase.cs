@@ -1,6 +1,6 @@
 ﻿using Xelit3.Playground.Bookstore.Infrastructure;
 
-namespace Xelit3.Playground.Bookstore.Handlers;
+namespace Xelit3.Playground.Bookstore.Shared.Base;
 
 public abstract class RequestHandlerBase
 {

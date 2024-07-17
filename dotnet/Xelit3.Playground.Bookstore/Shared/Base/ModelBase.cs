@@ -1,4 +1,4 @@
-﻿namespace Xelit3.Playground.Bookstore.Domain.Base;
+﻿namespace Xelit3.Playground.Bookstore.Shared.Base;
 
 public abstract class ModelBase
 {

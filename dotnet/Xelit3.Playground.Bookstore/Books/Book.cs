@@ -1,7 +1,9 @@
-﻿using Xelit3.Playground.Bookstore.Domain.Base;
-using Xelit3.Playground.Bookstore.Domain.ValueObjects;
+﻿using Xelit3.Playground.Bookstore.Lends;
+using Xelit3.Playground.Bookstore.Purchases;
+using Xelit3.Playground.Bookstore.Shared.Base;
+using Xelit3.Playground.Bookstore.Shared.ValueObjects;
 
-namespace Xelit3.Playground.Bookstore.Domain.Models;
+namespace Xelit3.Playground.Bookstore.Books;
 
 public class Book : ModelBase
 {

@@ -1,7 +1,6 @@
 ﻿using MediatR;
-using Xelit3.Playground.Bookstore.Endpoints.Models;
 
-namespace Xelit3.Playground.Bookstore.Endpoints;
+namespace Xelit3.Playground.Bookstore.Books;
 
 public static class BookEndpointsGroup
 {

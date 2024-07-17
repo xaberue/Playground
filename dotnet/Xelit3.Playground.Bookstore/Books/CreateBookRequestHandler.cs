@@ -1,10 +1,8 @@
 ﻿using MediatR;
-using Xelit3.Playground.Bookstore.Domain.Models;
-using Xelit3.Playground.Bookstore.Endpoints;
-using Xelit3.Playground.Bookstore.Endpoints.Models;
 using Xelit3.Playground.Bookstore.Infrastructure;
+using Xelit3.Playground.Bookstore.Shared.Base;
 
-namespace Xelit3.Playground.Bookstore.Handlers;
+namespace Xelit3.Playground.Bookstore.Books;
 
 public class CreateBookRequestHandler : RequestHandlerBase, IRequestHandler<CreateBookRequest, BookDto>
 {

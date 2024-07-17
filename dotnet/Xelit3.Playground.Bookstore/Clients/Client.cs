@@ -1,6 +1,8 @@
-﻿using Xelit3.Playground.Bookstore.Domain.Base;
+﻿using Xelit3.Playground.Bookstore.Lends;
+using Xelit3.Playground.Bookstore.Purchases;
+using Xelit3.Playground.Bookstore.Shared.Base;
 
-namespace Xelit3.Playground.Bookstore.Domain.Models;
+namespace Xelit3.Playground.Bookstore.Clients;
 
 public class Client : ModelBase
 {

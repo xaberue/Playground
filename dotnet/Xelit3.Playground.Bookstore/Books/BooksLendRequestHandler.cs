@@ -1,10 +1,10 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
-using Xelit3.Playground.Bookstore.Domain.Models;
-using Xelit3.Playground.Bookstore.Endpoints.Models;
 using Xelit3.Playground.Bookstore.Infrastructure;
+using Xelit3.Playground.Bookstore.Lends;
+using Xelit3.Playground.Bookstore.Shared.Base;
 
-namespace Xelit3.Playground.Bookstore.Handlers;
+namespace Xelit3.Playground.Bookstore.Books;
 
 public class BooksLendRequestHandler : RequestHandlerBase, IRequestHandler<BooksLendRequest>
 {

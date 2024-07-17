@@ -1,7 +1,6 @@
 ﻿using MediatR;
-using Xelit3.Playground.Bookstore.Endpoints.Models;
 
-namespace Xelit3.Playground.Bookstore.Endpoints;
+namespace Xelit3.Playground.Bookstore.Clients;
 
 public static class ClientEndpointsGroup
 {
@@ -14,7 +13,7 @@ public static class ClientEndpointsGroup
         group
             .MapPost("/", CreateClient)
             .WithName("CreateClient");
-       
+
         return group;
     }
 
@@ -22,7 +21,7 @@ public static class ClientEndpointsGroup
     private static async Task<IResult> GetClientById(IMediator mediator, int id)
     {
         var request = new GetClientByIdRequest(id);
-        var client = await mediator.Send(id);
+        var client = await mediator.Send(request);
 
         if (client is not null)
             return TypedResults.Ok(client);

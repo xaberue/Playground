@@ -1,9 +1,11 @@
-﻿using Xelit3.Playground.Bookstore.Domain.Base;
+﻿using Xelit3.Playground.Bookstore.Books;
+using Xelit3.Playground.Bookstore.Clients;
+using Xelit3.Playground.Bookstore.Shared.Base;
 
-namespace Xelit3.Playground.Bookstore.Domain.Models;
+namespace Xelit3.Playground.Bookstore.Lends;
 
 public class Lend : ModelBase
-{   
+{
 
     public DateTime Date { get; init; }
     public DateTime ReturnDate { get; init; }
