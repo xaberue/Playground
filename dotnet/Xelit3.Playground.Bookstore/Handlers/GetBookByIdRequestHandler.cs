@@ -5,10 +5,10 @@ using Xelit3.Playground.Bookstore.Infrastructure;
 
 namespace Xelit3.Playground.Bookstore.Handlers;
 
-public class GetBookByIdHandler : RequestHandlerBase, IRequestHandler<GetBookByIdRequest, BookDto?>
+public class GetBookByIdRequestHandler : RequestHandlerBase, IRequestHandler<GetBookByIdRequest, BookDto?>
 {
 
-    public GetBookByIdHandler(BookstoreDbContext dbContext)
+    public GetBookByIdRequestHandler(BookstoreDbContext dbContext)
         : base(dbContext)
     { }
 

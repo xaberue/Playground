@@ -1,5 +1,5 @@
-﻿using Xelit3.Playground.Bookstore.Endpoints.Models;
-using Xelit3.Playground.Bookstore.Services;
+﻿using MediatR;
+using Xelit3.Playground.Bookstore.Endpoints.Models;
 
 namespace Xelit3.Playground.Bookstore.Endpoints;
 
@@ -19,9 +19,10 @@ public static class ClientEndpointsGroup
     }
 
 
-    private static async Task<IResult> GetClientById(IClientService clientService, int id)
+    private static async Task<IResult> GetClientById(IMediator mediator, int id)
     {
-        var client = await clientService.GetSingleAsync(id);
+        var request = new GetClientByIdRequest(id);
+        var client = await mediator.Send(id);
 
         if (client is not null)
             return TypedResults.Ok(client);
@@ -29,9 +30,10 @@ public static class ClientEndpointsGroup
             return TypedResults.NotFound();
     }
 
-    private static async Task<IResult> CreateClient(ClientCreationDto clientCreationDto, IClientService clientService)
+    private static async Task<IResult> CreateClient(IMediator mediator, CreateClientDto clientCreationDto)
     {
-        var client = clientService.CreateAsync(clientCreationDto);
+        var request = clientCreationDto.ToRequest();
+        var client = await mediator.Send(request);
 
         return TypedResults.Created($"{client.Id}", client);
     }

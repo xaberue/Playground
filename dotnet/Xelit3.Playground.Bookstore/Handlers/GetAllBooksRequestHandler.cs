@@ -6,10 +6,10 @@ using Xelit3.Playground.Bookstore.Infrastructure;
 
 namespace Xelit3.Playground.Bookstore.Handlers;
 
-public class GetAllBooksHandler : RequestHandlerBase, IStreamRequestHandler<GetAllBooksRequest, BookDto>
+public class GetAllBooksRequestHandler : RequestHandlerBase, IStreamRequestHandler<GetAllBooksRequest, BookDto>
 {
     
-    public GetAllBooksHandler(BookstoreDbContext dbContext) 
+    public GetAllBooksRequestHandler(BookstoreDbContext dbContext) 
         : base(dbContext)
     { }
 
