@@ -1,0 +1,6 @@
+@Xelit3.Playground.API.Resilience_HostAddress = http://localhost:5033
+
+GET {{Xelit3.Playground.API.Resilience_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

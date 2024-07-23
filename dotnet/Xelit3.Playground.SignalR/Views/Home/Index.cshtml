@@ -1,0 +1,49 @@
+﻿@using Xelit3.Playground.SignalR.Shared.Models
+
+@model IEnumerable<UserViewModel>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<div>
+    <h2>Users connected</h2>
+
+    <div>
+        @foreach (var user in Model)
+        {
+            <div>
+                @user.Email
+                <button class="btn btn-primary" type="button" onclick="connectUser(@user.Id)"> Connect </button>
+            </div>
+        }
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Email</th>
+                <th>Click</th>
+                <th>Clicks</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model)
+            {
+                <tr id="@user.Id-row">
+                    <td>@user.Id</td>
+                    <td>@user.Email</td>
+                    <td><button class="btn btn-primary" type="button" onclick="clickAction(@user.Id)">Click</button></td>
+                    <td id="@user.Id-counter">@user.Counter</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>

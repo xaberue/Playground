@@ -1,0 +1,6 @@
+@Xelit3.Playground.MediatR_HostAddress = http://localhost:5089
+
+GET {{Xelit3.Playground.MediatR_HostAddress}}/ping/
+Accept: application/json
+
+###
