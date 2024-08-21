@@ -127,7 +127,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xelit3.Playground.MediatR",
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "13. DDD", "13. DDD", "{6E75E2A7-66C7-4A7A-8C90-32A7454CF768}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xelit3.Playground.Bookstore", "Xelit3.Playground.Bookstore\Xelit3.Playground.Bookstore.csproj", "{5E608C27-86EC-4B0F-ACD8-8948FF868679}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xelit3.Playground.Bookstore", "Xelit3.Playground.Bookstore\Xelit3.Playground.Bookstore.csproj", "{5E608C27-86EC-4B0F-ACD8-8948FF868679}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "14. EFCore", "14. EFCore", "{1F1E9BA7-082A-4D04-B50E-C1AD86A27160}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xelit3.Playground.EFCore.WebApi", "Xelit3.Playground.EFCore.WebApi\Xelit3.Playground.EFCore.WebApi.csproj", "{943AD7E3-73DD-4DA0-BD7B-40289499D920}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -307,6 +311,10 @@ Global
 		{5E608C27-86EC-4B0F-ACD8-8948FF868679}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5E608C27-86EC-4B0F-ACD8-8948FF868679}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5E608C27-86EC-4B0F-ACD8-8948FF868679}.Release|Any CPU.Build.0 = Release|Any CPU
+		{943AD7E3-73DD-4DA0-BD7B-40289499D920}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{943AD7E3-73DD-4DA0-BD7B-40289499D920}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{943AD7E3-73DD-4DA0-BD7B-40289499D920}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{943AD7E3-73DD-4DA0-BD7B-40289499D920}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -368,6 +376,8 @@ Global
 		{249B52AF-5D6C-43E8-AEED-4CDF04B4066F} = {60D7833A-156E-4D0D-B2AF-810D417DDBDB}
 		{6E75E2A7-66C7-4A7A-8C90-32A7454CF768} = {974129EE-4601-4759-82B9-8A8C345D05D1}
 		{5E608C27-86EC-4B0F-ACD8-8948FF868679} = {6E75E2A7-66C7-4A7A-8C90-32A7454CF768}
+		{1F1E9BA7-082A-4D04-B50E-C1AD86A27160} = {974129EE-4601-4759-82B9-8A8C345D05D1}
+		{943AD7E3-73DD-4DA0-BD7B-40289499D920} = {1F1E9BA7-082A-4D04-B50E-C1AD86A27160}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3BAB64C1-7ACD-4E62-99E7-A6BA6608F82C}
