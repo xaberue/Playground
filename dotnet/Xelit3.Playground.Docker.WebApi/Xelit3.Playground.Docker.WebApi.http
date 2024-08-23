@@ -1,0 +1,6 @@
+@Xelit3.Playground.Docker.WebApi_HostAddress = http://localhost:5281
+
+GET {{Xelit3.Playground.Docker.WebApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
