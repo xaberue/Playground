@@ -135,7 +135,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xelit3.Playground.EFCore.We
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "15. Docker", "15. Docker", "{E886502E-11A4-4FF1-A073-5F2A87B1373B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xelit3.Playground.Docker.WebApi", "Xelit3.Playground.Docker.WebApi\Xelit3.Playground.Docker.WebApi.csproj", "{BD1D4995-C71E-40A8-8505-B4772AE6EFA2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xelit3.Playground.Docker.NativeSupport", "Xelit3.Playground.Docker.NativeSupport\Xelit3.Playground.Docker.NativeSupport.csproj", "{BD1D4995-C71E-40A8-8505-B4772AE6EFA2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
