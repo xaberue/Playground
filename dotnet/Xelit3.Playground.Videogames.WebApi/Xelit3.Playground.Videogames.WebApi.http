@@ -1,0 +1,44 @@
+@Xelit3.Playground.Videogames.WebApi_HostAddress = http://localhost:5051
+
+
+GET {{Xelit3.Playground.Videogames.WebApi_HostAddress}}/api/all/
+Accept: application/json
+
+###
+
+
+GET {{Xelit3.Playground.Videogames.WebApi_HostAddress}}/api/1/
+Accept: application/json
+
+###
+
+
+POST {{Xelit3.Playground.Videogames.WebApi_HostAddress}}/api
+Content-Type: application/json
+
+{
+  "name": "Age of Empires Mythologyasdasd",
+  "publisher": "Microsoft",
+  "yearReleased": 2003,
+  "genre": 0
+}
+
+###
+
+
+PUT {{Xelit3.Playground.Videogames.WebApi_HostAddress}}/api
+Content-Type: application/json
+
+{
+  "id": 3,
+  "name": "Age of Empires 3",
+  "publisher": "Microsoft",
+  "yearReleased": 2005,
+  "genre": 0
+}
+
+###
+
+
+DELETE {{Xelit3.Playground.Videogames.WebApi_HostAddress}}/api/5
+Accept: application/json
