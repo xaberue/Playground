@@ -1,0 +1,6 @@
+services:
+  xelit3.playground.videogames.webapi:
+    image: ${DOCKER_REGISTRY-}xelit3playgroundvideogameswebapi
+    build:
+      context: Xelit3.Playground.Videogames.WebApi
+      dockerfile: Dockerfile
