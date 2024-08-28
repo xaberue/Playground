@@ -1,8 +1,7 @@
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Xelit3.Playground.Videogames.WebApi.Models;
 using Xelit3.Playground.Videogames.WebApi.Dtos;
 using Xelit3.Playground.Videogames.WebApi.Infrastructure;
+using Xelit3.Playground.Videogames.WebApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,7 +10,8 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<VideogamesDbContext>(x => 
 {
-    x.UseSqlServer(builder.Configuration.GetConnectionString("SqlServerConnectionString"));
+    var connectionString = builder.Configuration.GetConnectionString("SqlServerConnectionString");
+    x.UseSqlServer(connectionString);
 });
 
 var app = builder.Build();
@@ -20,6 +20,7 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    app.ApplyMigrations();
 }
 
 app.UseHttpsRedirection();

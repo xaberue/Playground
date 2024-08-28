@@ -1,6 +1,25 @@
 services:
+
+  videogames.database:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: videogames.db
+    environment:
+      MSSQL_SA_PASSWORD: "Test.1234!"
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1433:1433"
+
+  redis:
+    image: redis:latest
+    container_name: redis
+    ports:
+      - "6379:6379"
+
   xelit3.playground.videogames.webapi:
     image: ${DOCKER_REGISTRY-}xelit3playgroundvideogameswebapi
+    container_name: videogames.api
     build:
       context: Xelit3.Playground.Videogames.WebApi
       dockerfile: Dockerfile
+    depends_on:
+      - videogames.database
