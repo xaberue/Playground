@@ -1,0 +1,22 @@
+<div>
+    <h1>@Invoice.Number</h1>
+    <h2>@Invoice.Date</h2>
+
+    <p>
+        <h3>Address</h3>
+        <span>@Invoice.Address.Line</span>
+    </p>
+
+    <ul>
+    @foreach (var item in Invoice.Items)
+    {
+        <li>@item.Name</li>
+    }
+    </ul>
+</div>
+
+@code{
+
+    [Parameter]
+    public Invoice Invoice { get; set; }
+}

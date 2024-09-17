@@ -137,6 +137,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "15. Docker", "15. Docker", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xelit3.Playground.Docker.NativeSupport", "Xelit3.Playground.Docker.NativeSupport\Xelit3.Playground.Docker.NativeSupport.csproj", "{BD1D4995-C71E-40A8-8505-B4772AE6EFA2}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "16. Documents", "16. Documents", "{95329E86-5322-46D3-B172-7EE4B35A77A2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xelit3.Playground.Documents", "Xelit3.Playground.Documents\Xelit3.Playground.Documents.csproj", "{3A2EE73E-D7A2-4796-8DB0-F268A3E48C0A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -323,6 +327,10 @@ Global
 		{BD1D4995-C71E-40A8-8505-B4772AE6EFA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BD1D4995-C71E-40A8-8505-B4772AE6EFA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BD1D4995-C71E-40A8-8505-B4772AE6EFA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A2EE73E-D7A2-4796-8DB0-F268A3E48C0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A2EE73E-D7A2-4796-8DB0-F268A3E48C0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A2EE73E-D7A2-4796-8DB0-F268A3E48C0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A2EE73E-D7A2-4796-8DB0-F268A3E48C0A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -388,6 +396,8 @@ Global
 		{943AD7E3-73DD-4DA0-BD7B-40289499D920} = {1F1E9BA7-082A-4D04-B50E-C1AD86A27160}
 		{E886502E-11A4-4FF1-A073-5F2A87B1373B} = {974129EE-4601-4759-82B9-8A8C345D05D1}
 		{BD1D4995-C71E-40A8-8505-B4772AE6EFA2} = {E886502E-11A4-4FF1-A073-5F2A87B1373B}
+		{95329E86-5322-46D3-B172-7EE4B35A77A2} = {974129EE-4601-4759-82B9-8A8C345D05D1}
+		{3A2EE73E-D7A2-4796-8DB0-F268A3E48C0A} = {95329E86-5322-46D3-B172-7EE4B35A77A2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3BAB64C1-7ACD-4E62-99E7-A6BA6608F82C}
