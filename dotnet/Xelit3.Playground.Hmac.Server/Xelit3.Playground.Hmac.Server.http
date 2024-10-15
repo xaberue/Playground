@@ -1,0 +1,6 @@
+@Xelit3.Playground.Hmac.Server_HostAddress = http://localhost:5032
+
+GET {{Xelit3.Playground.Hmac.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

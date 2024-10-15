@@ -141,7 +141,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "16. Documents", "16. Docume
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xelit3.Playground.Documents", "Xelit3.Playground.Documents\Xelit3.Playground.Documents.csproj", "{3A2EE73E-D7A2-4796-8DB0-F268A3E48C0A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xelit3.Playground.ApiKey", "Xelit3.Playground.ApiKey\Xelit3.Playground.ApiKey.csproj", "{7C7E8B92-E960-49A7-8D5E-ED4A9110C850}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xelit3.Playground.ApiKey", "Xelit3.Playground.ApiKey\Xelit3.Playground.ApiKey.csproj", "{7C7E8B92-E960-49A7-8D5E-ED4A9110C850}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xelit3.Playground.Hmac.Server", "Xelit3.Playground.Hmac.Server\Xelit3.Playground.Hmac.Server.csproj", "{2EFBA99D-5BD3-4F63-B6E3-93EDD0DB1CBB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HMAC", "HMAC", "{C2782EF3-E704-4451-93AC-6238CADB9513}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xelit3.Playground.Hmac.Client", "Xelit3.Playground.Hmac.Client\Xelit3.Playground.Hmac.Client.csproj", "{08C1FAD5-1F71-4443-B45E-2B127F27C7C9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -337,6 +343,14 @@ Global
 		{7C7E8B92-E960-49A7-8D5E-ED4A9110C850}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7C7E8B92-E960-49A7-8D5E-ED4A9110C850}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7C7E8B92-E960-49A7-8D5E-ED4A9110C850}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2EFBA99D-5BD3-4F63-B6E3-93EDD0DB1CBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EFBA99D-5BD3-4F63-B6E3-93EDD0DB1CBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EFBA99D-5BD3-4F63-B6E3-93EDD0DB1CBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EFBA99D-5BD3-4F63-B6E3-93EDD0DB1CBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08C1FAD5-1F71-4443-B45E-2B127F27C7C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08C1FAD5-1F71-4443-B45E-2B127F27C7C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08C1FAD5-1F71-4443-B45E-2B127F27C7C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08C1FAD5-1F71-4443-B45E-2B127F27C7C9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -405,6 +419,9 @@ Global
 		{95329E86-5322-46D3-B172-7EE4B35A77A2} = {974129EE-4601-4759-82B9-8A8C345D05D1}
 		{3A2EE73E-D7A2-4796-8DB0-F268A3E48C0A} = {95329E86-5322-46D3-B172-7EE4B35A77A2}
 		{7C7E8B92-E960-49A7-8D5E-ED4A9110C850} = {8764D644-DDE8-4E91-941B-6BC7A541A6AD}
+		{2EFBA99D-5BD3-4F63-B6E3-93EDD0DB1CBB} = {C2782EF3-E704-4451-93AC-6238CADB9513}
+		{C2782EF3-E704-4451-93AC-6238CADB9513} = {8764D644-DDE8-4E91-941B-6BC7A541A6AD}
+		{08C1FAD5-1F71-4443-B45E-2B127F27C7C9} = {C2782EF3-E704-4451-93AC-6238CADB9513}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3BAB64C1-7ACD-4E62-99E7-A6BA6608F82C}
