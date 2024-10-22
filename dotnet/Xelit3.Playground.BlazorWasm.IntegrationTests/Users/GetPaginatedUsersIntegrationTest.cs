@@ -24,7 +24,7 @@ public class GetPaginatedUsersIntegrationTest : IntegrationTestBase, IAsyncLifet
     [Fact]
     public async Task Given_UsersDataInsertedAndTimeTreshold_When_ThousandsUsersRequested_Then_UsersRetrivedInTime()
     {
-        //Assert
+        // Arrange
         int page = 0, size = 1000;
         int thesholdInMiliseconds = 10000;
 

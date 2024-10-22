@@ -22,7 +22,7 @@ public class PostUsersIntegrationTest : IntegrationTestBase, IAsyncLifetime
     [Fact]
     public async Task Given_UsersContext_When_UserCreated_Then_UserCreated()
     {
-        //Arrange
+        // Arrange
         var creationCommand = new UserCreationDto(_testCountry.Id, "Test", "Surname", DateTime.Now);
 
         // Act
