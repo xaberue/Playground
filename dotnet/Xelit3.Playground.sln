@@ -155,6 +155,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xelit3.Playground.RabbitMQ.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xelit3.Playground.RabbitMQ.Receiver", "Xelit3.Playground.RabbitMQ.Receiver\Xelit3.Playground.RabbitMQ.Receiver.csproj", "{74FF1CFB-CDC5-487A-B89E-8364D422D79A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "18. OpenAPI", "18. OpenAPI", "{A955AF21-7F2A-4892-9E3E-0FBEA1C5085D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xelit3.Playground.OpenAPI", "Xelit3.Playground.OpenAPI\Xelit3.Playground.OpenAPI.csproj", "{EAEA1885-B854-47EA-AC3A-923385665F2E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -365,6 +369,10 @@ Global
 		{74FF1CFB-CDC5-487A-B89E-8364D422D79A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{74FF1CFB-CDC5-487A-B89E-8364D422D79A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{74FF1CFB-CDC5-487A-B89E-8364D422D79A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EAEA1885-B854-47EA-AC3A-923385665F2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAEA1885-B854-47EA-AC3A-923385665F2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAEA1885-B854-47EA-AC3A-923385665F2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAEA1885-B854-47EA-AC3A-923385665F2E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -439,6 +447,8 @@ Global
 		{154362BA-417B-4C31-B75B-780B77597A2E} = {974129EE-4601-4759-82B9-8A8C345D05D1}
 		{A3DA5D6C-6E99-461E-9569-A081DB4214C9} = {154362BA-417B-4C31-B75B-780B77597A2E}
 		{74FF1CFB-CDC5-487A-B89E-8364D422D79A} = {154362BA-417B-4C31-B75B-780B77597A2E}
+		{A955AF21-7F2A-4892-9E3E-0FBEA1C5085D} = {974129EE-4601-4759-82B9-8A8C345D05D1}
+		{EAEA1885-B854-47EA-AC3A-923385665F2E} = {A955AF21-7F2A-4892-9E3E-0FBEA1C5085D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3BAB64C1-7ACD-4E62-99E7-A6BA6608F82C}
