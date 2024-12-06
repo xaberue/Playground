@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.OpenApi;
 using Microsoft.OpenApi.Models;
+using Scalar.AspNetCore;
 using System.ComponentModel;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -58,6 +59,30 @@ app.UseOutputCache();
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi().CacheOutput();
+
+    /*
+     * Swagger integration
+     * This is the only thing needed if you want to support the current OpenAPI specification with Swagger
+     * https://localhost:7079/swagger/index.html
+     */
+    app.UseSwaggerUI(opt =>
+    {
+        opt.SwaggerEndpoint("/openapi/v1.json", "xaberue OpenAPI Demo");
+
+    });
+
+    /* 
+     * Scalar integration
+     * The basic doesn't need any parametrization 
+     * https://localhost:7079/scalar/v1
+     */
+    app.MapScalarApiReference(opt => 
+    {
+        opt
+            .WithTitle("xaberue OpenAPI Demo")
+            .WithTheme(ScalarTheme.Kepler)
+            .WithDefaultHttpClient(ScalarTarget.CSharp, ScalarClient.HttpClient);
+    });
 }
 
 app.UseHttpsRedirection();
@@ -88,7 +113,7 @@ app.MapGet("/hello/{name}",
         ([Description("The name of the person to greet.")] string name) => $"Hello, {name}!")
     .WithSummary("Get a personalized greeting")
     .WithDescription("This endpoint returns a personalized greeting.")
-    .WithTags("Greetings");
+    .WithTags("GET");
 
 app.Run();
 

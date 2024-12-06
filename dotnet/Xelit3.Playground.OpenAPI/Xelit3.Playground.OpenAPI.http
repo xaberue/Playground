@@ -1,6 +1,11 @@
-@Xelit3.Playground.OpenAPI_HostAddress = http://localhost:5000
+@Xelit3.Playground.OpenAPI_HostAddress = https://localhost:7079
 
 GET {{Xelit3.Playground.OpenAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+
+GET {{Xelit3.Playground.OpenAPI_HostAddress}}/openapi/v1.json/
 Accept: application/json
 
 ###
