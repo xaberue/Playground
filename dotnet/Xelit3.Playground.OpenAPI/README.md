@@ -2,7 +2,7 @@
 
 This folder contains sample implementations and tests realted to OpenAPI specification, as well as UI concrete providers on top of such specification
 
-_NOTE: This sample is a test project, may contain inconsistencies, potential improvements. _
+_NOTE: This sample is a test project, may contain inconsistencies, potential improvements._
 
 ## Links
 
