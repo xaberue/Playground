@@ -29,16 +29,27 @@ _In progress benchmarking in italic_
 
 ## Links
 
-- Follow me on
-  - [Twitter](https://twitter.com/Xelit3_dev)
-  - [Github](https://github.com/Xelit3)
+Follow me on 
+  - [Github](https://github.com/xaberue)
   - [LinkedIn](https://www.linkedin.com/in/xabelaira/)
-  - [WeAreDotNet](https://www.wearedotnet.io/Xelit3)
-  - [DEV Community](https://dev.to/xelit3)
-  - [StackOverflow](https://stackoverflow.com/users/4500091/xelit3)
-  - [C# Corner](https://www.c-sharpcorner.com/myaccount/)
+  - [BlueSky](https://bsky.app/profile/xaberue.bsky.social)
+  - [Mastodon](https://mastodon.social/@xaberue)
+  - [DEV Community](https://dev.to/xaberue)
+  - [WeAreDotNet](https://www.wearedotnet.io/xaberue)
+  - [StackOverflow](https://stackoverflow.com/users/4500091/xaberue)
+  - [C# Corner](https://www.c-sharpcorner.com/members/xavier-abelaira-rueda)
+  - [Twitter](https://twitter.com/xaberue_)
 
 
-- Follow ChustaSoft:
-  - [Twitter](https://twitter.com/ChustaSoft)
+Follow .NET Barcelona Community
+  - [Github](https://github.com/NET-Barcelona)
+  - [LinkedIn](https://www.linkedin.com/groups/9514952/)
+  - [BlueSky](https://bsky.app/profile/dotnetbarcelona.bsky.social)
+  - [Discord](https://discord.gg/xCWgsQAMXv)
+  - [Mastodon]https://mastodon.social/@@dotnetbarcelona)
+  - [Twitter](https://twitter.com/dotnetbarcelona)
+
+	- 
+Follow ChustaSoft:
   - [GitHub](https://github.com/ChustaSoft)
+  - [Twitter](https://twitter.com/ChustaSoft)
