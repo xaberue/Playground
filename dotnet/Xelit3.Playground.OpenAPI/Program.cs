@@ -117,6 +117,13 @@ app.MapGet("/hello/{name}",
 
 app.Run();
 
+
+/// <summary>
+/// WeatherForecast model
+/// </summary>
+/// <param name="Date">Date of the forecast</param>
+/// <param name="TemperatureC">Temperature measured in Celsius</param>
+/// <param name="Summary">Brief summary about the day's weather</param>
 internal record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
 {
     public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
