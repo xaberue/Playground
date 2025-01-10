@@ -28,31 +28,54 @@ public class Result<T>
     private bool IsSuccess { get; }
 
     // This Method takes two Func<T>, one for the success case and one for the error case
-    public Result<TReturn> Switch<TReturn>(
-        Func<T, TReturn> onSuccess,
-        Func<Exception, Exception> onFailure)
+    public Result<TReturn> Switch<TReturn>(Func<T, Result<TReturn>> onSuccess, Func<Exception, Result<TReturn>> onFailure)
     {
         if (IsSuccess)
         {
-            // If this result has a value, run the success method,
-            // which returns a different value, and then we create a
-            // Result<TReturn> from it (implicitly)
-            var result = onSuccess(_value);
-            return result;
+            return onSuccess(_value);
         }
         else
         {
-            {
-                // If this result is an error, run the error method
-                // to allow the user to manipulate/inspect the error.
-                // We then create a new Result<TReturn> result object
-                // from the error it returns
-                var err = onFailure(_error);
-                return Result<TReturn>.Fail(err);
-            }
+            return onFailure(_error);
         }
+    }
+
 
     public static Result<T> Success(T value) => new(value);
     public static Result<T> Fail(Exception error) => new(error);
     public static implicit operator Result<T>(T value) => Success(value);
+}
+
+
+public static class ResultExtensions
+{
+
+    public static Result<TResult> Select<TFrom, TResult>(
+    this Result<TFrom> source,
+    Func<TFrom, TResult> selector)
+    {
+        return source.Switch(
+            onSuccess: r => selector(r),
+            onFailure: e => Result<TResult>.Fail(e));
+    }
+
+
+    public static Result<TResult> SelectMany<TFrom, TMiddle, TResult>(
+        this Result<TFrom> source,
+        Func<TFrom, Result<TMiddle>> collectionSelector,
+        Func<TFrom, TMiddle, TResult> resultSelector)
+    {
+        return source.Switch(
+            onSuccess: r =>
+            {
+                Result<TMiddle> middleResult = collectionSelector(r);
+
+                return middleResult.Switch(
+                    onSuccess: v => Result<TResult>.Success(resultSelector(r, v)),
+                    onFailure: e => Result<TResult>.Fail(e));
+            },
+            onFailure: e => Result<TResult>.Fail(e));
+    }
+
+
 }
