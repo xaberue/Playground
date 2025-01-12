@@ -46,10 +46,10 @@ Follow .NET Barcelona Community
   - [LinkedIn](https://www.linkedin.com/groups/9514952/)
   - [BlueSky](https://bsky.app/profile/dotnetbarcelona.bsky.social)
   - [Discord](https://discord.gg/xCWgsQAMXv)
-  - [Mastodon]https://mastodon.social/@@dotnetbarcelona)
+  - [Mastodon](https://mastodon.social/@@dotnetbarcelona)
   - [Twitter](https://twitter.com/dotnetbarcelona)
 
-	- 
+
 Follow ChustaSoft:
   - [GitHub](https://github.com/ChustaSoft)
   - [Twitter](https://twitter.com/ChustaSoft)
