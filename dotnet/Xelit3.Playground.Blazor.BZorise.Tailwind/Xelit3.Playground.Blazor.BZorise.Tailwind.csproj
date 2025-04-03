@@ -15,9 +15,9 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Blazorise" Version="1.7.4" />
-		<PackageReference Include="Blazorise.Tailwind" Version="1.7.4" />
-		<PackageReference Include="Blazorise.Icons.FontAwesome" Version="1.7.4" />
+		<PackageReference Include="Blazorise" Version="1.7.5" />
+		<PackageReference Include="Blazorise.Tailwind" Version="1.7.5" />
+		<PackageReference Include="Blazorise.Icons.FontAwesome" Version="1.7.5" />
 	</ItemGroup>
 
 </Project>

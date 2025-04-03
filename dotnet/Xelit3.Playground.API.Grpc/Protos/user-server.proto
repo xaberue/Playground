@@ -2,8 +2,6 @@ syntax = "proto3";
 
 option csharp_namespace = "Xelit3.Playground.API.Grpc";
 
-import "google/api/annotations.proto";
-
 package user;
 
 
