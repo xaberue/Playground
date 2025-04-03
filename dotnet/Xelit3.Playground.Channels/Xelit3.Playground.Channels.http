@@ -1,0 +1,6 @@
+@Xelit3.Playground.Channels_HostAddress = http://localhost:5232
+
+GET {{Xelit3.Playground.Channels_HostAddress}}/hello/Noelia
+Accept: application/json
+
+###
