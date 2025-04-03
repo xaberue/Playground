@@ -1,0 +1,12 @@
+@Xelit3.Playground.Caching_Custom_HostAddress = https://localhost:7443
+@Xelit3.Playground.Caching_Hybrid_HostAddress = https://localhost:7444
+
+GET {{Xelit3.Playground.Caching_Custom_HostAddress}}/last-execution
+Accept: application/json
+
+###
+
+GET {{Xelit3.Playground.Caching_Hybrid_HostAddress}}/weatherforecast
+Accept: application/json
+
+###
