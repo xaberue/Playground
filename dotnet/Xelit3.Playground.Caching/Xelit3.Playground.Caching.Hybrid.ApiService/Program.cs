@@ -1,6 +1,4 @@
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Hybrid;
-using System.Threading;
 using Xelit3.Playground.Caching.Hybrid.ApiService;
 using Xelit3.Playground.Caching.ServiceDefaults;
 

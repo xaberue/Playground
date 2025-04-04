@@ -1,0 +1,6 @@
+@Xelit3.Playground.Caching.Fusion.ApiService_HostAddress = http://localhost:7162
+
+GET {{Xelit3.Playground.Caching.Fusion.ApiService_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

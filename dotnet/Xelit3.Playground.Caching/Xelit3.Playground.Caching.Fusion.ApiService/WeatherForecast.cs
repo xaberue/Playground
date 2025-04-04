@@ -1,4 +1,4 @@
-namespace Xelit3.Playground.Caching.Hybrid.ApiService;
+namespace Xelit3.Playground.Caching.Fusion.ApiService;
 
 public record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
 {
