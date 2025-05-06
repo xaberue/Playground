@@ -1,0 +1,6 @@
+@Xelit3.Playground.EventSourcingMarten_HostAddress = http://localhost:8080
+
+GET {{Xelit3.Playground.EventSourcingMarten_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
