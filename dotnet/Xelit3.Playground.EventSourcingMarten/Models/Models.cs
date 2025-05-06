@@ -1,0 +1,48 @@
+﻿namespace Xelit3.Playground.EventSourcingMarten.Models;
+
+
+public abstract record Event
+{
+    public Guid EventId { get; set; }
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+}
+
+
+public enum AppointmentStatus
+{
+    Created,
+    Confirmed,
+    Cancelled
+}
+
+
+public record AppointmentCreated : Event
+{
+    public Guid AppointmenId { get; set; }
+    public AppointmentStatus Status { get; set; }
+    public string Title { get; set; }
+    public string Description { get; set; }
+}
+
+public record AppointmentStatusChanged : Event
+{
+    public Guid AppointmenId { get; set; }
+    public AppointmentStatus StatusUpdated { get; set; }
+}
+
+public record AppointmentUpdated : Event
+{
+    public Guid AppointmenId { get; set; }
+    public string DescriptionUpdated { get; set; }
+}
+
+
+
+public class Appointment
+{
+    public Guid Id { get; set; } = Guid.CreateVersion7();
+    public AppointmentStatus Status { get; set; }
+    public string Title { get; set; }
+    public string Description { get; set; }
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+}
