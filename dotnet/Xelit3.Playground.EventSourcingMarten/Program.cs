@@ -1,6 +1,29 @@
+using Marten;
+using Weasel.Core;
+using Xelit3.Playground.EventSourcingMarten.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new ArgumentException("DefaultConnection must be configured"); ;
+
+builder.Services.AddMarten(opt =>
+{
+    opt.Connection(connectionString);
+    opt.UseSystemTextJsonForSerialization();
+
+    if (builder.Environment.IsDevelopment())
+    {
+        opt.AutoCreateSchemaObjects = AutoCreate.All;
+    }
+    else
+    {
+        opt.AutoCreateSchemaObjects = AutoCreate.None;
+    }
+
+    //opt.UseOptimisticConcurrency = true;
+    //opt.Schema.For<WeatherForecast>().Identity(x => x.Date);
+});
 
 var app = builder.Build();
 
@@ -8,27 +31,36 @@ var app = builder.Build();
 
 app.UseHttpsRedirection();
 
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
 
-app.MapGet("/weatherforecast", () =>
+app.MapGet("appointment/{id:guid}", async (IQuerySession session, Guid id) => 
 {
-    var forecast =  Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
+    var appointment = await session.Events.AggregateStreamAsync<Appointment>(id);
+
+    return appointment is not null ? 
+        Results.Ok(appointment) 
+        : 
+        Results.NotFound();
+});
+
+app.MapPost("appointment", async (IDocumentStore store, AppointmentCreationRequest appointmentCreationRequest) =>
+{
+    var appointmentCreated = new AppointmentCreated
+    {
+        Title = appointmentCreationRequest.Title,
+        Description = appointmentCreationRequest.Description
+    };
+    await using var session = store.LightweightSession();
+    
+    session.Events.StartStream<Appointment>(appointmentCreated.Id, appointmentCreated);
+    await session.SaveChangesAsync();
+
+    return Results.Created($"/appointment/{appointmentCreated.Id}", appointmentCreationRequest);
 });
 
 app.Run();
 
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
+
+
+
+
+//var appointment = new Appointment(appointmentCreated.Status, appointmentCreated.Title, appointmentCreated.Description);

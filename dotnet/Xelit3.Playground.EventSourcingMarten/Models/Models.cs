@@ -16,23 +16,29 @@ public enum AppointmentStatus
 }
 
 
+public record AppointmentCreationRequest
+{
+    public string Title { get; set; }
+    public string Description { get; set; }
+}
+
 public record AppointmentCreated : Event
 {
-    public Guid AppointmenId { get; set; }
-    public AppointmentStatus Status { get; set; }
+    public Guid Id { get; set; } = Guid.CreateVersion7();
+    public AppointmentStatus Status { get; set; } = AppointmentStatus.Created;
     public string Title { get; set; }
     public string Description { get; set; }
 }
 
 public record AppointmentStatusChanged : Event
 {
-    public Guid AppointmenId { get; set; }
+    public Guid Id { get; set; }
     public AppointmentStatus StatusUpdated { get; set; }
 }
 
 public record AppointmentUpdated : Event
 {
-    public Guid AppointmenId { get; set; }
+    public Guid Id { get; set; }
     public string DescriptionUpdated { get; set; }
 }
 
@@ -40,9 +46,29 @@ public record AppointmentUpdated : Event
 
 public class Appointment
 {
+
     public Guid Id { get; set; } = Guid.CreateVersion7();
     public AppointmentStatus Status { get; set; }
     public string Title { get; set; }
     public string Description { get; set; }
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+
+
+    public Appointment() { }
+
+    public Appointment(AppointmentStatus status, string title, string description)
+    {
+        Status = status;
+        Title = title;
+        Description = description;
+    }
+
+
+    public void Apply(AppointmentCreated appointmentCreated)
+    {
+        Id = appointmentCreated.Id;
+        Status = appointmentCreated.Status;
+        Title = appointmentCreated.Title;
+        Description = appointmentCreated.Description;
+    }
 }
