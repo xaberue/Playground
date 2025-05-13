@@ -1,6 +1,6 @@
 @Xelit3.Playground.EventSourcingMarten_HostAddress = http://localhost:8080
 
-GET {{Xelit3.Playground.EventSourcingMarten_HostAddress}}/appointment/[ID]
+GET {{Xelit3.Playground.EventSourcingMarten_HostAddress}}/appointment/[Id]
 Accept: application/json
 
 ###
@@ -12,6 +12,28 @@ Content-Type: application/json
 {
   "title": "This is the title",
   "description": "TEST Description"
+}
+
+###
+
+
+PUT {{Xelit3.Playground.EventSourcingMarten_HostAddress}}/appointment
+Content-Type: application/json
+
+{
+  "id": "[Id]",
+  "descriptionUpdated": "TEST Description 2"
+}
+
+###
+
+
+PATCH {{Xelit3.Playground.EventSourcingMarten_HostAddress}}/appointment
+Content-Type: application/json
+
+{
+  "id": "[Id]",
+  "statusUpdated": 1
 }
 
 ###

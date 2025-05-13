@@ -64,7 +64,11 @@ public class Appointment
     }
 
 
-    public void Apply(AppointmentCreated appointmentCreated)
+    /// <summary>
+    /// Apply the AppointmentCreated event to the current appointment. This is done under demand and not through a persisted projection
+    /// </summary>
+    /// <param name="appointmentCreated"></param>
+    public void Apply(AppointmentCreated appointmentCreated) 
     {
         Id = appointmentCreated.Id;
         Status = appointmentCreated.Status;
