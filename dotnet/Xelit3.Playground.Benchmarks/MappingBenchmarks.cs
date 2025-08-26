@@ -45,7 +45,7 @@ public class MappingBenchmarks
 
     private void SetupAutomapperConfig()
     {
-        var automapperConfig = new MapperConfiguration(cfg => cfg.CreateMap<Person<Guid>, PersonMappingDto>());
+        var automapperConfig = new MapperConfiguration(cfg => cfg.CreateMap<Person<Guid>, PersonMappingDto>(), default);
 
         _automapper = new Mapper(automapperConfig);
     }
