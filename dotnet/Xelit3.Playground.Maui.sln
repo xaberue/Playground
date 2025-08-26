@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xelit3.Playground.MAUI", "X
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xelit3.Playground.BlazorHybrid", "Xelit3.Playground.BlazorHybrid\Xelit3.Playground.BlazorHybrid.csproj", "{C22385C5-FF64-4F39-9A76-58A0CD75AAE5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xelit3.Playground.MAUI.Reactor", "Xelit3.Playground.MAUI.Reactor\Xelit3.Playground.MAUI.Reactor.csproj", "{864D17F2-8224-400F-AB2C-BCAF4D46929B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,11 @@ Global
 		{C22385C5-FF64-4F39-9A76-58A0CD75AAE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C22385C5-FF64-4F39-9A76-58A0CD75AAE5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C22385C5-FF64-4F39-9A76-58A0CD75AAE5}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{864D17F2-8224-400F-AB2C-BCAF4D46929B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{864D17F2-8224-400F-AB2C-BCAF4D46929B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{864D17F2-8224-400F-AB2C-BCAF4D46929B}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{864D17F2-8224-400F-AB2C-BCAF4D46929B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{864D17F2-8224-400F-AB2C-BCAF4D46929B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
