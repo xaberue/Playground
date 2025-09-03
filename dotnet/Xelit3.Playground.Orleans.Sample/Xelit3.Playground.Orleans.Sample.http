@@ -1,0 +1,6 @@
+@Xelit3.Playground.Orleans.Sample_HostAddress = http://localhost:5004
+
+GET {{Xelit3.Playground.Orleans.Sample_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
