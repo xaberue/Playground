@@ -10,6 +10,12 @@ Accept: application/json
 
 ###
 
+
+GET {{Xelit3.Playground.HangfireDemo_HostAddress}}/schedule-class-process/
+Accept: application/json
+
+###
+
 GET {{Xelit3.Playground.HangfireDemo_HostAddress}}/background/
 Accept: application/json
 

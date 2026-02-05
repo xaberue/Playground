@@ -1,10 +1,14 @@
 using Hangfire;
+using System.Net;
+using Xelit3.Playground.Scheduling.HangfireDemo;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.AddServiceDefaults();
 
 builder.Services.AddOpenApi();
+
+builder.Services.AddSingleton<ExampleJob>();
 
 builder.Services.AddHangfire(conf =>
     conf
@@ -36,6 +40,13 @@ app.MapGet("/enqueue", (IBackgroundJobClient jobClient) =>
 app.MapGet("/schedule", (IBackgroundJobClient jobClient) =>
 {
     jobClient.Schedule(() => Console.WriteLine("Scheduling a delayed job -> Hello from Hangfire!"), TimeSpan.FromSeconds(10));
+
+    return Results.Ok();
+});
+
+app.MapGet("/schedule-class-process", (IBackgroundJobClient jobClient) =>
+{
+    jobClient.Schedule<ExampleJob>(x => x.Execute(), TimeSpan.FromSeconds(10));
 
     return Results.Ok();
 });
