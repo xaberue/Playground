@@ -1,0 +1,6 @@
+@Xelit3.Playground.HangfireDemo_HostAddress = http://localhost:5062
+
+GET {{Xelit3.Playground.HangfireDemo_HostAddress}}/job/
+Accept: application/json
+
+###
