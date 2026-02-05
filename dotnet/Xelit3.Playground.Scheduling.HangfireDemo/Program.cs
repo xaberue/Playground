@@ -2,6 +2,8 @@ using Hangfire;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.AddServiceDefaults();
+
 builder.Services.AddOpenApi();
 
 builder.Services.AddHangfire(conf => 
@@ -32,6 +34,8 @@ app.MapGet("/job", (IBackgroundJobClient jobClient) =>
 });
 
 app.UseHangfireDashboard(); //Dasbhoard -> https://localhost:7023/hangfire/servers
+
+app.MapDefaultEndpoints();
 
 app.Run();
 
