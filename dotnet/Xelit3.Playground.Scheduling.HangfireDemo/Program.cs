@@ -26,9 +26,27 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 
-app.MapGet("/job", (IBackgroundJobClient jobClient) =>
+app.MapGet("/enqueue", (IBackgroundJobClient jobClient) =>
 {
-    jobClient.Enqueue(() => Console.WriteLine("Hello from Hangfire!"));
+    jobClient.Enqueue(() => Console.WriteLine("Enqueueing a -> Hello from Hangfire!"));
+
+    return Results.Ok();
+});
+
+app.MapGet("/schedule", (IBackgroundJobClient jobClient) =>
+{
+    jobClient.Schedule(() => Console.WriteLine("Scheduling a delayed job -> Hello from Hangfire!"), TimeSpan.FromSeconds(10));
+
+    return Results.Ok();
+});
+
+app.MapGet("/background", (IRecurringJobManager jobManager) =>
+{
+    jobManager.AddOrUpdate(
+        "background-process", 
+        () => Console.WriteLine("Scheduling a recurrent job -> Hello from Hangfire!"),
+        "*/5 * * * *" //Every five mintues
+        );
 
     return Results.Ok();
 });
