@@ -6,11 +6,11 @@ builder.AddServiceDefaults();
 
 builder.Services.AddOpenApi();
 
-builder.Services.AddHangfire(conf => 
+builder.Services.AddHangfire(conf =>
     conf
         .UseSimpleAssemblyNameTypeSerializer()
         .UseRecommendedSerializerSettings()
-        .UseInMemoryStorage()
+        .UseSqlServerStorage(builder.Configuration.GetConnectionString("hangfire-db"))
 );
 
 builder.Services.AddHangfireServer(x => 

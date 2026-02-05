@@ -9,6 +9,8 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<PackageReference Include="Aspire.Hosting.SqlServer" Version="*" />
+		
 		<ProjectReference Include="..\..\Xelit3.Playground.Scheduling.HangfireDemo\Xelit3.Playground.Scheduling.HangfireDemo.csproj" />
 	</ItemGroup>
 
