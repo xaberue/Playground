@@ -31,5 +31,7 @@ app.MapGet("/job", (IBackgroundJobClient jobClient) =>
     return Results.Ok();
 });
 
+app.UseHangfireDashboard(); //Dasbhoard -> https://localhost:7023/hangfire/servers
+
 app.Run();
 
