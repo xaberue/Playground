@@ -9,11 +9,11 @@ public class ExampleJob
         _logger = logger;
     }
 
-    public void Execute()
+    public void Execute(string from)
     {
-        _logger.LogInformation("Executing ExampleJob at {Time}", DateTimeOffset.Now);
+        _logger.LogInformation("Executing ExampleJob from {from} at {Time}", from, DateTimeOffset.Now);
         // Simulate some work
         Thread.Sleep(1000);
-        _logger.LogInformation("Finished executing ExampleJob at {Time}", DateTimeOffset.Now);
+        _logger.LogInformation("Finished executing from {from} ExampleJob at {Time}", from, DateTimeOffset.Now);
     }
 }

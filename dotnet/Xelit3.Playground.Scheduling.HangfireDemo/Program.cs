@@ -20,6 +20,9 @@ builder.Services.AddHangfire(conf =>
 builder.Services.AddHangfireServer(x => 
 x.SchedulePollingInterval = TimeSpan.FromSeconds(1));  //Don't do this in PROD, we are requesting each second knowing the jobs to be executed. By default is 15 seconds.
 
+// Register hosted service that sets up a scheduled recurring job with Hangfire
+builder.Services.AddHostedService<HangfireRecurringJobScheduler>();
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
@@ -46,7 +49,7 @@ app.MapGet("/schedule", (IBackgroundJobClient jobClient) =>
 
 app.MapGet("/schedule-class-process", (IBackgroundJobClient jobClient) =>
 {
-    jobClient.Schedule<ExampleJob>(x => x.Execute(), TimeSpan.FromSeconds(10));
+    jobClient.Schedule<ExampleJob>(x => x.Execute("API invokation"), TimeSpan.FromSeconds(10));
 
     return Results.Ok();
 });
