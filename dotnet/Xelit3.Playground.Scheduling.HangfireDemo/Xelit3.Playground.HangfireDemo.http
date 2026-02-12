@@ -1,0 +1,22 @@
+@Xelit3.Playground.HangfireDemo_HostAddress = http://localhost:5062
+
+GET {{Xelit3.Playground.HangfireDemo_HostAddress}}/enqueue/
+Accept: application/json
+
+###
+
+GET {{Xelit3.Playground.HangfireDemo_HostAddress}}/schedule/
+Accept: application/json
+
+###
+
+
+GET {{Xelit3.Playground.HangfireDemo_HostAddress}}/schedule-class-process/
+Accept: application/json
+
+###
+
+GET {{Xelit3.Playground.HangfireDemo_HostAddress}}/background/
+Accept: application/json
+
+###
