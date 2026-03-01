@@ -1,0 +1,6 @@
+@Xelit3.Playground.Scheduling.TickerqDemo_HostAddress = http://localhost:5086
+
+GET {{Xelit3.Playground.Scheduling.TickerqDemo_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

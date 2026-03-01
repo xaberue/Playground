@@ -12,6 +12,8 @@
 		<PackageReference Include="Aspire.Hosting.SqlServer" Version="*" />
 		
 		<ProjectReference Include="..\..\Xelit3.Playground.Scheduling.HangfireDemo\Xelit3.Playground.Scheduling.HangfireDemo.csproj" />
+		
+		<ProjectReference Include="..\..\Xelit3.Playground.Scheduling.TickerqDemo\Xelit3.Playground.Scheduling.TickerqDemo.csproj" />
 	</ItemGroup>
 
 </Project>

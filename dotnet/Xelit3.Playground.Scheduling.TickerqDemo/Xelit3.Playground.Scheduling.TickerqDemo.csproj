@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net10.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Aspire.Microsoft.EntityFrameworkCore.SqlServer" Version="13.1.2" />
+		<PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.2" />
+		<PackageReference Include="TickerQ" Version="10.1.1" />
+		<PackageReference Include="TickerQ.Dashboard" Version="10.1.1" />
+		<PackageReference Include="TickerQ.EntityFrameworkCore" Version="10.1.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Xelit3.Playground.Scheduling\Xelit3.Playground.Scheduling.ServiceDefaults\Xelit3.Playground.Scheduling.ServiceDefaults.csproj" />
+	</ItemGroup>
+
+</Project>
